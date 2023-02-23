@@ -1,8 +1,6 @@
 package br.unitins.resouser;
 
 import javax.ws.rs.Produces;
-import javax.persistence.TableGenerator;
-import javax.print.DocFlavor.STRING;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
