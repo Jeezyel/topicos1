@@ -64,6 +64,5 @@ public class lojaResouser {
 
         return r2;
 
-    }
-    
+    } 
 }
