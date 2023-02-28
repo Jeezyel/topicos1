@@ -3,8 +3,6 @@ package br.unitins.model;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Cliente {
@@ -12,6 +10,7 @@ public class Cliente {
     @Column(nullable = false, length = 80)
     private String nome;
     @Id    //usando o cpf como chave Primaria 
+    private Integer id;
     private String cpf;
     
     private LocalDate dataDeNacimento;
