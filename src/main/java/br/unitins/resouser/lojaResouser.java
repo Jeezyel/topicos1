@@ -68,5 +68,16 @@ public class lojaResouser {
 
         return r2;
 
-    } 
+    }
+
+
+    @DELETE
+    @Path("/{nameMarca}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Transactional
+    public Roupas DeletForName(@PathParam("nameMarca") String marca ){
+        Roupas roupaForDelet = repository.findByMarca(marca);
+        return roupaForDelet ;
+    }
 }
