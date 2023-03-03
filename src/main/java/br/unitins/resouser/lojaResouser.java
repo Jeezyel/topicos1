@@ -69,9 +69,10 @@ public class lojaResouser {
 
     @GET
     @Path("/{nameMarca}")
-    public Roupas searchForName(@PathParam("nameMarca") String marca){
+    public Roupas searchForName(@PathParam("nameMarca") String nameMarca){
 
-        Roupas roupaForSearch = (Roupas) repository.findByMarca(marca);
+        Roupas roupaForSearch = (Roupas) repository.findByMarca(nameMarca);
+        repository.delete(roupaForSearch);
         return roupaForSearch;
 
     }
@@ -79,8 +80,9 @@ public class lojaResouser {
     @DELETE
     @Path("/{nameMarca}")
     @Transactional
-    public Roupas DeletForName(@PathParam("nameMarca") String marca ){
-        Roupas roupaForDelet = repository.findByMarca(marca);
-        return roupaForDelet ;
+    public Roupas DeletForName(@PathParam("nameMarca") String nameMarca ){
+        Roupas roupaForDelet = repository.findByMarca(nameMarca);
+        repository.delete(roupaForDelet);
+        return roupaForDelet;
     }
 }
