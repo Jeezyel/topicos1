@@ -19,8 +19,9 @@ public class Roupas extends PanacheEntity {
     private String cor;
     @Column(nullable = false , length = 40)
     private String tipoDeTercido;
-    @Column(nullable = false , length = 20)
+    @Column(nullable = true , length = 20) // esse true pode dar problemas fica de olha 
     private String marca;
+    @Column(nullable = true , length = 20)// esse true pode dar problemas fica de olha 
     private String modelo;
 
     public String getModelo() {

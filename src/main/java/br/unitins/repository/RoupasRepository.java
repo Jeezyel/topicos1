@@ -21,7 +21,7 @@ public class RoupasRepository implements PanacheRepository<Roupas> {
 
     public List<Roupas> findeByName(String name){
         String searchTerm = "%" + name + "%";
-        String query = "SELECT * FROM tabela WHERE coluna LIKE ?";
+        String query = "SELECT * FROM roupas WHERE nome LIKE ?";
         ArrayList listInRoupas =  null;
 
         return listInRoupas ;
