@@ -3,8 +3,10 @@ package br.unitins.model;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity
 public class Cliente {
 
     @Column(nullable = false, length = 80)
@@ -39,3 +41,4 @@ public class Cliente {
     
 
 }
+

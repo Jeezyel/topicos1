@@ -11,9 +11,9 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 @Entity
 public class Roupas extends PanacheEntity {
 
-    @Id
+   /*  @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer id;*/
     private Integer quantidade;
     private Float valor;
     private String cor;
@@ -27,14 +27,14 @@ public class Roupas extends PanacheEntity {
     public String getModelo() {
         return modelo;
     }
-
+/* 
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }
+    }*/
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
