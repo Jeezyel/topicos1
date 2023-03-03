@@ -17,7 +17,15 @@ insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca ,modelo)
  values(nextval('hibernate_sequence'), 79 , 81884 , 'cinza','cetim','prada' , 'bag');
 
  insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca,modelo )
- values(nextval('hibernate_sequence'), 367 , 1888 , 'preta','algodão','calvin klein' , 'MASC LOGO TERMOCOLANTE');
-
- insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca,modelo )
  values(nextval('hibernate_sequence'), 33 , 9999 , 'marron','cetim','louis vuitton','capucine');
+
+ //////////////////////////////////////////////////////////////////////////////////////////////////
+
+insert into Cliente (id,cpf,datadenacimento,nome)
+ values(nextval('hibernate_sequence'), '3344556677' , '2000/01/14' , 'Lucas');
+
+ insert into Cliente (id,cpf,datadenacimento,nome)
+ values(nextval('hibernate_sequence'), '7435634756' , '2007/08/11' , 'Danilo');
+
+ insert into Cliente (id,cpf,datadenacimento,nome)
+ values(nextval('hibernate_sequence'), '3476556734' , '2009/04/13' , 'Rafael');

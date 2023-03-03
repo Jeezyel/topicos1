@@ -69,9 +69,9 @@ public class lojaResouser {
 
     @GET
     @Path("/{nameMarca}")
-    public List<Roupas> searchForName(@PathParam("nameMarca") String marca){
+    public Roupas searchForName(@PathParam("nameMarca") String marca){
 
-        List<Roupas> roupaForSearch = (List<Roupas>) repository.findeByName(marca);
+        Roupas roupaForSearch = (Roupas) repository.findeByName(marca);
         return roupaForSearch;
 
     }
