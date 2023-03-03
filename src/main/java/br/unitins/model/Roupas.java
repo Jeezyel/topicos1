@@ -1,11 +1,12 @@
 package br.unitins.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
 
 @Entity
 public class Roupas extends PanacheEntity {
@@ -16,8 +17,27 @@ public class Roupas extends PanacheEntity {
     private Integer quantidade;
     private Float valor;
     private String cor;
+    @Column(nullable = false , length = 40)
     private String tipoDeTercido;
+    @Column(nullable = false , length = 20)
     private String marca;
+    private String modelo;
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
     public String getTipoDeTercido() {
         return tipoDeTercido;
