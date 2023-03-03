@@ -8,3 +8,16 @@
 
 
 -- insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca ) values(nextval('hibernate_sequence'), 6 , 84 , 'branco','algodão','lacost');
+
+
+insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca ,modelo)
+ values(nextval('hibernate_sequence'), 6 , 84 , 'branco','algodão','lacost','Polo Masculina');
+
+ insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca,modelo )
+ values(nextval('hibernate_sequence'), 79 , 81884 , 'cinza','cetim','prada' , 'bag');
+
+ insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca,modelo )
+ values(nextval('hibernate_sequence'), 367 , 1888 , 'preta','algodão','calvin klein' , 'MASC LOGO TERMOCOLANTE');
+
+ insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca,modelo )
+ values(nextval('hibernate_sequence'), 33 , 9999 , 'marron','cetim','louis vuitton','capucine');
