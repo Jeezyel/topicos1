@@ -66,7 +66,7 @@ public class lojaResouser {
 
     }
 
-
+    
     @GET
     @Path("/{nameMarca}")
     public Roupas searchForName(@PathParam("nameMarca") String nameMarca){

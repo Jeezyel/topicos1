@@ -1,5 +1,4 @@
 package br.unitins.repository;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -14,6 +13,16 @@ public class RoupasRepository implements PanacheRepository<Roupas> {
     public Roupas findByMarca(String marca ){
         return find("marca",  marca  ).firstResult();   
     }
+
+    public List<Roupas> findByNameList(String marca) {
+
+        return find("marca ", "%" + marca + "%").list();
+    }
+/* 
+    public List<Roupas> findByName(String marca) {
+
+        return find("marca ", "%" + marca + "%").list();
+    }*/
 /* 
     public List<Roupas> findeByName(String name){
         String searchTerm = "%" + name + "%";
