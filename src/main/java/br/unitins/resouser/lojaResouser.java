@@ -102,4 +102,11 @@ public class lojaResouser {
         return newRoupa;
 
     }
+    @GET
+    @Path("/{fragmentoMarca}")
+    public List<Roupas> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
+
+
+        return repository.findByMarcaList(fragmentoMarca);
+    }
 }
