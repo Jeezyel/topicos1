@@ -18,6 +18,8 @@ import br.unitins.repository.RoupasRepository;
 import java.util.List;
 
 @Path("/Loja")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class lojaResouser {
 
     @Inject
@@ -33,8 +35,6 @@ public class lojaResouser {
     }
 
     @POST
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Roupas addList(Roupas roupas){
         roupas.persist();
@@ -45,8 +45,6 @@ public class lojaResouser {
 
     @PATCH
     @Path("/{ID}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
     @Transactional
     public Roupas att (@PathParam("/ID") Long ID , Roupas roupas ){
         Roupas r2 = repository.findById(ID);
@@ -58,8 +56,6 @@ public class lojaResouser {
 
     @DELETE
     @Path("/{ID}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Roupas deleteRoupas(@PathParam("ID") Long ID , Roupas roupas){
         Roupas r2 = repository.findById(ID);
@@ -71,10 +67,17 @@ public class lojaResouser {
     }
 
 
+    @GET
+    @Path("/{nameMarca}")
+    public List<Roupas> searchForName(@PathParam("nameMarca") String marca){
+
+        List<Roupas> roupaForSearch = (List<Roupas>) repository.findeByName(marca);
+        return roupaForSearch;
+
+    }
+
     @DELETE
     @Path("/{nameMarca}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Transactional
     public Roupas DeletForName(@PathParam("nameMarca") String marca ){
         Roupas roupaForDelet = repository.findByMarca(marca);
