@@ -8,6 +8,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PATCH;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
@@ -84,5 +85,21 @@ public class lojaResouser {
         Roupas roupaForDelet = repository.findByMarca(nameMarca);
         repository.delete(roupaForDelet);
         return roupaForDelet;
+    }
+
+    @PUT
+    @Path("/{id}")
+    public Roupas alterRoupas(@PathParam("id")Long id , Roupas roupas){
+
+        Roupas newRoupa = repository.findById(id);
+        newRoupa.setQuantidade(roupas.getQuantidade());
+        newRoupa.setValor(roupas.getValor());
+        newRoupa.setCor(roupas.getCor());
+        newRoupa.setTipoDeTercido(roupas.getTipoDeTercido());
+        newRoupa.setMarca(roupas.getMarca());
+        newRoupa.setModelo(roupas.getModelo());
+
+        return newRoupa;
+
     }
 }
