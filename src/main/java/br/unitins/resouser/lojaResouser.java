@@ -71,7 +71,7 @@ public class lojaResouser {
     @Path("/{nameMarca}")
     public Roupas searchForName(@PathParam("nameMarca") String marca){
 
-        Roupas roupaForSearch = (Roupas) repository.findeByName(marca);
+        Roupas roupaForSearch = (Roupas) repository.findByMarca(marca);
         return roupaForSearch;
 
     }

@@ -19,6 +19,10 @@ public class RoupasRepository implements PanacheRepository<Roupas> {
         return find("marca", "%" + marca +"%" ).firstResult();   
     }
 
+    public Roupas findByMarca(Long marca ){
+        return find("marca", "%" + marca +"%" ).firstResult();   
+    }
+
     public List<Roupas> findeByName(String name){
         String searchTerm = "%" + name + "%";
         String query = "SELECT * FROM roupas WHERE nome LIKE ?";
