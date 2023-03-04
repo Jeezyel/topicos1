@@ -86,7 +86,7 @@ public class lojaResouser {
         repository.delete(roupaForDelet);
         return roupaForDelet;
     }
-/*
+
     @PUT
     @Path("/{id}")
     public Roupas alterRoupas(@PathParam("id")Long id , Roupas roupas){
@@ -108,5 +108,5 @@ public class lojaResouser {
 
 
         return repository.findByMarcaList(fragmentoMarca);
-    } */
+    } 
 }

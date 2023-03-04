@@ -16,7 +16,7 @@ public class RoupasRepository implements PanacheRepository<Roupas> {
 
     public List<Roupas> findByMarcaList(String marca) {
 
-        return find("marca ", "%" + marca + "%").list();
+        return find("marca LIKE ?1 ", "%" + marca + "%").list();
     }
 /* 
     public List<Roupas> findByName(String marca) {
