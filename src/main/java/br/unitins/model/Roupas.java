@@ -23,7 +23,7 @@ public class Roupas extends PanacheEntity {
     private String marca;
     @Column(nullable = true , length = 20)// esse true pode dar problemas fica de olha 
     private String modelo;
-    private Cliente cliente;
+    /*private Cliente cliente;
 
 
 
@@ -33,8 +33,8 @@ public class Roupas extends PanacheEntity {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-    }
-    
+    }*/
+
     public String getModelo() {
         return modelo;
     }

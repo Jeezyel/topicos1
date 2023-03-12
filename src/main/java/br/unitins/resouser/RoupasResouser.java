@@ -12,7 +12,10 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
+import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResouserDTO;
 import br.unitins.model.Roupas;
 import br.unitins.repository.RoupasRepository;
@@ -28,15 +31,16 @@ public class RoupasResouser {
     @Inject
     RoupasRepository roupasRepository;
 
+    // buscar tudo
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Roupas> getAll(){
+    public List<RoupasResouserDTO> getAll(){
 
         return roupasRepository.findAll().stream().map(roupas -> new RoupasResouserDTO(roupas)).collect(Collector.toList());
 
     }
-
+/* 
     @POST
     @Transactional
     public Roupas addList(Roupas roupas){
@@ -45,7 +49,8 @@ public class RoupasResouser {
         return roupas;
 
     }
-
+*/
+    //alterar cor e marca 
     @PATCH
     @Path("/{ID}")
     @Transactional
@@ -56,20 +61,20 @@ public class RoupasResouser {
 
         return r2;
     }
-
+    //deletar por id
     @DELETE
     @Path("/{ID}")
     @Transactional
     public Roupas deleteRoupas(@PathParam("ID") Long ID , Roupas roupas){
         Roupas r2 = roupasRepository.findById(ID);
 
-        r2.delete();
+        roupasRepository.delete(r2);
 
         return r2;
 
     }
 
-    
+    //deletar por fragmento da marca retornando um resultado 
     @GET
     @Path("/{nameMarca}")
     public Roupas searchForName(@PathParam("nameMarca") String nameMarca){
@@ -79,7 +84,7 @@ public class RoupasResouser {
         return roupaForSearch;
 
     }
-
+    //deletar por marca
     @DELETE
     @Path("/{nameMarca}")
     @Transactional
@@ -88,7 +93,7 @@ public class RoupasResouser {
         roupasRepository.delete(roupaForDelet);
         return roupaForDelet;
     }
-
+    //alterar tudo
     @PUT
     @Path("/{id}")
     public Roupas alterRoupas(@PathParam("id")Long id , Roupas roupas){
@@ -104,6 +109,7 @@ public class RoupasResouser {
         return newRoupa;
 
     }
+    //deletar por fragmento da marca retornando um lista de resultado 
     @GET
     @Path("/{fragmentoMarca}")
     public List<Roupas> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
@@ -111,4 +117,16 @@ public class RoupasResouser {
 
         return roupasRepository.findByMarcaList(fragmentoMarca);
     } 
+    //criar
+    public Response insert(RoupasDTO dto){
+        Roupas entity = new Roupas();
+        entity.setValor(dto.getValor());
+        entity.setCor(dto.getCor());
+        entity.setMarca(dto.getMarca());
+        entity.setModelo(dto.getModelo());
+
+        roupasRepository.persist(entity);
+
+        return Response.status(Status.CREATED).entity(new RoupasResouserDTO(entity)).build();
+    }
 }
