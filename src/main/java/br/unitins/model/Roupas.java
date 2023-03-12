@@ -2,15 +2,19 @@ package br.unitins.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 
 @Entity
 public class Roupas extends PanacheEntity {
 
-   /*  @Id
+   // @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;*/
+    private Integer id;
     private Integer quantidade;
     private Float valor;
     private String cor;

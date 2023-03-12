@@ -20,7 +20,7 @@ insert into Roupas (id,quantidade,valor,cor,tipoDeTercido,marca ,modelo)
  values(nextval('hibernate_sequence'), 33 , 9999 , 'marron','cetim','louis vuitton','capucine');
 
  //////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
 insert into Cliente (id,cpf,datadenacimento,nome)
  values(nextval('hibernate_sequence'), '3344556677' , '2000/01/14' , 'Lucas');
 
@@ -29,3 +29,4 @@ insert into Cliente (id,cpf,datadenacimento,nome)
 
  insert into Cliente (id,cpf,datadenacimento,nome)
  values(nextval('hibernate_sequence'), '3476556734' , '2009/04/13' , 'Rafael');
+*/
