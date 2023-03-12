@@ -3,7 +3,7 @@ package br.unitins.model;
 
 
 public class Cliente {
-    private Integer id;
+    private Long id;
     private String cpf;
     private String nome;
     private LocalEntrega localEnterga;
@@ -11,10 +11,10 @@ public class Cliente {
 
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
     public String getCpf() {
