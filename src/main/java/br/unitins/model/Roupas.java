@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
@@ -28,14 +27,14 @@ public class Roupas extends PanacheEntity {
     public String getModelo() {
         return modelo;
     }
-/* 
+ 
     public Integer getId() {
         return id;
     }
 
     public void setId(Integer id) {
         this.id = id;
-    }*/
+    }
 
     public void setModelo(String modelo) {
         this.modelo = modelo;
