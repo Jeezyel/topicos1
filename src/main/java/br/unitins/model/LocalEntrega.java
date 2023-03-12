@@ -2,13 +2,20 @@ package br.unitins.model;
 
 public class LocalEntrega {
 
-    
+
     private Long id;
     private String cep;
     private String enderecoCompleto;
     private String complemento;
     private String referincia;
 
+    
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
     public String getCep() {
         return cep;
     }

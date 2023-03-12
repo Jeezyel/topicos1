@@ -13,25 +13,27 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
+import br.unitins.dto.RoupasResouserDTO;
 import br.unitins.model.Roupas;
 import br.unitins.repository.RoupasRepository;
 
 import java.util.List;
+import java.util.stream.Collector;
 
 @Path("/Loja")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class lojaResouser {
+public class RoupasResouser {
 
     @Inject
-    private RoupasRepository repository;
+    RoupasRepository roupasRepository;
 
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Roupas> getAll(){
 
-        return repository.findAll().list();
+        return roupasRepository.findAll().stream().map(roupas -> new RoupasResouserDTO(roupas)).collect(Collector.toList());
 
     }
 
@@ -48,7 +50,7 @@ public class lojaResouser {
     @Path("/{ID}")
     @Transactional
     public Roupas att (@PathParam("/ID") Long ID , Roupas roupas ){
-        Roupas r2 = repository.findById(ID);
+        Roupas r2 = roupasRepository.findById(ID);
         r2.setCor(roupas.getCor());
         r2.setMarca(roupas.getMarca());
 
@@ -59,7 +61,7 @@ public class lojaResouser {
     @Path("/{ID}")
     @Transactional
     public Roupas deleteRoupas(@PathParam("ID") Long ID , Roupas roupas){
-        Roupas r2 = repository.findById(ID);
+        Roupas r2 = roupasRepository.findById(ID);
 
         r2.delete();
 
@@ -72,8 +74,8 @@ public class lojaResouser {
     @Path("/{nameMarca}")
     public Roupas searchForName(@PathParam("nameMarca") String nameMarca){
 
-        Roupas roupaForSearch = (Roupas) repository.findByMarca(nameMarca);
-        repository.delete(roupaForSearch);
+        Roupas roupaForSearch = (Roupas) roupasRepository.findByMarca(nameMarca);
+        roupasRepository.delete(roupaForSearch);
         return roupaForSearch;
 
     }
@@ -82,8 +84,8 @@ public class lojaResouser {
     @Path("/{nameMarca}")
     @Transactional
     public Roupas DeletForName(@PathParam("nameMarca") String nameMarca ){
-        Roupas roupaForDelet = repository.findByMarca(nameMarca);
-        repository.delete(roupaForDelet);
+        Roupas roupaForDelet = roupasRepository.findByMarca(nameMarca);
+        roupasRepository.delete(roupaForDelet);
         return roupaForDelet;
     }
 
@@ -91,7 +93,7 @@ public class lojaResouser {
     @Path("/{id}")
     public Roupas alterRoupas(@PathParam("id")Long id , Roupas roupas){
 
-        Roupas newRoupa = repository.findById(id);
+        Roupas newRoupa = roupasRepository.findById(id);
         newRoupa.setQuantidade(roupas.getQuantidade());
         newRoupa.setValor(roupas.getValor());
         newRoupa.setCor(roupas.getCor());
@@ -107,6 +109,6 @@ public class lojaResouser {
     public List<Roupas> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
 
 
-        return repository.findByMarcaList(fragmentoMarca);
+        return roupasRepository.findByMarcaList(fragmentoMarca);
     } 
 }
