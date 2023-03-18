@@ -37,7 +37,9 @@ public class RoupasResouser {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResouserDTO> getAll(){
 
-        return roupasRepository.findAll().stream().map(roupas -> new RoupasResouserDTO(roupas)).collect(Collector.toList());
+        return roupasRepository.findAll()
+        .stream()
+        .map(roupas -> new RoupasResouserDTO(roupas)).collect(Collector.toList());
 
     }
 /* 
