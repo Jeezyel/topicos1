@@ -1,11 +1,12 @@
 package br.unitins.model;
 
-
+import javax.persistence.OneToMany;
 
 public class Cliente {
     private Long id;
     private String cpf;
     private String nome;
+    @OneToMany
     private LocalEntrega localEnterga;
 
 
