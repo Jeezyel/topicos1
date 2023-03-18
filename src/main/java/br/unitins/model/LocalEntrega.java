@@ -7,7 +7,7 @@ public class LocalEntrega {
     private String cep;
     private String enderecoCompleto;
     private String complemento;
-    private String referincia;
+    private String referencia; 
 
     
     public Long getId() {
@@ -35,10 +35,10 @@ public class LocalEntrega {
         this.complemento = complemento;
     }
     public String getReferincia() {
-        return referincia;
+        return referencia;
     }
     public void setReferincia(String referincia) {
-        this.referincia = referincia;
+        this.referencia = referincia;
     }
     
 

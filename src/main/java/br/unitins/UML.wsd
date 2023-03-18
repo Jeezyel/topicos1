@@ -1,0 +1,40 @@
+@startuml UML
+
+class Roupas{
+    - id: long
+    - quantidade: Integer
+    - valor: Float
+    - cor: String
+    - tipoDeTercido: String
+    - marca: String
+    - modelo: String
+    - Cliente: Cliente
+
+    + GetSet()
+
+
+}
+class Cliente{
+    -id: long
+    - cpf: String
+    - nome: String
+    - localEntrega: LocalEntrega
+
+    + GetSet()
+}
+
+class LocalEntrega{
+    - id: long
+    - cep: String
+    - enderecoCompleto: String
+    - complemento: String
+    - referencia: String
+
+    + GetSet()
+}
+
+Roupas "*" --> "1" Cliente
+LocalEntrega "*"-->"1" Cliente
+
+
+@enduml
