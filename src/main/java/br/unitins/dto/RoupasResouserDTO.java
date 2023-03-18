@@ -1,8 +1,5 @@
 package br.unitins.dto;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import br.unitins.model.Cliente;
 import br.unitins.model.Roupas;
 
@@ -13,7 +10,7 @@ public class RoupasResouserDTO {
     private String cor;
     private String marca;
     private String modelo;
-    private Map<String , Object> cliente; 
+    private Cliente cliente; 
 
 
     
@@ -23,7 +20,7 @@ public class RoupasResouserDTO {
         this.cor = roupas.getCor();
         this.marca = roupas.getMarca();
         this.modelo = roupas.getModelo();
-        this.cliente = new HashMap<String, Object>();
+        this.cliente = roupas.getCliente();
     }
 
     
@@ -59,12 +56,12 @@ public class RoupasResouserDTO {
     }
 
 
-    public Map<String, Object> getCliente() {
+    public Cliente getCliente() {
         return cliente;
     }
 
 
-    public void setCliente(Map<String, Object> cliente) {
+    public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
 
