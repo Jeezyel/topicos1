@@ -8,10 +8,10 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 @ApplicationScoped
 public class RoupasRepository implements PanacheRepository<Roupas> {
-
+/* 
     public Roupas findByMarca(String marca ){
         return find("marca",  marca  ).firstResult();   
-    }
+    }*/
 
     public List<Roupas> findByMarcaList(String marca) {
         if(marca == null){

@@ -19,6 +19,7 @@ import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResouserDTO;
 import br.unitins.model.Roupas;
 import br.unitins.repository.RoupasRepository;
+import br.unitins.service.RoupaServicempl;
 
 import java.util.List;
 import java.util.stream.Collector;
@@ -37,9 +38,9 @@ public class RoupasResouser {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResouserDTO> getAll(){
 
-        return roupasRepository.findAll()
-        .stream()
-        .map(roupas -> new RoupasResouserDTO(roupas)).collect(Collector.toList());
+        RoupaServicempl service = new RoupaServicempl();
+
+        return (service.getAll());
 
     }
 /* 
