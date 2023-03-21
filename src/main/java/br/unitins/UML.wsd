@@ -34,7 +34,7 @@ class LocalEntrega{
 }
 
 Roupas "*" --> "1" Cliente
-LocalEntrega "*"-->"1" Cliente
+LocalEntrega "*" *-->"1" Cliente
 
 
 @enduml

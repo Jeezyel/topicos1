@@ -32,15 +32,16 @@ public class RoupasResouser {
     @Inject
     RoupasRepository roupasRepository;
 
+    @Inject
+    RoupaServicempl roupaServicempl;
+
     // buscar tudo
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResouserDTO> getAll(){
 
-        RoupaServicempl service = new RoupaServicempl();
-
-        return (service.getAll());
+        return (roupaServicempl.getAll());
 
     }
 /* 
