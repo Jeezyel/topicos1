@@ -32,9 +32,31 @@ class LocalEntrega{
 
     + GetSet()
 }
+class ItemCompra {
+    - id: Long
+    - quantidade: Integer
+    - preco: Double
+}
+class Compra {
+    - id: Long
+    - data: Date
+    - totalCompra: Double
+}
+class Telefone {
+    - id: Long
+    - codigoArea: String
+    - numero: String
+}
+    LocalEntrega "*" <--*"1" Cliente
 
-Roupas "*" --> "1" Cliente
-LocalEntrega "*" *-->"1" Cliente
+    Cliente "*" --> "*" Roupas: listaDesejo
 
+    Compra "1" *--> "*" ItemCompra
+    Compra "*" --> "1" Cliente
+    Compra "*"  --> "1" LocalEntrega
 
+    ItemCompra "*" --> "1" Roupas
+
+    Cliente "1" *--> "1" Telefone: celular
+    Cliente "1" *--> "1" Telefone: whatszap
 @enduml
