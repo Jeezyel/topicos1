@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.ws.rs.NotFoundException;
 
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResouserDTO;
@@ -28,38 +29,51 @@ public class RoupaServicempl implements RoupaService {
 
 	@Override
 	public RoupasResouserDTO findById(long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'findById'");
+
+
+		//RoupasResouserDTO roupas = roupasRepository.findById(id);
+		Roupas roupas = roupasRepository.findById(id);
+		
+		if(roupas == null)
+			throw new NotFoundException("Roupa nao encontrada");
+		return new RoupasResouserDTO(roupas);
 	}
 
 	@Override
 	public RoupasResouserDTO create(RoupasDTO dto) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'create'");
+		
+		throw new UnsupportedOperationException("erro nao criado");
 	}
 
 	@Override
 	public RoupasResouserDTO updata(long id, RoupasDTO dto) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'updata'");
+		Roupas newRoupa = roupasRepository.findById(id);
+        newRoupa.setValor(dto.getValor());
+        newRoupa.setCor(dto.getCor());
+        newRoupa.setMarca(dto.getMarca());
+        newRoupa.setModelo(dto.getModelo());
+
+        return  new RoupasResouserDTO(newRoupa);
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'delete'");
+		Roupas roupa = roupasRepository.findById(id);
+		if( roupa == null)
+			throw new UnsupportedOperationException("Nao foi encontrado");
 	}
 
 	@Override
 	public List<RoupasResouserDTO> findByName(String name) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'findByName'");
+		List<Roupas> listaRoupa = roupasRepository.findByMarcaList(name);
+
+		return listaRoupa.stream().map(RoupasResouserDTO::new).collect(Collectors.toList());
+		
 	}
 
 	@Override
 	public long count() {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Unimplemented method 'count'");
+		return roupasRepository.count();
 	}
     
 }

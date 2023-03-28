@@ -41,7 +41,7 @@ public class RoupasResouser {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResouserDTO> getAll(){
 
-        return (roupaServicempl.getAll());
+        return roupaServicempl.getAll();
 
     }
 /* 
