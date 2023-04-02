@@ -2,13 +2,9 @@
 
 class Roupas{
     - id: long
-    - quantidade: Integer
-    - valor: Float
-    - cor: String
     - tipoDeTercido: String
-    - marca: String
-    - modelo: String
     - Cliente: Cliente
+    - Tamanho: tamanho
 
     + GetSet()
 
@@ -23,7 +19,7 @@ class Cliente{
     + GetSet()
 }
 
-class LocalEntrega{
+class Endereco{
     - id: long
     - cep: String
     - enderecoCompleto: String
@@ -36,27 +32,55 @@ class ItemCompra {
     - id: Long
     - quantidade: Integer
     - preco: Double
+    
+    + GetSet()
 }
 class Compra {
     - id: Long
     - data: Date
     - totalCompra: Double
+    
+    + GetSet()
 }
 class Telefone {
     - id: Long
     - codigoArea: String
     - numero: String
+    
+    + GetSet()
 }
-    LocalEntrega "*" <--*"1" Cliente
+enum Tamanho{
+    + p:int
+    + M:int
+    + G:int
+    + GG:int
+ 
+    - Tamanho (Integer id , String label)
+    + {static}ValueOf (Integer id)
+    + Gets()
+
+}
+abstract produto{
+    - modelo: String
+    - marca: String
+    - cor: String
+    - quantidade: Integer
+    - valor: Float
+    
+}
+    produto <|-- Roupas
+
+    Endereco "*" <--*"1" Cliente
 
     Cliente "*" --> "*" Roupas: listaDesejo
 
     Compra "1" *--> "*" ItemCompra
     Compra "*" --> "1" Cliente
-    Compra "*"  --> "1" LocalEntrega
+    Compra "*"  --> "1" Endereco
 
     ItemCompra "*" --> "1" Roupas
 
     Cliente "1" *--> "1" Telefone: celular
     Cliente "1" *--> "1" Telefone: whatszap
+    Roupas "*" *--> "1" Tamanho
 @enduml
