@@ -7,7 +7,6 @@ import javax.enterprise.context.ApplicationScoped;
 import org.jboss.tm.FirstResource;
 
 import br.unitins.model.Cliente;
-import io.netty.buffer.PoolChunkListMetric;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 

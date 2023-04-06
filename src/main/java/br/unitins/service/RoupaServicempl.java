@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import javax.validation.ConstraintViolationException;
 import javax.ws.rs.NotFoundException;
 
 import br.unitins.dto.RoupasDTO;
@@ -40,13 +41,24 @@ public class RoupaServicempl implements RoupaService {
 	}
 
 	@Override
-	public RoupasResouserDTO create(RoupasDTO dto) {
-		
-		throw new UnsupportedOperationException("erro nao criado");
+	public RoupasResouserDTO create(RoupasDTO dto) throws ConstraintViolationException {
+
+		if(dto == null){
+			return null;
+		}
+
+		Roupas entity = new Roupas();
+        entity.setValor(dto.getValor());
+        entity.setCor(dto.getCor());
+        entity.setMarca(dto.getMarca());
+        entity.setModelo(dto.getModelo());
+
+		roupasRepository.persist(entity);
+		return new RoupasResouserDTO(entity);
 	}
 
 	@Override
-	public RoupasResouserDTO updata(long id, RoupasDTO dto) {
+	public RoupasResouserDTO updata(long id, RoupasDTO dto) throws ConstraintViolationException {
 		Roupas newRoupa = roupasRepository.findById(id);
         newRoupa.setValor(dto.getValor());
         newRoupa.setCor(dto.getCor());
@@ -59,8 +71,11 @@ public class RoupaServicempl implements RoupaService {
 	@Override
 	public void delete(long id) {
 		Roupas roupa = roupasRepository.findById(id);
-		if( roupa == null)
-			throw new UnsupportedOperationException("Nao foi encontrado");
+
+		if( roupa == null )
+			throw new UnsupportedOperationException("Nao pode encontra por id");
+
+		roupasRepository.delete(roupa);
 	}
 
 	@Override
