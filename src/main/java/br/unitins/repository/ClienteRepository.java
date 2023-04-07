@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
 
-import org.jboss.tm.FirstResource;
-
 import br.unitins.model.Cliente;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
