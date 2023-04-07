@@ -79,7 +79,14 @@ public class RoupaServicempl implements RoupaService {
 	}
 
 	@Override
-	public List<RoupasResouserDTO> findByName(String name) {
+	public RoupasResouserDTO findByName(String name) {
+		Roupas roupas = roupasRepository.findByMarca(name);
+
+		return new RoupasResouserDTO(roupas);
+	}
+
+	@Override
+	public List<RoupasResouserDTO> findByNameList(String name) {
 		List<Roupas> listaRoupa = roupasRepository.findByMarcaList(name);
 
 		return listaRoupa.stream().map(RoupasResouserDTO::new).collect(Collectors.toList());
@@ -90,5 +97,7 @@ public class RoupaServicempl implements RoupaService {
 	public long count() {
 		return roupasRepository.count();
 	}
+
+	
     
 }

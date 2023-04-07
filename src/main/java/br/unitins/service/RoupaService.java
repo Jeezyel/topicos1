@@ -18,8 +18,10 @@ public interface RoupaService {
     void delete(long id);
 
     // extras
+    
+    RoupasResouserDTO findByName(String name);
 
-    List<RoupasResouserDTO> findByName(String name);
+    List<RoupasResouserDTO> findByNameList(String name);
 
     long count();
 

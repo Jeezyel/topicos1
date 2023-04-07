@@ -18,7 +18,6 @@ import javax.ws.rs.core.Response.Status;
 import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResouserDTO;
-import br.unitins.model.Roupas;
 import br.unitins.repository.RoupasRepository;
 import br.unitins.service.RoupaServicempl;
 
@@ -82,11 +81,10 @@ public class RoupasResouser  {
     //deletar por fragmento da marca retornando um resultado 
     @GET
     @Path("/{nameMarca}")
-    public Roupas searchForName(@PathParam("nameMarca") String nameMarca){
+    public RoupasResouserDTO searchForName(@PathParam("nameMarca") String nameMarca){
 
-        Roupas roupaForSearch = (Roupas) roupasRepository.findByMarca(nameMarca);
-        roupasRepository.delete(roupaForSearch);
-        return roupaForSearch;
+        
+        return nameMarca == null ? null : roupaServicempl.findByName(nameMarca); 
 
     }
     //deletar por marca
@@ -94,8 +92,7 @@ public class RoupasResouser  {
     @Path("/{nameMarca}")
     @Transactional
     public void DeletForName(@PathParam("nameMarca") String nameMarca ){
-        Roupas roupaForDelet = roupasRepository.findByMarca(nameMarca);
-        roupaServicempl.delete(roupaForDelet.getId());
+        roupaServicempl.findByName(nameMarca);
         
     }
     //alterar tudo
@@ -107,13 +104,13 @@ public class RoupasResouser  {
         return id == null || roupas == null ? null : roupaServicempl.updata(id, roupas);
 
     }
-    //deletar por fragmento da marca retornando um lista de resultado 
+    //procurar por fragmento da marca retornando um lista de resultado 
     @GET
     @Path("/{fragmentoMarca}")
-    public List<Roupas> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
+    public List<RoupasResouserDTO> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
 
 
-        return roupasRepository.findByMarcaList(fragmentoMarca);
+        return roupaServicempl.findByNameList(fragmentoMarca);
     } 
     //criar
     public Response insert(RoupasDTO dto){
