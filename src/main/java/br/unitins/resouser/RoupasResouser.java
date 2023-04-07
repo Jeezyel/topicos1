@@ -64,7 +64,7 @@ public class RoupasResouser  {
             return null;
         }
 
-          roupasDTO = roupaServicempl.updata(ID, roupas);
+        roupasDTO = roupaServicempl.updata(ID, roupas);
 
         return roupasDTO ;
     }
