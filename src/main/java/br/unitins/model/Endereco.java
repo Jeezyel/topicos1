@@ -1,6 +1,6 @@
 package br.unitins.model;
 
-public class LocalEntrega {
+public class Endereco {
 
 
     private Long id;
