@@ -1,13 +1,16 @@
 package br.unitins.model;
 
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 public class Cliente {
     private Long id;
     private String cpf;
     private String nome;
     @OneToMany
-    private LocalEntrega localEnterga;
+    private Endereco localEnterga;
+    @OneToOne
+    private Telefone telefone;
 
 
 
@@ -30,12 +33,19 @@ public class Cliente {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public LocalEntrega getLocalEnterga() {
+    public Endereco getLocalEnterga() {
         return localEnterga;
     }
-    public void setLocalEnterga(LocalEntrega localEnterga) {
+    public void setLocalEnterga(Endereco localEnterga) {
         this.localEnterga = localEnterga;
     }
+    public Telefone getTelefone() {
+        return telefone;
+    }
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+    
 
 
 
