@@ -6,10 +6,7 @@ public class ItemCompra {
     private Double preco;
 
     
-    public ItemCompra(ItemCompra itemCompra) {
-        this.quantidade = itemCompra.quantidade;
-        this.preco = itemCompra.preco;
-    }
+    
     public Long getId() {
         return id;
     }

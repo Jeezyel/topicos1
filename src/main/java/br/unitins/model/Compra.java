@@ -1,13 +1,14 @@
 package br.unitins.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Compra {
 
     private long id;
     private Date data;
     private Double totalCompra;
-    private ItemCompra itemCompra;
+    private List<ItemCompra> itemCompra;
     
     public long getId() {
         return id;
@@ -27,10 +28,11 @@ public class Compra {
     public void setTotalCompra(Double totalCompra) {
         this.totalCompra = totalCompra;
     }
-    public ItemCompra getItemCompra() {
+    public List<ItemCompra> getItemCompra() {
         return itemCompra;
     }
-    public void setItemCompra(ItemCompra itemCompra) {
+    public void setItemCompra(List<ItemCompra> itemCompra) {
         this.itemCompra = itemCompra;
     }
+    
 }

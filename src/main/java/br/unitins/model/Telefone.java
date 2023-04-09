@@ -7,11 +7,6 @@ public class Telefone {
     private Boolean celular;
 
     
-    public Telefone(Telefone telefone) {
-        this.codigoDeArea = telefone.codigoDeArea;
-        this.numero = telefone.numero;
-        this.celular = telefone.celular;
-    }
     public long getId() {
         return id;
     }
