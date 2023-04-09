@@ -1,6 +1,6 @@
 package br.unitins.model;
 
-public class ItemCompra {
+public class ItemCompra extends DefaultEntity {
     private Long id;
     private Integer quantidade;
     private Double preco;

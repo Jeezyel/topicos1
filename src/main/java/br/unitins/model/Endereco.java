@@ -1,6 +1,6 @@
 package br.unitins.model;
 
-public class Endereco {
+public class Endereco extends DefaultEntity{
 
 
     private Long id;

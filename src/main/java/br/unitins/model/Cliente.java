@@ -3,7 +3,7 @@ package br.unitins.model;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-public class Cliente {
+public class Cliente extends DefaultEntity {
     private Long id;
     private String cpf;
     private String nome;

@@ -2,9 +2,7 @@ package br.unitins.model;
 
 import javax.persistence.Column;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
-public abstract class Produto extends PanacheEntity {
+public abstract class Produto extends DefaultEntity {
     @Column(nullable = true , length = 20)
     private String modelo;
     @Column(nullable = true , length = 20)

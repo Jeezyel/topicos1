@@ -1,13 +1,13 @@
 package br.unitins.model;
 
-public class Telefone {
-    private long id;
+public class Telefone extends DefaultEntity{
+    private Long id;
     private String codigoDeArea;
     private String numero;
     private Boolean celular;
 
     
-    public long getId() {
+    public Long getId() {
         return id;
     }
     public void setId(long id) {
