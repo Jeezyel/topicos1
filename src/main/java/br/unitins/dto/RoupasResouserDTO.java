@@ -1,5 +1,7 @@
 package br.unitins.dto;
 
+import java.util.List;
+
 import br.unitins.model.Cliente;
 import br.unitins.model.Roupas;
 
@@ -10,7 +12,7 @@ public class RoupasResouserDTO {
     private String cor;
     private String marca;
     private String modelo;
-    private Cliente cliente; 
+    private List<Cliente> cliente; 
 
 
     
@@ -20,7 +22,7 @@ public class RoupasResouserDTO {
         this.cor = roupas.getCor();
         this.marca = roupas.getMarca();
         this.modelo = roupas.getModelo();
-        this.cliente = roupas.getCliente();
+        this.cliente = roupas.getListaDeDesejo();
     }
 
     
@@ -54,16 +56,13 @@ public class RoupasResouserDTO {
     public void setModelo(String modelo) {
         this.modelo = modelo;
     }
-
-
-    public Cliente getCliente() {
+    public List<Cliente> getCliente() {
         return cliente;
     }
-
-
-    public void setCliente(Cliente cliente) {
+    public void setCliente(List<Cliente> cliente) {
         this.cliente = cliente;
     }
+    
 
     
 

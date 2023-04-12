@@ -1,13 +1,13 @@
 package br.unitins.dto;
 
-public class LocalEntregaDTO {
-    
+public class EnderecoDTO {
+
     private String cep;
     private String enderecoCompleto;
     private String complemento;
     private String referincia;
 
-
+    
     public String getCep() {
         return cep;
     }
@@ -32,5 +32,5 @@ public class LocalEntregaDTO {
     public void setReferincia(String referincia) {
         this.referincia = referincia;
     }
-    
+
 }

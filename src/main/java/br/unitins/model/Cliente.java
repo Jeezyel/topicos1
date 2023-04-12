@@ -1,5 +1,7 @@
 package br.unitins.model;
 
+import java.util.List;
+
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -8,13 +10,19 @@ public class Cliente extends DefaultEntity {
     private String cpf;
     private String nome;
     @OneToMany
-    private Endereco localEnterga;
+    private List<Endereco> localEnterga;
     @OneToOne
     private Telefone telefone;
 
 
 
 
+    public List<Endereco> getLocalEnterga() {
+        return localEnterga;
+    }
+    public void setLocalEnterga(List<Endereco> localEnterga) {
+        this.localEnterga = localEnterga;
+    }
     public Long getId() {
         return id;
     }
@@ -32,12 +40,6 @@ public class Cliente extends DefaultEntity {
     }
     public void setNome(String nome) {
         this.nome = nome;
-    }
-    public Endereco getLocalEnterga() {
-        return localEnterga;
-    }
-    public void setLocalEnterga(Endereco localEnterga) {
-        this.localEnterga = localEnterga;
     }
     public Telefone getTelefone() {
         return telefone;

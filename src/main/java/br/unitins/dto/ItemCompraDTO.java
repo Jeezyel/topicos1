@@ -1,19 +1,12 @@
-package br.unitins.model;
+package br.unitins.dto;
 
-public class ItemCompra extends DefaultEntity {
+public class ItemCompraDTO {
 
     private Integer quantidade;
     private Double preco;
-    private Roupas roupas;
+    private RoupasDTO roupas;
 
     
-    
-    public Roupas getRoupas() {
-        return roupas;
-    }
-    public void setRoupas(Roupas roupas) {
-        this.roupas = roupas;
-    }
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -26,5 +19,13 @@ public class ItemCompra extends DefaultEntity {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
+    public RoupasDTO getRoupas() {
+        return roupas;
+    }
+    public void setRoupas(RoupasDTO roupas) {
+        this.roupas = roupas;
+    }
+
+    
 
 }

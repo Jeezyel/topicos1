@@ -1,23 +1,16 @@
-package br.unitins.model;
+package br.unitins.dto;
 
 import java.util.Date;
 import java.util.List;
 
-public class Compra extends DefaultEntity{
-
+public class CompraDTO {
+    
     private Date data;
     private Double totalCompra;
-    private List<ItemCompra> itemCompra;
-    private List<Endereco> endereco;
-    
-    public List<Endereco> getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(List<Endereco> endereco) {
-        this.endereco = endereco;
-    }
-    
-    
+    private List<ItemCompraDTO> itemCompra;
+    private List<EnderecoDTO> endereco;
+
+
     public Date getData() {
         return data;
     }
@@ -30,11 +23,19 @@ public class Compra extends DefaultEntity{
     public void setTotalCompra(Double totalCompra) {
         this.totalCompra = totalCompra;
     }
-    public List<ItemCompra> getItemCompra() {
+    public List<ItemCompraDTO> getItemCompra() {
         return itemCompra;
     }
-    public void setItemCompra(List<ItemCompra> itemCompra) {
+    public void setItemCompra(List<ItemCompraDTO> itemCompra) {
         this.itemCompra = itemCompra;
     }
+    public List<EnderecoDTO> getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(List<EnderecoDTO> endereco) {
+        this.endereco = endereco;
+    }
+
+    
     
 }

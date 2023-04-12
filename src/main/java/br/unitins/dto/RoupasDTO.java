@@ -1,39 +1,47 @@
 package br.unitins.dto;
 
-public class RoupasDTO {
+import java.util.List;
 
-    private Float valor;
-    private String cor;
-    private String marca;
-    private String modelo;
+import br.unitins.model.Tamanho;
+
+public class RoupasDTO extends ProdutoDTO{
+    
+    private Long id;
+    private String tipoDeTercido;
+    private List<ClienteDTO> ListaDeDesejo;
+    private Tamanho tamanho;
+
+
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
+    public String getTipoDeTercido() {
+        return tipoDeTercido;
+    }
+    public void setTipoDeTercido(String tipoDeTercido) {
+        this.tipoDeTercido = tipoDeTercido;
+    }
+    public Tamanho getTamanho() {
+        return tamanho;
+    }
+    public void setTamanho(Tamanho tamanho) {
+        this.tamanho = tamanho;
+    }
+    public List<ClienteDTO> getListaDeDesejo() {
+        return ListaDeDesejo;
+    }
+    public void setListaDeDesejo(List<ClienteDTO> listaDeDesejo) {
+        ListaDeDesejo = listaDeDesejo;
+    }
 
 
 
     
-    public Float getValor() {
-        return valor;
-    }
-    public void setValor(Float valor) {
-        this.valor = valor;
-    }
-    public String getCor() {
-        return cor;
-    }
-    public void setCor(String cor) {
-        this.cor = cor;
-    }
-    public String getMarca() {
-        return marca;
-    }
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-    public String getModelo() {
-        return modelo;
-    }
-    public void setModelo(String modelo) {
-        this.modelo = modelo;
-    }
+    
 
 
 
