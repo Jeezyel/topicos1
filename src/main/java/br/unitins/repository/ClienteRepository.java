@@ -9,7 +9,7 @@ import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 
 @ApplicationScoped
-public class ClienteRepository implements PanacheRepository {
+public class ClienteRepository implements PanacheRepository<Cliente> {
 
     public Cliente findByNome(String nome){
         if(nome == null){
