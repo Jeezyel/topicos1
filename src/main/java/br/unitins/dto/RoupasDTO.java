@@ -6,19 +6,13 @@ import br.unitins.model.Tamanho;
 
 public class RoupasDTO extends ProdutoDTO{
     
-    private Long id;
     private String tipoDeTercido;
     private List<ClienteDTO> ListaDeDesejo;
     private Tamanho tamanho;
 
 
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
     public String getTipoDeTercido() {
         return tipoDeTercido;
     }

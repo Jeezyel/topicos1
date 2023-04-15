@@ -49,6 +49,16 @@ class Telefone {
     
     + GetSet()
 }
+class municipio{
+    -id:Integer
+    -nome: String
+
+}
+class Estados{
+    -id:Integer
+    -nome: String
+    -sigla: String
+}
 enum Tamanho{
     + p:int
     + M:int
@@ -83,4 +93,8 @@ abstract produto{
     Cliente "1" *--> "1" Telefone: celular
     Cliente "1" *--> "1" Telefone: whatszap
     Roupas "*" *--> "1" Tamanho
+
+    Endereco "*"--> "1" municipio
+
+    municipio "*"--> "1" Estados
 @enduml
