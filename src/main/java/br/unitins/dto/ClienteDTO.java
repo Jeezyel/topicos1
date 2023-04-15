@@ -8,7 +8,7 @@ public class ClienteDTO {
     private String cpf;
     private String nome;
     private List<EnderecoDTO> localEnterga;
-    private TelefoneDTO telefone;
+    private TelefoneDTO telefone;   
 
 
 
