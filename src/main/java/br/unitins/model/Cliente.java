@@ -10,19 +10,14 @@ public class Cliente extends DefaultEntity {
     private String cpf;
     private String nome;
     @OneToMany
-    private List<Endereco> localEnterga;
+    private List<Endereco> Endereco;
     @OneToOne
     private Telefone telefone;
 
 
 
 
-    public List<Endereco> getLocalEnterga() {
-        return localEnterga;
-    }
-    public void setLocalEnterga(List<Endereco> localEnterga) {
-        this.localEnterga = localEnterga;
-    }
+    
     public Long getId() {
         return id;
     }
@@ -46,6 +41,12 @@ public class Cliente extends DefaultEntity {
     }
     public void setTelefone(Telefone telefone) {
         this.telefone = telefone;
+    }
+    public List<Endereco> getEndereco() {
+        return Endereco;
+    }
+    public void setEndereco(List<Endereco> endereco) {
+        Endereco = endereco;
     }
     
 

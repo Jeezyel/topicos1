@@ -2,12 +2,15 @@ package br.unitins.dto;
 
 import java.util.List;
 
+import br.unitins.model.Endereco;
+import br.unitins.model.Telefone;
+
 public record ClienteDTO(
 
     String cpf,
     String nome,
-    List<EnderecoDTO> localEnterga,
-    TelefoneDTO telefone   
+    List<Endereco> localEnterga,
+    Telefone telefone   
 ) {
     
 }
