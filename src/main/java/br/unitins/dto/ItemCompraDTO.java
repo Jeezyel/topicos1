@@ -1,30 +1,15 @@
 package br.unitins.dto;
 
-public class ItemCompraDTO {
+import br.unitins.model.Roupas;
 
-    private Integer quantidade;
-    private Double preco;
-    private RoupasDTO roupas;
+public record ItemCompraDTO(
 
+    Integer quantidade,
+    Double preco,
+    Roupas roupas
+) {
     
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-    public Double getPreco() {
-        return preco;
-    }
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-    public RoupasDTO getRoupas() {
-        return roupas;
-    }
-    public void setRoupas(RoupasDTO roupas) {
-        this.roupas = roupas;
-    }
+    
 
     
 
