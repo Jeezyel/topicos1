@@ -5,7 +5,8 @@ public record EnderecoDTO(
     String cep,
     String enderecoCompleto,
     String complemento,
-    String referincia
+    String referincia,
+    EstadosDTO estados
 ) {
     
     
