@@ -11,7 +11,7 @@ public record ClienteResouserDTO (
     String cpf,
     String nome,
     List<Endereco> endereco,
-    Telefone telefone   
+    Telefone telefone
 ) {
     public ClienteResouserDTO(Cliente cliente){
 
