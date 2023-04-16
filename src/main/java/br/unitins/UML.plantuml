@@ -124,15 +124,14 @@ class Comprovante{
     Compra "1" *--> "*" ItemCompra
     Compra "*" --> "1" Cliente
     Compra "*"  --> "1" Endereco
+    Compra "1" --> "1" Comprovante
+    
 
     ItemCompra "*" --> "1" Roupas
 
     Cliente "1" *--> "1" Telefone: celular
     Cliente "1" *--> "1" Cartao: ListaDeCartao
     Cliente "1" *--> "1" Telefone: zap zap
-    Cartao "1" --> "1" Comprovante
-    Pix "1" --> "1" Comprovante
-    Boleto "1" --> "1" Comprovante
 
     Compra "1"-->"*" pagamento
 
@@ -143,7 +142,7 @@ class Comprovante{
     Cartao "*" *--> "1" Bandeira
     pagamento "*" *--> "1" Tipo
 
-    Endereco "*"--> "1" municipio
+    Endereco "*"--> "1" Estados
 
-    municipio "*"--> "1" Estados
+    Estados "*"--> "1" municipio
 @enduml

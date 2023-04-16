@@ -10,12 +10,14 @@ public record ClienteResouserDTO (
 
     String cpf,
     String nome,
-    List<Endereco> endereco,
-    Telefone telefone
+    List<EnderecoDTO> endereco,
+    TelefoneDTO telefone
 ) {
     public ClienteResouserDTO(Cliente cliente){
 
         this(cliente.getCpf(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone());
         
     }
+
+    
 }

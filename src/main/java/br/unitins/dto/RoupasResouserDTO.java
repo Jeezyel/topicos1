@@ -12,13 +12,14 @@ public record RoupasResouserDTO(
     String cor,
     String marca,
     String modelo,
-    List<Cliente> cliente
+    List<ClienteDTO> cliente
 
     ) {
     
     public RoupasResouserDTO(Roupas roupas) {
 
         this(roupas.getQuantidade(),roupas.getValor(),roupas.getCor(),roupas.getMarca(),roupas.getModelo(),roupas.getListaDeDesejo());
+        
     }
 
  

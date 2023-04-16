@@ -3,18 +3,24 @@ package br.unitins.model;
 public class Endereco extends DefaultEntity{
 
 
-    private Long id;
     private String cep;
     private String enderecoCompleto;
     private String complemento;
     private String referencia; 
+    private Estados estados;
 
     
-    public Long getId() {
-        return id;
+    public String getReferencia() {
+        return referencia;
     }
-    public void setId(Long id) {
-        this.id = id;
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
+    }
+    public Estados getEstados() {
+        return estados;
+    }
+    public void setEstados(Estados estados) {
+        this.estados = estados;
     }
     public String getCep() {
         return cep;
