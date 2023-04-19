@@ -4,16 +4,17 @@ import java.util.Date;
 import java.util.List;
 
 import br.unitins.model.Compra;
-import net.bytebuddy.build.Plugin;
+import br.unitins.model.Endereco;
+import br.unitins.model.ItemCompra;
 
 public record CompraResouserDTO(
     Date data,
     Double totalCompra,
-    List<ItemCompraDTO> itemCompra,
-    List<EnderecoDTO> endereco) {
+    List<ItemCompra> itemCompra,
+    List<Endereco> endereco) {
 
     public CompraResouserDTO(Compra compra){
-        this(compra.data(), compra.totalCompra(), compra.itemCompra(), compra.endereco());
+        this(compra.getData(), compra.getTotalCompra(), compra.getItemCompra(), compra.getEndereco());
 
     }
     

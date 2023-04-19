@@ -12,7 +12,7 @@ public record RoupasResouserDTO(
     String cor,
     String marca,
     String modelo,
-    List<ClienteDTO> cliente
+    List<Cliente> cliente
 
     ) {
     

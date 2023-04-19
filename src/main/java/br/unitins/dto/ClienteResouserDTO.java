@@ -10,8 +10,8 @@ public record ClienteResouserDTO (
 
     String cpf,
     String nome,
-    List<EnderecoDTO> endereco,
-    TelefoneDTO telefone
+    List<Endereco> endereco,
+    Telefone telefone
 ) {
     public ClienteResouserDTO(Cliente cliente){
 
