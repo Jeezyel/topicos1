@@ -9,7 +9,7 @@ import javax.validation.ConstraintViolationException;
 import javax.ws.rs.NotFoundException;
 
 import br.unitins.dto.RoupasDTO;
-import br.unitins.dto.RoupasResouserDTO;
+import br.unitins.dto.RoupasResponseDTO;
 import br.unitins.model.Roupas;
 import br.unitins.repository.RoupasRepository;
 
@@ -21,15 +21,15 @@ public class RoupaServicempl implements RoupaService {
 
 
 	@Override
-	public List<RoupasResouserDTO> getAll() {
+	public List<RoupasResponseDTO> getAll() {
         List<Roupas> listaRoupas = roupasRepository.listAll();
 
-        return listaRoupas.stream().map(RoupasResouserDTO::new).collect(Collectors.toList());
+        return listaRoupas.stream().map(RoupasResponseDTO::new).collect(Collectors.toList());
 		
 	}
 
 	@Override
-	public RoupasResouserDTO findById(long id) {
+	public RoupasResponseDTO findById(long id) {
 
 
 		//RoupasResouserDTO roupas = roupasRepository.findById(id);
@@ -37,11 +37,11 @@ public class RoupaServicempl implements RoupaService {
 		
 		if(roupas == null)
 			throw new NotFoundException("Roupa nao encontrada");
-		return new RoupasResouserDTO(roupas);
+		return new RoupasResponseDTO(roupas);
 	}
 
 	@Override
-	public RoupasResouserDTO create(RoupasDTO dto) throws ConstraintViolationException {
+	public RoupasResponseDTO create(RoupasDTO dto) throws ConstraintViolationException {
 
 		if(dto == null){
 			return null;
@@ -54,18 +54,18 @@ public class RoupaServicempl implements RoupaService {
         entity.setModelo(dto.getModelo());
 
 		roupasRepository.persist(entity);
-		return new RoupasResouserDTO(entity);
+		return new RoupasResponseDTO(entity);
 	}
 
 	@Override
-	public RoupasResouserDTO updata(long id, RoupasDTO dto) throws ConstraintViolationException {
+	public RoupasResponseDTO updata(long id, RoupasDTO dto) throws ConstraintViolationException {
 		Roupas newRoupa = roupasRepository.findById(id);
         newRoupa.setValor(dto.getValor());
         newRoupa.setCor(dto.getCor());
         newRoupa.setMarca(dto.getMarca());
         newRoupa.setModelo(dto.getModelo());
 
-        return  new RoupasResouserDTO(newRoupa);
+        return  new RoupasResponseDTO(newRoupa);
 	}
 
 	@Override
@@ -79,17 +79,17 @@ public class RoupaServicempl implements RoupaService {
 	}
 
 	@Override
-	public RoupasResouserDTO findByName(String name) {
+	public RoupasResponseDTO findByName(String name) {
 		Roupas roupas = roupasRepository.findByMarca(name);
 
-		return new RoupasResouserDTO(roupas);
+		return new RoupasResponseDTO(roupas);
 	}
 
 	@Override
-	public List<RoupasResouserDTO> findByNameList(String name) {
+	public List<RoupasResponseDTO> findByNameList(String name) {
 		List<Roupas> listaRoupa = roupasRepository.findByMarcaList(name);
 
-		return listaRoupa.stream().map(RoupasResouserDTO::new).collect(Collectors.toList());
+		return listaRoupa.stream().map(RoupasResponseDTO::new).collect(Collectors.toList());
 		
 	}
 

@@ -10,7 +10,6 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Valid;
 import javax.validation.Validator;
 import javax.ws.rs.NotFoundException;
 
@@ -51,8 +50,8 @@ public class MunicipioServicempl implements MunicipioService {
         validar(municipioDTO);
 
         Municipio entity = new Municipio();
-        entity.setNome(municipioDTO.getNome());
-        entity.setEstado(estadoRepository.findById(municipioDTO.getIdEstado()));
+        entity.setNome(municipioDTO.nome());
+        entity.setEstados(estadoRepository.findById(municipioDTO.id()));
         municipioRepository.persist(entity);
 
         return new MunicipioResponseDTO(entity);
@@ -65,8 +64,9 @@ public class MunicipioServicempl implements MunicipioService {
    
         Municipio entity = municipioRepository.findById(id);
 
-        entity.setNome(municipioDTO.getNome());
-        entity.setEstado(estadoRepository.findById(municipioDTO.id()));
+
+        entity.setNome(municipioDTO.nome());
+        entity.setEstados(estadoRepository.findById(municipioDTO.id()));
 
         return new MunicipioResponseDTO(entity);
     }
@@ -96,15 +96,5 @@ public class MunicipioServicempl implements MunicipioService {
         return municipioRepository.count();
     }
 
-    @Override
-    public MunicipioResouserDTO create(br.unitins.dto.MunicipioDTO municipioDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'create'");
-    }
 
-    @Override
-    public MunicipioResouserDTO update(Long id, br.unitins.dto.MunicipioDTO municipioDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
 }

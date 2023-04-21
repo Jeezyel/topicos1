@@ -3,25 +3,25 @@ package br.unitins.service;
 import java.util.List;
 
 import br.unitins.dto.RoupasDTO;
-import br.unitins.dto.RoupasResouserDTO;
+import br.unitins.dto.RoupasResponseDTO;
 
 public interface RoupaService {
 
-    List<RoupasResouserDTO>getAll();
+    List<RoupasResponseDTO>getAll();
 
-    RoupasResouserDTO findById(long id);
+    RoupasResponseDTO findById(long id);
 
-    RoupasResouserDTO create(RoupasDTO dto);
+    RoupasResponseDTO create(RoupasDTO dto);
 
-    RoupasResouserDTO updata(long id , RoupasDTO dto);
+    RoupasResponseDTO updata(long id , RoupasDTO dto);
 
     void delete(long id);
 
     // extras
     
-    RoupasResouserDTO findByName(String name);
+    RoupasResponseDTO findByName(String name);
 
-    List<RoupasResouserDTO> findByNameList(String name);
+    List<RoupasResponseDTO> findByNameList(String name);
 
     long count();
 

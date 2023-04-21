@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
-import br.unitins.dto.RoupasResouserDTO;
+import br.unitins.dto.RoupasResponseDTO;
 import br.unitins.repository.RoupasRepository;
 import br.unitins.service.RoupaServicempl;
 
@@ -38,7 +38,7 @@ public class RoupasResouser  {
     @GET
     @Path("/getAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<RoupasResouserDTO> getAll(){
+    public List<RoupasResponseDTO> getAll(){
 
         return roupaServicempl.getAll();
 
@@ -57,8 +57,8 @@ public class RoupasResouser  {
     @PATCH
     @Path("/{ID}")
     @Transactional
-    public RoupasResouserDTO att (@PathParam("/ID") Long ID , RoupasDTO roupas ){
-        RoupasResouserDTO roupasDTO ;
+    public RoupasResponseDTO att (@PathParam("/ID") Long ID , RoupasDTO roupas ){
+        RoupasResponseDTO roupasDTO ;
 
         if(ID == null){
             return null;
@@ -81,7 +81,7 @@ public class RoupasResouser  {
     //deletar por fragmento da marca retornando um resultado 
     @GET
     @Path("/{nameMarca}")
-    public RoupasResouserDTO searchForName(@PathParam("nameMarca") String nameMarca){
+    public RoupasResponseDTO searchForName(@PathParam("nameMarca") String nameMarca){
 
         
         return nameMarca == null ? null : roupaServicempl.findByName(nameMarca); 
@@ -98,7 +98,7 @@ public class RoupasResouser  {
     //alterar tudo
     @PUT
     @Path("/{id}")
-    public RoupasResouserDTO alterRoupas(@PathParam("id")Long id , RoupasDTO roupas){
+    public RoupasResponseDTO alterRoupas(@PathParam("id")Long id , RoupasDTO roupas){
 
 
         return id == null || roupas == null ? null : roupaServicempl.updata(id, roupas);
@@ -107,7 +107,7 @@ public class RoupasResouser  {
     //procurar por fragmento da marca retornando um lista de resultado 
     @GET
     @Path("/{fragmentoMarca}")
-    public List<RoupasResouserDTO> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
+    public List<RoupasResponseDTO> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
 
 
         return roupaServicempl.findByNameList(fragmentoMarca);
@@ -115,7 +115,7 @@ public class RoupasResouser  {
     //criar
     public Response insert(RoupasDTO dto){
         try {
-            RoupasResouserDTO roupas = roupaServicempl.create(dto); 
+            RoupasResponseDTO roupas = roupaServicempl.create(dto); 
             return Response.status(Status.CREATED).entity(roupas).build();
         } catch (ConstraintViolationException e) {
             Result result = new Result(e.getConstraintViolations());

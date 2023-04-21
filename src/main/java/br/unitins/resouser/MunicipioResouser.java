@@ -22,7 +22,7 @@ import com.oracle.svm.core.annotate.Delete;
 
 import br.unitins.aplication.Result;
 import br.unitins.dto.MunicipioDTO;
-import br.unitins.dto.MunicipioResouserDTO;
+import br.unitins.dto.MunicipioResponseDTO;
 // import br.unitins.service.MunicipioService;
 import br.unitins.model.Municipio;
 
@@ -34,20 +34,20 @@ public class MunicipioResouser {
     Municipio municipioService;
 
     @GET
-    public List<MunicipioResouserDTO> getAll() {
+    public List<MunicipioResponseDTO> getAll() {
         return municipioService.getAll();
     }
 
     @GET
     @Path("/{id}")
-    public MunicipioResouserDTO findById(@PathParam("id") Long id) {
+    public MunicipioResponseDTO findById(@PathParam("id") Long id) {
         return municipioService.findById(id);
     }
 
     @POST
     public Response insert(MunicipioDTO dto) {
         try {
-            MunicipioResouserDTO municipio = municipioService.create(dto);
+            MunicipioResponseDTO municipio = municipioService.create(dto);
             return Response.status(Status.CREATED).entity(municipio).build();
         } catch(ConstraintViolationException e) {
             Result result = new Result(e.getConstraintViolations());
@@ -59,7 +59,7 @@ public class MunicipioResouser {
     @Path("/{id}")
     public Response update(@PathParam("id") Long id, MunicipioDTO dto) {
         try {
-            MunicipioResouserDTO municipio = municipioService.update(id, dto);
+            MunicipioResponseDTO municipio = municipioService.update(id, dto);
             return Response.ok(municipio).build();
         } catch(ConstraintViolationException e) {
             Result result = new Result(e.getConstraintViolations());
@@ -83,7 +83,7 @@ public class MunicipioResouser {
 
     @GET
     @Path("/search/{nome}")
-    public List<MunicipioResouserDTO> search(@PathParam("nome") String nome){
+    public List<MunicipioResponseDTO> search(@PathParam("nome") String nome){
         return municipioService.findByNome(nome);
         
     }
