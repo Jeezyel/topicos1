@@ -3,7 +3,7 @@ package br.unitins.service;
 import java.util.List;
 
 import br.unitins.dto.MunicipioDTO;
-import br.unitins.dto.MunicipioResouserDTO;
+import br.unitins.dto.MunicipioResponseDTO;
 
 public interface MunicipioService {
 
@@ -11,19 +11,19 @@ public interface MunicipioService {
 
 
     // recursos basicos
-    List<MunicipioResouserDTO> getAll();
+    List<MunicipioResponseDTO> getAll();
 
-    MunicipioResouserDTO findById(Long id);
+    MunicipioResponseDTO findById(Long id);
 
-    MunicipioResouserDTO create(MunicipioDTO municipioDTO);
+    MunicipioResponseDTO create(MunicipioDTO municipioDTO);
 
-    MunicipioResouserDTO update(Long id, MunicipioDTO municipioDTO);
+    MunicipioResponseDTO update(Long id, MunicipioDTO municipioDTO);
 
     void delete(Long id);
 
     // recursos extras
 
-    List<MunicipioResouserDTO> findByNome(String nome);
+    List<MunicipioResponseDTO> findByNome(String nome);
 
     long count();
 

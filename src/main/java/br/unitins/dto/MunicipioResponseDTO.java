@@ -2,10 +2,10 @@ package br.unitins.dto;
 
 import br.unitins.model.Municipio;
 
-public record MunicipioResouserDTO(
+public record MunicipioResponseDTO(
     String nome
 ) {
-    public MunicipioResouserDTO(Municipio municipio){
+    public MunicipioResponseDTO(Municipio municipio){
         this(municipio.getNome());
     }
     

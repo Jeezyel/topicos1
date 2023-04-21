@@ -3,12 +3,12 @@ package br.unitins.dto;
 import br.unitins.model.Estados;
 import br.unitins.model.Municipio;
 
-public record EstadosResouserDTO(
+public record EstadosResponseDTO(
     String nome,
     String sigla,
     Municipio municipio
 ) {
-    public EstadosResouserDTO (Estados estados){
+    public EstadosResponseDTO (Estados estados){
         this(estados.getSigla(), estados.getNome(), estados.getMunicipio());
     }
     
