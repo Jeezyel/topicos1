@@ -2,6 +2,7 @@ package br.unitins.dto;
 
 public abstract class ProdutoDTO {
 
+    private long id;
     private String modelo;
     private String marca;
     private String cor;
@@ -17,6 +18,12 @@ public abstract class ProdutoDTO {
     }
     public String getMarca() {
         return marca;
+    }
+    public long getId() {
+        return id;
+    }
+    public void setId(long id) {
+        this.id = id;
     }
     public void setMarca(String marca) {
         this.marca = marca;

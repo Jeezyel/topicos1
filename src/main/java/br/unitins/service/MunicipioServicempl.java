@@ -66,7 +66,7 @@ public class MunicipioServicempl implements MunicipioService {
         Municipio entity = municipioRepository.findById(id);
 
         entity.setNome(municipioDTO.getNome());
-        entity.setEstado(estadoRepository.findById(municipioDTO.getIdEstado()));
+        entity.setEstado(estadoRepository.findById(municipioDTO.id()));
 
         return new MunicipioResponseDTO(entity);
     }

@@ -6,7 +6,7 @@ import br.unitins.model.Cliente;
 import br.unitins.model.Roupas;
 
 public record RoupasResponseDTO(
-
+    
     Integer quantidade,
     Float valor,
     String cor,
