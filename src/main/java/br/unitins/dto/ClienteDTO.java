@@ -9,7 +9,7 @@ public record ClienteDTO(
     long id,
     String cpf,
     String nome,
-    List<Endereco> localEnterga,
+    List<Endereco> enderecos,
     Telefone telefone   
 ) {
     

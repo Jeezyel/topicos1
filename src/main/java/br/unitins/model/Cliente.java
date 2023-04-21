@@ -6,7 +6,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 public class Cliente extends DefaultEntity {
-    private Long id;
+
     private String cpf;
     private String nome;
     @OneToMany
@@ -18,12 +18,6 @@ public class Cliente extends DefaultEntity {
 
 
     
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
     public String getCpf() {
         return cpf;
     }

@@ -5,7 +5,7 @@ import java.util.List;
 import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
 
-public interface TelefoneSercive {
+public interface TelefoneService {
 
     
     List<TelefoneResponseDTO> getAll();

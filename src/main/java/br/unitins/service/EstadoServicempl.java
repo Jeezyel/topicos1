@@ -46,7 +46,18 @@ public class EstadoServicempl implements EstadoService{
 
     @Override
     public EstadosResponseDTO create(EstadosDTO estadosDTO) {
-        return null;
+        validar(estadosDTO);
+
+        Estados entity = new Estados();
+        entity.setNome(estadosDTO.nome());
+        entity.setSigla(estadosDTO.sigla());
+        entity.setMunicipio(municipioRepository.findById(estadosDTO.id()));
+
+        estadoRepository.persist(entity);
+
+        return new EstadosResponseDTO(entity);
+
+
     }
 
     @Override

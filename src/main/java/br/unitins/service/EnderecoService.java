@@ -5,7 +5,7 @@ import java.util.List;
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;
 
-public interface EnderecoSercive {
+public interface EnderecoService {
     
      // recursos basicos
      List<EnderecoResponseDTO> getAll();
