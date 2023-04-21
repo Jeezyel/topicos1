@@ -14,9 +14,10 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.unitins.dto.EstadosResponseDTO;
 import br.unitins.model.Estados;
 import br.unitins.repository.EstadoRepository;
-import br.unitins.repository.RoupasRepository;
+import br.unitins.service.EstadoServicempl;
 
 
 
@@ -24,14 +25,18 @@ import br.unitins.repository.RoupasRepository;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class EstadoResouser {
+
     @Inject
     private EstadoRepository repository;
 
+    @Inject
+    private EstadoServicempl service;
+
     @GET
-    public List<Estados> getAll() {
+    public List<EstadosResponseDTO> getAll() {
         
         // seleciona todas as Estados do banco de dados
-         return RoupasRepository.findAll().list();
+         return service.getAll();
 
     }
 

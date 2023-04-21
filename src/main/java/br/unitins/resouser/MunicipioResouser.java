@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -24,14 +23,14 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.MunicipioDTO;
 import br.unitins.dto.MunicipioResponseDTO;
 // import br.unitins.service.MunicipioService;
-import br.unitins.model.Municipio;
+import br.unitins.service.MunicipioServicempl;
 
 @Path("/municipios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MunicipioResouser {
     @Inject
-    Municipio municipioService;
+    MunicipioServicempl municipioService;
 
     @GET
     public List<MunicipioResponseDTO> getAll() {
