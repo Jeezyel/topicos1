@@ -31,6 +31,7 @@ public class MunicipioResouser {
     MunicipioServicempl municipioService;
 
     @GET
+    @Path("/getAll")
     public List<MunicipioResponseDTO> getAll() {
         return municipioService.getAll();
     }
@@ -42,6 +43,7 @@ public class MunicipioResouser {
     }
 
     @POST
+    @Path("/insert")
     public Response insert(MunicipioDTO dto) {
         try {
             MunicipioResponseDTO municipio = municipioService.create(dto);

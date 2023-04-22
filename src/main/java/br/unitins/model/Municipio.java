@@ -1,8 +1,11 @@
 package br.unitins.model;
 
+import javax.persistence.ManyToOne;
+
 public class Municipio extends DefaultEntity{
 
     private String nome;
+    @ManyToOne
     private Estados estados;
 
     public String getNome() {
