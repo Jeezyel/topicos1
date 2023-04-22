@@ -1,9 +1,12 @@
 package br.unitins.model;
 
+import javax.persistence.OneToMany;
+
 public class Estados extends DefaultEntity {
 
     private String nome;
     private String sigla;
+    @OneToMany
     private Municipio municipio;
 
 

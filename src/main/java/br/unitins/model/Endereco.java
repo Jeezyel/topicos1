@@ -1,5 +1,7 @@
 package br.unitins.model;
 
+import javax.persistence.OneToMany;
+
 public class Endereco extends DefaultEntity{
 
 
@@ -7,6 +9,7 @@ public class Endereco extends DefaultEntity{
     private String enderecoCompleto;
     private String complemento;
     private String referencia; 
+    @OneToMany
     private Estados estados;
 
     

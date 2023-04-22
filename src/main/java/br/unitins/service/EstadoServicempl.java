@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+
 import javax.validation.Validator;
 import javax.ws.rs.NotFoundException;
 
@@ -16,6 +18,7 @@ import br.unitins.model.Estados;
 import br.unitins.repository.EstadoRepository;
 import br.unitins.repository.MunicipioRepository;
 
+@ApplicationScoped
 public class EstadoServicempl implements EstadoService{
 
     @Inject

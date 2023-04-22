@@ -3,8 +3,6 @@ package br.unitins.model;
 import java.util.List;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -13,8 +11,6 @@ import javax.persistence.ManyToOne;
 public class Roupas extends Produto {
 
    // @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(nullable = false , length = 40)
     private String tipoDeTercido;
     @ManyToMany
@@ -26,13 +22,7 @@ public class Roupas extends Produto {
 
     
  
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
     public String getTipoDeTercido() {
         return tipoDeTercido;

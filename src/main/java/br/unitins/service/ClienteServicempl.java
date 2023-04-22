@@ -51,6 +51,7 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
+        cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
         clienteRepository.persist(cliente);
 

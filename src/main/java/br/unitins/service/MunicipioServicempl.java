@@ -10,8 +10,9 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Validator;
 import javax.ws.rs.NotFoundException;
+import javax.validation.Valid;
+import javax.validation.Validator;
 
 import br.unitins.dto.MunicipioResponseDTO;
 import br.unitins.dto.MunicipioDTO;

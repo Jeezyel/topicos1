@@ -2,6 +2,7 @@ package br.unitins.model;
 
 import java.util.List;
 
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -13,6 +14,8 @@ public class Cliente extends DefaultEntity {
     private List<Endereco> Endereco;
     @OneToOne
     private Telefone telefone;
+    @ManyToMany
+    private List<Roupas> listaDeDesejo;
 
 
 
@@ -41,6 +44,12 @@ public class Cliente extends DefaultEntity {
     }
     public void setEndereco(List<Endereco> endereco) {
         Endereco = endereco;
+    }
+    public List<Roupas> getListaDeDesejo() {
+        return listaDeDesejo;
+    }
+    public void setListaDeDesejo(List<Roupas> listaDeDesejo) {
+        this.listaDeDesejo = listaDeDesejo;
     }
     
 

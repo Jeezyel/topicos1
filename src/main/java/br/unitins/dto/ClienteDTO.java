@@ -3,6 +3,7 @@ package br.unitins.dto;
 import java.util.List;
 
 import br.unitins.model.Endereco;
+import br.unitins.model.Roupas;
 import br.unitins.model.Telefone;
 
 public record ClienteDTO(
@@ -10,7 +11,8 @@ public record ClienteDTO(
     String cpf,
     String nome,
     List<Endereco> enderecos,
-    Telefone telefone   
+    Telefone telefone,
+    List<Roupas> listaDeDesejo
 ) {
     
 }
