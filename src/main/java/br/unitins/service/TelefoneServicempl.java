@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -14,7 +15,7 @@ import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
 import br.unitins.model.Telefone;
 import br.unitins.repository.TelefoneRepository;
-
+@ApplicationScoped
 public class TelefoneServicempl implements TelefoneService{
 
     @Inject

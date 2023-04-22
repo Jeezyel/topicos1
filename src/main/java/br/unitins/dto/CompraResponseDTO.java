@@ -11,7 +11,7 @@ public record CompraResponseDTO(
     Date data,
     Double totalCompra,
     List<ItemCompra> itemCompra,
-    List<Endereco> endereco) {
+    Endereco endereco) {
 
     public CompraResponseDTO(Compra compra){
         this(compra.getData(), compra.getTotalCompra(), compra.getItemCompra(), compra.getEndereco());

@@ -19,6 +19,7 @@ import br.unitins.dto.EstadosDTO;
 import br.unitins.dto.EstadosResponseDTO;
 import br.unitins.model.Estados;
 import br.unitins.repository.EstadoRepository;
+import br.unitins.service.EstadoService;
 import br.unitins.service.EstadoServicempl;
 
 
@@ -32,7 +33,7 @@ public class EstadoResouser {
     private EstadoRepository repository;
 
     @Inject
-    private EstadoServicempl service;
+    private EstadoService service;
 
     @GET
     public List<EstadosResponseDTO> getAll() {

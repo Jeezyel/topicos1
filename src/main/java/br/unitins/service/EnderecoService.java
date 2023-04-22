@@ -5,6 +5,9 @@ import java.util.List;
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public interface EnderecoService {
     
      // recursos basicos

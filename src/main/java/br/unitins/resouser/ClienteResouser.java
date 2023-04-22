@@ -4,6 +4,7 @@ import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 
+import br.unitins.service.ClienteService;
 import com.oracle.svm.core.annotate.Inject;
 
 import br.unitins.dto.ClienteDTO;
@@ -24,7 +25,7 @@ import javax.ws.rs.Produces;
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteResouser {
     @Inject
-    private ClienteServicempl service;
+    private ClienteService service;
 
 
     @GET

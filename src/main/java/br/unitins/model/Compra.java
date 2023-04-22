@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Compra extends DefaultEntity{
@@ -12,17 +13,11 @@ public class Compra extends DefaultEntity{
     private Date data;
     private Double totalCompra;
     private List<ItemCompra> itemCompra;
-    @ManyToOne
-    private List<Endereco> endereco;
-    
-    public List<Endereco> getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(List<Endereco> endereco) {
-        this.endereco = endereco;
-    }
-    
-    
+    @OneToOne
+    private Endereco endereco;
+
+
+
     public Date getData() {
         return data;
     }
@@ -41,5 +36,10 @@ public class Compra extends DefaultEntity{
     public void setItemCompra(List<ItemCompra> itemCompra) {
         this.itemCompra = itemCompra;
     }
-    
+    public Endereco getEndereco() {
+        return endereco;
+    }
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
 }

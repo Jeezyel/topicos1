@@ -4,6 +4,7 @@ import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 
+import br.unitins.service.EnderecoService;
 import com.oracle.svm.core.annotate.Inject;
 
 import br.unitins.dto.EnderecoDTO;
@@ -24,7 +25,7 @@ import javax.ws.rs.Produces;
 @Produces(MediaType.APPLICATION_JSON)
 public class EnderecoResouser {
     @Inject
-    private EnderecoServicempl service;
+    private EnderecoService service;
 
 
     @GET

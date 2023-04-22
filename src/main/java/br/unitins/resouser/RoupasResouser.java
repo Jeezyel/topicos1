@@ -19,6 +19,7 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
 import br.unitins.repository.RoupasRepository;
+import br.unitins.service.RoupaService;
 import br.unitins.service.RoupaServicempl;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class RoupasResouser  {
     RoupasRepository roupasRepository;
 
     @Inject
-    RoupaServicempl roupaServicempl;
+    RoupaService roupaServicempl;
 
     // buscar tudo
     @GET

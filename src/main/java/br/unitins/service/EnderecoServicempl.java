@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -12,9 +13,10 @@ import javax.validation.Validator;
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;
 import br.unitins.model.Endereco;
+import br.unitins.model.Municipio;
 import br.unitins.repository.EnderecoRepository;
 import br.unitins.repository.EstadoRepository;
-
+@ApplicationScoped
 public class EnderecoServicempl implements EnderecoService{
 
     @Inject
@@ -54,7 +56,8 @@ public class EnderecoServicempl implements EnderecoService{
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setMunicipio(service.findById(enderecoDTO.municipio().id()));
+        endereco.setMunicipio(new Municipio());
+        endereco.getMunicipio().setId(enderecoDTO.idMunicipio());
 
         enderecoRepository.persist(endereco);
 
@@ -72,7 +75,8 @@ public class EnderecoServicempl implements EnderecoService{
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setMunicipio(service.findById(enderecoDTO.municipio().id()));
+        endereco.setMunicipio(new Municipio());
+        endereco.getMunicipio().setId(enderecoDTO.idMunicipio());
 
         return new EnderecoResponseDTO(endereco);
     }

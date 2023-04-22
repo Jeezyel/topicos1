@@ -21,6 +21,7 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.MunicipioDTO;
 import br.unitins.dto.MunicipioResponseDTO;
 // import br.unitins.service.MunicipioService;
+import br.unitins.service.MunicipioService;
 import br.unitins.service.MunicipioServicempl;
 
 @Path("/municipios")
@@ -28,7 +29,7 @@ import br.unitins.service.MunicipioServicempl;
 @Produces(MediaType.APPLICATION_JSON)
 public class MunicipioResouser {
     @Inject
-    MunicipioServicempl municipioService;
+    MunicipioService municipioService;
 
     @GET
     @Path("/getAll")

@@ -15,7 +15,14 @@ public class Endereco extends DefaultEntity{
     @ManyToOne
     private Municipio municipio;
 
-    
+    public Municipio getMunicipio() {
+        return municipio;
+    }
+
+    public void setMunicipio(Municipio municipio) {
+        this.municipio = municipio;
+    }
+
     public String getReferencia() {
         return referencia;
     }

@@ -6,6 +6,9 @@ import java.util.List;
 import br.unitins.dto.EstadosDTO;
 import br.unitins.dto.EstadosResponseDTO;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public interface EstadoService {
 
 

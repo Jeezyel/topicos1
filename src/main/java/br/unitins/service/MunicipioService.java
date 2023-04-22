@@ -5,6 +5,9 @@ import java.util.List;
 import br.unitins.dto.MunicipioDTO;
 import br.unitins.dto.MunicipioResponseDTO;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public interface MunicipioService {
 
 
