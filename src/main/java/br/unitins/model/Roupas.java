@@ -3,11 +3,12 @@ package br.unitins.model;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 
-
+@Entity
 public class Roupas extends Produto {
 
    // @Id

@@ -3,6 +3,9 @@ package br.unitins.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Compra extends DefaultEntity{
 
     private Date data;

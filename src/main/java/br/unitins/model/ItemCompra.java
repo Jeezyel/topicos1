@@ -1,5 +1,8 @@
 package br.unitins.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class ItemCompra extends DefaultEntity {
 
     private Integer quantidade;

@@ -1,5 +1,8 @@
 package br.unitins.model;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Telefone extends DefaultEntity{
 
     private String codigoDeArea;

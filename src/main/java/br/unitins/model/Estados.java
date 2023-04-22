@@ -1,7 +1,9 @@
 package br.unitins.model;
 
+import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
+@Entity
 public class Estados extends DefaultEntity {
 
     private String nome;
