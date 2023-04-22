@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.unitins.dto.EstadosDTO;
 import br.unitins.dto.EstadosResponseDTO;
 import br.unitins.model.Estados;
 import br.unitins.repository.EstadoRepository;
@@ -42,11 +43,9 @@ public class EstadoResouser {
 
     @POST
     @Transactional
-    public Estados insert(Estados estado) {
-
-        repository.persist(estado);
-
-        return estado;
+    public EstadosResponseDTO insert(EstadosDTO estado) {
+        
+        return service.create(estado);
     }
 
     @PUT

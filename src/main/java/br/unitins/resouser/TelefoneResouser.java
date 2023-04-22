@@ -6,9 +6,9 @@ import java.util.List;
 
 import com.oracle.svm.core.annotate.Inject;
 
-import br.unitins.dto.ClienteDTO;
-import br.unitins.dto.ClienteResponseDTO;
-import br.unitins.service.ClienteServicempl;
+import br.unitins.dto.TelefoneDTO;
+import br.unitins.dto.TelefoneResponseDTO;
+import br.unitins.service.TelefoneServicempl;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -21,20 +21,20 @@ import javax.ws.rs.Produces;
 @Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class ClienteResouser {
+public class TelefoneResouser {
     @Inject
-    private ClienteServicempl service;
+    private TelefoneServicempl service;
 
 
     @GET
     @Path("/gatAll")
-    public List<ClienteResponseDTO> getAll(){
+    public List<TelefoneResponseDTO> getAll(){
         return service.getAll();
     }
 
     @GET
     @Path("/searchForId/{Id}")
-    public ClienteResponseDTO searchForId(@PathParam("Id") Long Id){
+    public TelefoneResponseDTO searchForId(@PathParam("Id") Long Id){
         return service.findById(Id);
     }
 
@@ -42,17 +42,17 @@ public class ClienteResouser {
     @POST
     @Path("/insert")
     @Transactional
-    public ClienteResponseDTO insert(ClienteDTO clienteDTO) {
+    public TelefoneResponseDTO insert(TelefoneDTO telefoneDTO) {
         
-        return service.create(clienteDTO);
+        return service.create(telefoneDTO);
     }
     // update
     @POST
     @Path("/update/{id}")
     @Transactional
-    public ClienteResponseDTO update(@PathParam("id") Long id, ClienteDTO clienteDTO) {
+    public TelefoneResponseDTO update(@PathParam("id") Long id, TelefoneDTO telefoneDTO) {
         
-        return service.update(id , clienteDTO);
+        return service.update(id , telefoneDTO);
     }
 
     @GET
@@ -69,9 +69,7 @@ public class ClienteResouser {
 
     @GET
     @Path("/searchForName/{name}")
-    public List<ClienteResponseDTO> searchForName(@PathParam("name") String name){
+    public List<TelefoneResponseDTO> searchForName(@PathParam("name") String name){
         return service.findByNome(name);
     }
-
-    
 }
