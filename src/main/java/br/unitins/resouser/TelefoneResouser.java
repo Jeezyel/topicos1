@@ -12,6 +12,7 @@ import br.unitins.service.TelefoneServicempl;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -55,7 +56,7 @@ public class TelefoneResouser {
         return service.update(id , telefoneDTO);
     }
 
-    @GET
+    @DELETE
     @Path("/DeleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
         service.delete(id);
