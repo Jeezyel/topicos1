@@ -1,7 +1,8 @@
 package br.unitins.model;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+
 
 @Entity
 public class Endereco extends DefaultEntity{
@@ -11,8 +12,8 @@ public class Endereco extends DefaultEntity{
     private String enderecoCompleto;
     private String complemento;
     private String referencia; 
-    @OneToMany
-    private Estados estados;
+    @ManyToOne
+    private Municipio municipio;
 
     
     public String getReferencia() {
@@ -21,12 +22,7 @@ public class Endereco extends DefaultEntity{
     public void setReferencia(String referencia) {
         this.referencia = referencia;
     }
-    public Estados getEstados() {
-        return estados;
-    }
-    public void setEstados(Estados estados) {
-        this.estados = estados;
-    }
+    
     public String getCep() {
         return cep;
     }

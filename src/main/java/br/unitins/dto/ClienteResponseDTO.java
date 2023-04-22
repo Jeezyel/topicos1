@@ -12,7 +12,7 @@ public record ClienteResponseDTO (
     String cpf,
     String nome,
     List<Endereco> endereco,
-    Telefone telefone,
+    List<Telefone> telefone,
     List<Roupas> listaDeDesejo
 ) {
     public ClienteResponseDTO(Cliente cliente){

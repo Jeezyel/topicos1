@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Compra extends DefaultEntity{
@@ -11,6 +12,7 @@ public class Compra extends DefaultEntity{
     private Date data;
     private Double totalCompra;
     private List<ItemCompra> itemCompra;
+    @ManyToOne
     private List<Endereco> endereco;
     
     public List<Endereco> getEndereco() {

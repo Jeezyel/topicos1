@@ -1,5 +1,7 @@
 package br.unitins.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -9,15 +11,10 @@ public class Estados extends DefaultEntity {
     private String nome;
     private String sigla;
     @OneToMany
-    private Municipio municipio;
+    private List<Municipio> municipio;
 
 
-    public Municipio getMunicipio() {
-        return municipio;
-    }
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
-    }
+    
     public String getNome() {
         return nome;
     }
@@ -29,6 +26,12 @@ public class Estados extends DefaultEntity {
     }
     public void setSigla(String sigla) {
         this.sigla = sigla;
+    }
+    public List<Municipio> getMunicipio() {
+        return municipio;
+    }
+    public void setMunicipio(List<Municipio> municipio) {
+        this.municipio = municipio;
     }
 
 

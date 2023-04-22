@@ -19,10 +19,13 @@ public class EnderecoServicempl implements EnderecoService{
 
     @Inject
     EnderecoRepository enderecoRepository;
-
-    
     @Inject
     EstadoRepository estadoRepository;
+
+    @Inject
+    MunicipioServicempl service;
+    
+   
 
     @Inject
     Validator validator;
@@ -51,7 +54,7 @@ public class EnderecoServicempl implements EnderecoService{
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setEstados(estadoRepository.findById(enderecoDTO.estados().id()));
+        endereco.setMunicipio(service.findById(enderecoDTO.municipio().id()));
 
         enderecoRepository.persist(endereco);
 
@@ -69,7 +72,7 @@ public class EnderecoServicempl implements EnderecoService{
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setEstados(estadoRepository.findById(enderecoDTO.estados().id()));
+        endereco.setMunicipio(service.findById(enderecoDTO.municipio().id()));
 
         return new EnderecoResponseDTO(endereco);
     }

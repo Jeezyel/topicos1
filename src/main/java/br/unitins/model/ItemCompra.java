@@ -1,22 +1,21 @@
 package br.unitins.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class ItemCompra extends DefaultEntity {
 
     private Integer quantidade;
     private Double preco;
-    private Roupas roupas;
+    @ManyToMany
+    private List<Roupas> roupas;
 
     
     
-    public Roupas getRoupas() {
-        return roupas;
-    }
-    public void setRoupas(Roupas roupas) {
-        this.roupas = roupas;
-    }
+    
     public Integer getQuantidade() {
         return quantidade;
     }
@@ -28,6 +27,12 @@ public class ItemCompra extends DefaultEntity {
     }
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+    public List<Roupas> getRoupas() {
+        return roupas;
+    }
+    public void setRoupas(List<Roupas> roupas) {
+        this.roupas = roupas;
     }
 
 }

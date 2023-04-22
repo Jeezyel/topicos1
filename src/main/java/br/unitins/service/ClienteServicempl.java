@@ -16,11 +16,15 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.model.Cliente;
 import br.unitins.repository.ClienteRepository;
+import br.unitins.repository.TelefoneRepository;
 
 @ApplicationScoped
 public class ClienteServicempl  implements ClienteService{
     @Inject
     private ClienteRepository clienteRepository;
+
+    @Inject 
+    private TelefoneRepository telefoneRepository;
 
     @Inject
     Validator validator;
@@ -50,7 +54,7 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setCpf(clienteDTO.cpf());
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
-        cliente.setTelefone(clienteDTO.telefone());
+        cliente.setTelefone(telefoneRepository.findByNumero(clienteDTO.telefone().getNumero()));
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
         clienteRepository.persist(cliente);
@@ -68,7 +72,7 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setCpf(clienteDTO.cpf());
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
-        cliente.setTelefone(clienteDTO.telefone());
+        cliente.setTelefone(telefoneRepository.findByNumero(clienteDTO.telefone().getNumero()));
 
         clienteRepository.persist(cliente);
 

@@ -26,4 +26,8 @@ public class Municipio extends DefaultEntity{
         this.estados = estados;
     }
 
+    public Long id() {
+        return null;
+    }
+
 }
