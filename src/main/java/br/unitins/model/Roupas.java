@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -16,7 +17,7 @@ public class Roupas extends Produto {
     private String tipoDeTercido;
     @ManyToMany
     private List<Cliente> ListaDeDesejo;
-    @ManyToOne
+    @OneToMany
     private Tamanho tamanho;
 
 
