@@ -1,15 +1,14 @@
-package br.unitins.resouser;
+package br.unitins.resouce;
 
 import javax.ws.rs.core.MediaType;
 
 import java.util.List;
 
-import br.unitins.service.EnderecoService;
+import br.unitins.service.ClienteService;
 import com.oracle.svm.core.annotate.Inject;
 
-import br.unitins.dto.EnderecoDTO;
-import br.unitins.dto.EnderecoResponseDTO;
-import br.unitins.service.EnderecoServicempl;
+import br.unitins.dto.ClienteDTO;
+import br.unitins.dto.ClienteResponseDTO;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -20,23 +19,23 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
-@Path("/endereco")
+@Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class EnderecoResouser {
+public class ClienteResouce {
     @Inject
-    private EnderecoService service;
+    private ClienteService service;
 
 
     @GET
     @Path("/gatAll")
-    public List<EnderecoResponseDTO> getAll(){
+    public List<ClienteResponseDTO> getAll(){
         return service.getAll();
     }
 
     @GET
     @Path("/searchForId/{Id}")
-    public EnderecoResponseDTO searchForId(@PathParam("Id") Long Id){
+    public ClienteResponseDTO searchForId(@PathParam("Id") Long Id){
         return service.findById(Id);
     }
 
@@ -44,17 +43,17 @@ public class EnderecoResouser {
     @POST
     @Path("/insert")
     @Transactional
-    public EnderecoResponseDTO insert(EnderecoDTO enderecoDTO) {
+    public ClienteResponseDTO insert(ClienteDTO clienteDTO) {
         
-        return service.create(enderecoDTO);
+        return service.create(clienteDTO);
     }
     // update
     @POST
     @Path("/update/{id}")
     @Transactional
-    public EnderecoResponseDTO update(@PathParam("id") Long id, EnderecoDTO enderecoDTO) {
+    public ClienteResponseDTO update(@PathParam("id") Long id, ClienteDTO clienteDTO) {
         
-        return service.update(id , enderecoDTO);
+        return service.update(id , clienteDTO);
     }
 
     @DELETE
@@ -71,7 +70,9 @@ public class EnderecoResouser {
 
     @GET
     @Path("/searchForName/{name}")
-    public List<EnderecoResponseDTO> searchForName(@PathParam("name") String name){
+    public List<ClienteResponseDTO> searchForName(@PathParam("name") String name){
         return service.findByNome(name);
     }
+
+    
 }

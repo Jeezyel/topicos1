@@ -1,4 +1,4 @@
-package br.unitins.resouser;
+package br.unitins.resouce;
 
 
 import java.util.List;
@@ -20,14 +20,13 @@ import br.unitins.dto.EstadosResponseDTO;
 import br.unitins.model.Estados;
 import br.unitins.repository.EstadoRepository;
 import br.unitins.service.EstadoService;
-import br.unitins.service.EstadoServicempl;
 
 
 
 @Path("/estados")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class EstadoResouser {
+public class EstadoResouce {
 
     @Inject
     private EstadoRepository repository;

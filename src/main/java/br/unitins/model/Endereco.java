@@ -1,6 +1,7 @@
 package br.unitins.model;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -13,15 +14,10 @@ public class Endereco extends DefaultEntity{
     private String complemento;
     private String referencia; 
     @ManyToOne
-    private Municipio municipio;
+    @JoinColumn(name = "estados" , nullable = false)
+    private Estados estados;
 
-    public Municipio getMunicipio() {
-        return municipio;
-    }
-
-    public void setMunicipio(Municipio municipio) {
-        this.municipio = municipio;
-    }
+    
 
     public String getReferencia() {
         return referencia;
@@ -53,6 +49,12 @@ public class Endereco extends DefaultEntity{
     }
     public void setReferincia(String referincia) {
         this.referencia = referincia;
+    }
+    public Estados getEstados() {
+        return estados;
+    }
+    public void setEstados(Estados estados) {
+        this.estados = estados;
     }
     
 

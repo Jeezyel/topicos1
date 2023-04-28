@@ -13,7 +13,7 @@ import javax.validation.Validator;
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;
 import br.unitins.model.Endereco;
-import br.unitins.model.Municipio;
+import br.unitins.model.Estados;
 import br.unitins.repository.EnderecoRepository;
 import br.unitins.repository.EstadoRepository;
 @ApplicationScoped
@@ -26,6 +26,9 @@ public class EnderecoServicempl implements EnderecoService{
 
     @Inject
     MunicipioServicempl service;
+    
+    @Inject
+    EstadoRepository estadosRepository;
     
    
 
@@ -51,32 +54,31 @@ public class EnderecoServicempl implements EnderecoService{
         validar(enderecoDTO);
 
         Endereco endereco = new Endereco();
+        Estados estados = estadosRepository.findById(enderecoDTO.idEstado());
 
         endereco.setCep(enderecoDTO.cep());
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setMunicipio(new Municipio());
-        endereco.getMunicipio().setId(enderecoDTO.idMunicipio());
+        endereco.setEstados(estados);
 
         enderecoRepository.persist(endereco);
 
         return new EnderecoResponseDTO(endereco);
 
     }
-
     @Override
     public EnderecoResponseDTO update(Long id, EnderecoDTO enderecoDTO) {
         validar(enderecoDTO);
 
         Endereco endereco = enderecoRepository.findById(id);
+        Estados estados = estadosRepository.findById(enderecoDTO.idEstado());
 
         endereco.setCep(enderecoDTO.cep());
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
         endereco.setComplemento(enderecoDTO.complemento());
         endereco.setReferencia(enderecoDTO.referincia());
-        endereco.setMunicipio(new Municipio());
-        endereco.getMunicipio().setId(enderecoDTO.idMunicipio());
+        endereco.setEstados(estados);
 
         return new EnderecoResponseDTO(endereco);
     }

@@ -3,14 +3,14 @@ package br.unitins.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class ItemCompra extends DefaultEntity {
 
     private Integer quantidade;
     private Double preco;
-    @ManyToMany
+    @OneToMany
     private List<Roupas> roupas;
 
     

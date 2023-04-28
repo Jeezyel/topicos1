@@ -1,4 +1,4 @@
-package br.unitins.resouser;
+package br.unitins.resouce;
 
 import javax.ws.rs.Produces;
 import javax.inject.Inject;
@@ -20,14 +20,13 @@ import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
 import br.unitins.repository.RoupasRepository;
 import br.unitins.service.RoupaService;
-import br.unitins.service.RoupaServicempl;
 
 import java.util.List;
 
 @Path("/Loja")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class RoupasResouser  {
+public class RoupasResouce  {
 
     @Inject
     RoupasRepository roupasRepository;

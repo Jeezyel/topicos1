@@ -1,4 +1,4 @@
-package br.unitins.resouser;
+package br.unitins.resouce;
 
 
 import java.util.List;
@@ -22,12 +22,11 @@ import br.unitins.dto.MunicipioDTO;
 import br.unitins.dto.MunicipioResponseDTO;
 // import br.unitins.service.MunicipioService;
 import br.unitins.service.MunicipioService;
-import br.unitins.service.MunicipioServicempl;
 
 @Path("/municipios")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class MunicipioResouser {
+public class MunicipioResouce {
     @Inject
     MunicipioService municipioService;
 

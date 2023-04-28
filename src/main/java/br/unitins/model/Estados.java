@@ -12,6 +12,7 @@ public class Estados extends DefaultEntity {
     private String sigla;
     @OneToMany
     private List<Municipio> municipio;
+    //
 
 
     

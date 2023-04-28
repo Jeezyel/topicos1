@@ -1,4 +1,4 @@
-package br.unitins.resouser;
+package br.unitins.resouce;
 
 import javax.ws.rs.core.MediaType;
 
@@ -9,7 +9,6 @@ import com.oracle.svm.core.annotate.Inject;
 
 import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
-import br.unitins.service.TelefoneServicempl;
 
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
@@ -20,10 +19,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+//Resouce
+
 @Path("/cliente")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class TelefoneResouser {
+public class TelefoneResouce {
     @Inject
     private TelefoneService service;
 

@@ -54,7 +54,7 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setCpf(clienteDTO.cpf());
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
-        cliente.setTelefone(telefoneRepository.findByNumero(clienteDTO.telefone().getNumero()));
+        cliente.setTelefone(clienteDTO.telefone());
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
         clienteRepository.persist(cliente);
@@ -72,7 +72,7 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setCpf(clienteDTO.cpf());
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
-        cliente.setTelefone(telefoneRepository.findByNumero(clienteDTO.telefone().getNumero()));
+        cliente.setTelefone(clienteDTO.telefone());
 
         clienteRepository.persist(cliente);
 

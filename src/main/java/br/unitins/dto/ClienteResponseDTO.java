@@ -11,8 +11,8 @@ public record ClienteResponseDTO (
 
     String cpf,
     String nome,
-    List<Endereco> endereco,
-    List<Telefone> telefone,
+    Endereco endereco,
+    Telefone telefone,
     List<Roupas> listaDeDesejo
 ) {
     public ClienteResponseDTO(Cliente cliente){
