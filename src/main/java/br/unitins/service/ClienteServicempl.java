@@ -16,15 +16,12 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.model.Cliente;
 import br.unitins.repository.ClienteRepository;
-import br.unitins.repository.TelefoneRepository;
 
 @ApplicationScoped
 public class ClienteServicempl  implements ClienteService{
     @Inject
     private ClienteRepository clienteRepository;
 
-    @Inject 
-    private TelefoneRepository telefoneRepository;
 
     @Inject
     Validator validator;
