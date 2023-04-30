@@ -6,7 +6,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,7 +20,7 @@ public class Cliente extends DefaultEntity {
     @ManyToMany
     @JoinTable(name = "cliente_roupas",
     joinColumns = @JoinColumn(name = "cliente_id"),
-    inverseJoinColumns = @JoinColumn(name = "roupas_id"))
+    inverseJoinColumns = @JoinColumn(name = "roupa_id"))
     private List<Roupas> listaDeDesejo;
 
 

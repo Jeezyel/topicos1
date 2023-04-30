@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -13,21 +12,15 @@ public class Compra extends DefaultEntity{
 
     private Date data;
     private Double totalCompra;
-    @ManyToOne
+    @OneToMany
     private List<ItemCompra> itemCompra;
     @OneToOne
     private Endereco endereco;
     @OneToMany
-    private Cliente cliente;
+    private List<Cliente> cliente;
 
 
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    
     public Date getData() {
         return data;
     }
@@ -51,5 +44,11 @@ public class Compra extends DefaultEntity{
     }
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
+    }
+    public List<Cliente> getCliente() {
+        return cliente;
+    }
+    public void setCliente(List<Cliente> cliente) {
+        this.cliente = cliente;
     }
 }
