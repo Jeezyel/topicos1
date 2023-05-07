@@ -1,6 +1,6 @@
 package br.unitins.model;
 
-import javax.persistence.Column;
+import jakarta.persistence.Column;
 
 public abstract class Produto extends DefaultEntity {
     @Column(nullable = true , length = 20)

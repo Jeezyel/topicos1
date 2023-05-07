@@ -4,13 +4,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.validation.ConstraintViolation;
-import javax.validation.ConstraintViolationException;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 
-import javax.validation.Validator;
-import javax.ws.rs.NotFoundException;
+import jakarta.validation.Validator;
+import jakarta.ws.rs.NotFoundException;
 
 import br.unitins.dto.EstadosDTO;
 import br.unitins.dto.EstadosResponseDTO;

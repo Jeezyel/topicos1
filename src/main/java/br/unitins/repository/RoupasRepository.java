@@ -1,7 +1,7 @@
 package br.unitins.repository;
 import java.util.List;
 
-import javax.enterprise.context.ApplicationScoped; 
+import jakarta.enterprise.context.ApplicationScoped; 
 import br.unitins.model.Roupas;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 

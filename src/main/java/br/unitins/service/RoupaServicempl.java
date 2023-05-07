@@ -3,10 +3,10 @@ package br.unitins.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import javax.validation.ConstraintViolationException;
-import javax.ws.rs.NotFoundException;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.validation.ConstraintViolationException;
+import jakarta.ws.rs.NotFoundException;
 
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;

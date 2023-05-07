@@ -2,11 +2,11 @@ package br.unitins.model;
 
 import java.util.List;
 
-import javax.persistence.JoinTable;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cliente extends DefaultEntity {

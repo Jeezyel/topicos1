@@ -5,7 +5,7 @@ import java.util.List;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public interface ClienteService {
