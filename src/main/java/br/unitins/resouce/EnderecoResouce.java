@@ -5,7 +5,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 import br.unitins.service.EnderecoService;
-import com.oracle.svm.core.annotate.Inject;
+import jakarta.inject.Inject;
 
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;

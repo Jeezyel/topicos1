@@ -5,11 +5,11 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 import br.unitins.service.TelefoneService;
-import com.oracle.svm.core.annotate.Inject;
+
 
 import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
-
+import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -25,6 +25,7 @@ import jakarta.ws.rs.Produces;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TelefoneResouce {
+
     @Inject
     private TelefoneService service;
 

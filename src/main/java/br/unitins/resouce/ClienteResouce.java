@@ -5,7 +5,7 @@ import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
 import br.unitins.service.ClienteService;
-import com.oracle.svm.core.annotate.Inject;
+import jakarta.inject.Inject;
 
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
@@ -23,6 +23,7 @@ import jakarta.ws.rs.Produces;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class ClienteResouce {
+
     @Inject
     private ClienteService service;
 
