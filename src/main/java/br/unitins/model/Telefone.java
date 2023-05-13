@@ -1,12 +1,16 @@
 package br.unitins.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 
 @Entity
 public class Telefone extends DefaultEntity{
 
+    @Column
     private String codigoDeArea;
+    @Column
     private String numero;
+    @Column
     private Boolean celular;
 
     
