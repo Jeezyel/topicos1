@@ -19,14 +19,16 @@ public class ClienteTestes {
 
 
     @Test
-    public void gatAllTeste(){
+    public void getAllTeste(){
 
         given()
-          .when().get("/cliente/gatAll")
+          .when().get("/cliente/getAll")
           .then()
-             .statusCode(200);
+            .statusCode(200);
 
     }
+
+    
 
     
 }

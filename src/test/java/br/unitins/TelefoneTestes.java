@@ -17,7 +17,7 @@ public class TelefoneTestes {
 @Test
 public void getAllTeste (){
     given()
-          .when().get("/gatAll")
+          .when().get("/telefone/gatAll")
           .then()
              .statusCode(200);
 }

@@ -25,11 +25,11 @@ import jakarta.ws.rs.Produces;
 public class ClienteResouce {
 
     @Inject
-    private ClienteService service;
+    ClienteService service;
 
 
     @GET
-    @Path("/gatAll")
+    @Path("/getAll")
     public List<ClienteResponseDTO> getAll(){
         return service.getAll();
     }

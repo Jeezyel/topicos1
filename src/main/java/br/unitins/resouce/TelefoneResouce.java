@@ -21,13 +21,13 @@ import jakarta.ws.rs.Produces;
 
 //Resouce
 
-@Path("/cliente")
+@Path("/telefone")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class TelefoneResouce {
 
     @Inject
-    private TelefoneService service;
+    TelefoneService service;
 
 
     @GET
