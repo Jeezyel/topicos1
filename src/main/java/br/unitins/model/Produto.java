@@ -1,7 +1,13 @@
 package br.unitins.model;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Produto extends DefaultEntity {
     @Column(nullable = true , length = 20)
     private String modelo;
