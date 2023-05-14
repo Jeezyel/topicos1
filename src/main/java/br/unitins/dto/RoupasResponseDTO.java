@@ -11,14 +11,13 @@ public record RoupasResponseDTO(
     Float valor,
     String cor,
     String marca,
-    String modelo,
-    List<Cliente> cliente
+    String modelo
 
     ) {
     
     public RoupasResponseDTO(Roupas roupas) {
 
-        this(roupas.getQuantidade(),roupas.getValor(),roupas.getCor(),roupas.getMarca(),roupas.getModelo(),roupas.getListaDeDesejo());
+        this(roupas.getQuantidade(),roupas.getValor(),roupas.getCor(),roupas.getMarca(),roupas.getModelo());
         
     }
 
