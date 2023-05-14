@@ -3,7 +3,7 @@
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-1');
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-2');
 -- insert into myentity (id, field) values(nextval('hibernate_sequence'), 'field-3');
-/*
+
 INSERT INTO public.municipio(dataalteracao, datainclusao, estados_id, id, nome)
 	VALUES ('2023-04-12', '2023-04-12', 1, 1, 'proto-proto');
 
@@ -24,7 +24,7 @@ INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodear
 
 INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, nome)
 	VALUES (1, '2023-04-12', '2023-04-12', 1, 1, 3142175676, 'Lucas');
-
+/*
 
  */
        
