@@ -35,6 +35,7 @@ public class EstadoResouce {
     private EstadoService service;
 
     @GET
+    @Path("/getAll")
     public List<EstadosResponseDTO> getAll() {
         
         // seleciona todas as Estados do banco de dados

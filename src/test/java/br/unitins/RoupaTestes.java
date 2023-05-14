@@ -17,7 +17,7 @@ public class RoupaTestes {
     public void gatAllTeste(){
 
         given()
-          .when().get("/gatAll")
+          .when().get("/Loja/getAll")
           .then()
              .statusCode(200);
 

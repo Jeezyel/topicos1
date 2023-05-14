@@ -28,7 +28,7 @@ public class EnderecoResouce {
 
 
     @GET
-    @Path("/gatAll")
+    @Path("/getAll")
     public List<EnderecoResponseDTO> getAll(){
         return service.getAll();
     }
