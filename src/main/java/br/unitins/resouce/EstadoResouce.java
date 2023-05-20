@@ -44,6 +44,7 @@ public class EstadoResouce {
     }
 
     @POST
+    @Path("/insert/{estado}")
     @Transactional
     public EstadosResponseDTO insert(EstadosDTO estado) {
         
