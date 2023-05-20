@@ -8,6 +8,16 @@ class Roupas{
 
 
 }
+class Usuario {
+    -id: long
+    - cpf: email
+    - nome: String
+    - login : String
+    - senha : String
+
+    + GetSet()
+}
+
 class Cliente{
     -id: long
     - cpf: String
@@ -118,7 +128,7 @@ class Comprovante{
     produto <|-- Roupas
 
     Endereco "*" <--*"1" Cliente
-
+    Cliente "1" --> "1" Usuario
     Cliente "*" --> "*" Roupas: listaDesejo
 
     Compra "1" *--> "*" ItemCompra

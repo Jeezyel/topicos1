@@ -23,11 +23,19 @@ public class Cliente extends DefaultEntity {
     inverseJoinColumns = @JoinColumn(name = "roupa_id"))
     private List<Roupas> listaDeDesejo;
     private String nomeImagem;
+    @OneToOne
+    private Usuario usuario;
 
 
 
 
     
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     public Endereco getEndereco() {
         return Endereco;
     }

@@ -6,6 +6,7 @@ import br.unitins.model.Cliente;
 import br.unitins.model.Endereco;
 import br.unitins.model.Roupas;
 import br.unitins.model.Telefone;
+import br.unitins.model.Usuario;
 
 public record ClienteResponseDTO (
 
@@ -14,11 +15,12 @@ public record ClienteResponseDTO (
     Endereco endereco,
     Telefone telefone,
     List<Roupas> listaDeDesejo,
-    String nomeImagem
+    String nomeImagem,
+    Usuario usuario
 ) {
     public ClienteResponseDTO(Cliente cliente){
 
-        this(cliente.getCpf(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(),cliente.getListaDeDesejo(),cliente.getNomeImagem());
+        this(cliente.getCpf(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(),cliente.getListaDeDesejo(),cliente.getNomeImagem(),cliente.getUsuario());
         
     }
 

@@ -21,17 +21,17 @@ import net.bytebuddy.asm.Advice.Return;
 
 public class ClienteLogadoResouce {
 
-    @Inject
+   /*  @Inject
     JsonWebToken token;
 
     @Inject
     ClienteService service;
 
-    // o
+    
     public Response getCliente(){
         String logado = token.getSubject();
         ClienteResponseDTO cliente = service.findByLogado(logado);
 
         return Response.ok().build();
-    }
+    }*/
 }
