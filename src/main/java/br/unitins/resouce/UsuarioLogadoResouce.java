@@ -1,25 +1,25 @@
 package br.unitins.resouce;
 
-import org.eclipse.microprofile.jwt.JsonWebToken;
+//import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import jakarta.ws.rs.core.MediaType;
 
-import com.oracle.svm.core.annotate.Inject;
+//import com.oracle.svm.core.annotate.Inject;
 
-import br.unitins.dto.ClienteResponseDTO;
-import br.unitins.repository.ClienteRepository;
-import br.unitins.service.ClienteService;
+//import br.unitins.dto.ClienteResponseDTO;
+//import br.unitins.repository.ClienteRepository;
+//import br.unitins.service.ClienteService;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.Path;
+//import jakarta.ws.rs.core.Response;
+//import net.bytebuddy.asm.Advice.Return;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Response;
-import net.bytebuddy.asm.Advice.Return;
 
-@Path("/Clientelogado")
+@Path("/usuariologado")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 
-public class ClienteLogadoResouce {
+public class UsuarioLogadoResouce {
 
    /*  @Inject
     JsonWebToken token;
