@@ -22,6 +22,7 @@ public class Cliente extends DefaultEntity {
     joinColumns = @JoinColumn(name = "cliente_id"),
     inverseJoinColumns = @JoinColumn(name = "roupa_id"))
     private List<Roupas> listaDeDesejo;
+    private String nomeImagem;
 
 
 
@@ -56,6 +57,12 @@ public class Cliente extends DefaultEntity {
     }
     public void setListaDeDesejo(List<Roupas> listaDeDesejo) {
         this.listaDeDesejo = listaDeDesejo;
+    }
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
     }
     
     

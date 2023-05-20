@@ -1,8 +1,5 @@
 package br.unitins.dto;
 
-import java.util.List;
-
-import br.unitins.model.Cliente;
 import br.unitins.model.Roupas;
 
 public record RoupasResponseDTO(

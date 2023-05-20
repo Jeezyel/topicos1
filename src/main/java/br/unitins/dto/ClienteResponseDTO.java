@@ -13,11 +13,12 @@ public record ClienteResponseDTO (
     String nome,
     Endereco endereco,
     Telefone telefone,
-    List<Roupas> listaDeDesejo
+    List<Roupas> listaDeDesejo,
+    String nomeImagem
 ) {
     public ClienteResponseDTO(Cliente cliente){
 
-        this(cliente.getCpf(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(),cliente.getListaDeDesejo());
+        this(cliente.getCpf(), cliente.getNome(), cliente.getEndereco(), cliente.getTelefone(),cliente.getListaDeDesejo(),cliente.getNomeImagem());
         
     }
 

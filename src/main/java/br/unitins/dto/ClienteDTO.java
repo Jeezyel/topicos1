@@ -12,7 +12,8 @@ public record ClienteDTO(
     String nome,
     Endereco enderecos,
     Telefone telefone,
-    List<Roupas> listaDeDesejo
+    List<Roupas> listaDeDesejo,
+    String nomeImagem
 ) {
     
 }
