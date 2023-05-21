@@ -112,6 +112,13 @@ public class RoupasResouce  {
 
         return roupaServicempl.findByNameList(fragmentoMarca);
     } 
+
+    @GET
+    @Path("/count")
+    public long count(){
+        return roupaServicempl.count();
+    }
+
     //criar
     public Response insert(RoupasDTO dto){
         try {
