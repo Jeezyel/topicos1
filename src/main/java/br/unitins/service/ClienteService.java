@@ -11,6 +11,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 public interface ClienteService {
 
     // recursos basicos
+    Boolean alterarSenha(Long id ,String senhaAtual , String novaSenha);
+
     List<ClienteResponseDTO> getAll();
 
     ClienteResponseDTO findById(Long id);

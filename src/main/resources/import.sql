@@ -24,6 +24,10 @@ INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodear
 
 INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, nome)
 	VALUES (1, '2023-04-12', '2023-04-12', 1, 1, 3142175676, 'Lucas');
+
+UPDATE public.cliente
+	SET  login='Lucas', senha= 123
+	WHERE nome = 'Lucas';
 /*
 
  */

@@ -53,6 +53,8 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
+        cliente.setLogin(clienteDTO.login());
+        cliente.setSenha(clienteDTO.senha());
 
         clienteRepository.persist(cliente);
 
@@ -66,10 +68,10 @@ public class ClienteServicempl  implements ClienteService{
 
         Cliente cliente = clienteRepository.findById(id);
 
-        cliente.setCpf(clienteDTO.cpf());
-        cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
+        cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
+
 
         clienteRepository.persist(cliente);
 
@@ -101,5 +103,25 @@ public class ClienteServicempl  implements ClienteService{
 
 
     }
+
+    @Override
+    public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
+
+        Cliente cliente = clienteRepository.findById(id);
+
+        if (cliente.getSenha() != senhaAtual ) {
+            return false;
+        }
+        else{
+            
+            cliente.setSenha(novaSenha);
+
+            return true ;
+        }
+
+        
+    }
+
+   
     
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 import br.unitins.service.ClienteService;
 import jakarta.inject.Inject;
-
+import jakarta.persistence.Id;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 
@@ -14,6 +14,7 @@ import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -57,8 +58,15 @@ public class ClienteResouce {
         return service.update(id , clienteDTO);
     }
 
+    @PATCH
+    @Path("/alterarSenha/{id}{senhaAtual}{novaSenha}")
+    public boolean AlterarSenha (@PathParam("id") Long id,@PathParam("senhaAtual") String senhaAtual, @PathParam("novaSenha") String novaSenha){
+
+        return service.alterarSenha(id, senhaAtual, novaSenha) ;
+    }
+
     @DELETE
-    @Path("/DeleteForId/{Id}")
+    @Path("/deleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
         service.delete(id);
     }
