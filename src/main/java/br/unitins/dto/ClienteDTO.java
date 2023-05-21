@@ -13,7 +13,9 @@ public record ClienteDTO(
     Endereco enderecos,
     Telefone telefone,
     List<Roupas> listaDeDesejo,
-    String nomeImagem
+    String nomeImagem,
+    String login,
+    String senha
 ) {
     
 }
