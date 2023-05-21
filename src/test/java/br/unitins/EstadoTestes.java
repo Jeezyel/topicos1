@@ -22,5 +22,15 @@ public class EstadoTestes {
              .statusCode(200);
 
     }
+
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/estados/count")
+          .then()
+            .statusCode(200);
+
+    }
     
 }

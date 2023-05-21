@@ -22,5 +22,15 @@ public class MunicipiosTestes {
              .statusCode(200);
 
     }
+
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/municipios/count")
+          .then()
+            .statusCode(200);
+
+    }
     
 }

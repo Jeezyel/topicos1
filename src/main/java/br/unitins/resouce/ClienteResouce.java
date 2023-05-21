@@ -6,7 +6,6 @@ import java.util.List;
 
 import br.unitins.service.ClienteService;
 import jakarta.inject.Inject;
-import jakarta.persistence.Id;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 

@@ -28,6 +28,16 @@ public class ClienteTestes {
 
     }
 
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/cliente/count")
+          .then()
+            .statusCode(200);
+
+    }
+
     
 
     

@@ -22,5 +22,15 @@ public class EnderecotTestes {
              .statusCode(200);
 
     }
+
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/endereco/count")
+          .then()
+            .statusCode(200);
+
+    }
     
 }

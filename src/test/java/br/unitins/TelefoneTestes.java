@@ -14,12 +14,22 @@ import io.quarkus.test.junit.QuarkusTest;
 @QuarkusTest
 public class TelefoneTestes {
 
-@Test
-public void getAllTeste (){
-    given()
-          .when().get("/telefone/gatAll")
+    @Test
+    public void getAllTeste (){
+        given()
+            .when().get("/telefone/gatAll")
+            .then()
+                .statusCode(200);
+    }
+
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/telefone/count")
           .then()
-             .statusCode(200);
-}
+            .statusCode(200);
+
+    }
     
 }

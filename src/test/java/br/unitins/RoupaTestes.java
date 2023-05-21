@@ -22,5 +22,15 @@ public class RoupaTestes {
              .statusCode(200);
 
     }
+
+    @Test
+    public void CountTeste(){
+
+        given()
+          .when().get("/Loja/count")
+          .then()
+            .statusCode(200);
+
+    }
     
 }
