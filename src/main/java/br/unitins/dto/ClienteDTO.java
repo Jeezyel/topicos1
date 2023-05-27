@@ -12,14 +12,7 @@ public record ClienteDTO(
     String nome,
     Endereco enderecos,
     Telefone telefone,
-    List<Roupas> listaDeDesejo,
-    String nomeImagem,
-    String login,
-    String senha
+    List<Roupas> listaDeDesejo
 ) {
-
-    public ClienteDTO(int i, String string, String string2, EnderecoDTO endereco, TelefoneDTO telefone2, String string3,
-            String string4, String string5, String string6) {
-    }
     
 }

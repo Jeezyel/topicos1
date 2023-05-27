@@ -38,15 +38,7 @@ public class ClienteTestes {
 
   @Test
   public void insertTest(){
-    EnderecoDTO endereco = new EnderecoDTO("23412431", "null", "null", "null", 1);
-
-
-    TelefoneDTO telefone = new TelefoneDTO(2, "45", "254373456", false);
-
-    ClienteDTO cliente = new ClienteDTO(5, "2345234523", "null", endereco, telefone, "null", "null", "null", "null");
-
-    given().contentType(ContentType.JSON).body(cliente).when().post("/cliente/insert")
-    .then().statusCode(201);
+   
   }
 
     

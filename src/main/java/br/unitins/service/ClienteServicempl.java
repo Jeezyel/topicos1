@@ -15,12 +15,17 @@ import jakarta.ws.rs.NotFoundException;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.model.Cliente;
+import br.unitins.model.Usuario;
 import br.unitins.repository.ClienteRepository;
+import br.unitins.repository.UsuarioRepository;
 
 @ApplicationScoped
 public class ClienteServicempl  implements ClienteService{
     @Inject
-    private ClienteRepository clienteRepository;
+    ClienteRepository clienteRepository;
+
+    @Inject
+    UsuarioRepository usuarioRepository;
 
 
     @Inject
@@ -53,8 +58,6 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
-        cliente.setLogin(clienteDTO.login());
-        cliente.setSenha(clienteDTO.senha());
 
         clienteRepository.persist(cliente);
 
@@ -107,14 +110,14 @@ public class ClienteServicempl  implements ClienteService{
     @Override
     public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
 
-        Cliente cliente = clienteRepository.findById(id);
+        Usuario usuario = usuarioRepository.findById(id);
 
-        if (cliente.getSenha() != senhaAtual ) {
+        if (usuario.getSenha() != senhaAtual ) {
             return false;
         }
         else{
             
-            cliente.setSenha(novaSenha);
+            usuario.setSenha(novaSenha);
 
             return true ;
         }

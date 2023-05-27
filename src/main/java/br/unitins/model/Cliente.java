@@ -13,8 +13,6 @@ public class Cliente extends DefaultEntity {
 
     private String cpf;
     private String nome;
-    private String login;
-    private String senha;
     @OneToOne
     private Endereco Endereco;
     @OneToOne
@@ -24,22 +22,18 @@ public class Cliente extends DefaultEntity {
     joinColumns = @JoinColumn(name = "cliente_id"),
     inverseJoinColumns = @JoinColumn(name = "roupa_id"))
     private List<Roupas> listaDeDesejo;
-    private String nomeImagem;
+    @OneToOne
+    private Usuario usuario;
 
 
 
 
-    public String getLogin() {
-        return login;
+    
+    public Usuario getUsuario() {
+        return usuario;
     }
-    public void setLogin(String login) {
-        this.login = login;
-    }
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     public Endereco getEndereco() {
         return Endereco;
@@ -71,12 +65,7 @@ public class Cliente extends DefaultEntity {
     public void setListaDeDesejo(List<Roupas> listaDeDesejo) {
         this.listaDeDesejo = listaDeDesejo;
     }
-    public String getNomeImagem() {
-        return nomeImagem;
-    }
-    public void setNomeImagem(String nomeImagem) {
-        this.nomeImagem = nomeImagem;
-    }
+    
     
     
 
