@@ -3,6 +3,8 @@ package br.unitins.resouce;
 
 import java.util.List;
 
+import org.jboss.logging.Logger;
+
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.ws.rs.Consumes;
@@ -27,12 +29,16 @@ import br.unitins.service.MunicipioService;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class MunicipioResouce {
+
+    private static final Logger LOG = Logger.getLogger(MunicipioResouce.class);
+
     @Inject
     MunicipioService municipioService;
 
     @GET
     @Path("/getAll")
     public List<MunicipioResponseDTO> getAll() {
+        LOG.info("buscando todos os municipios." );
         return municipioService.getAll();
     }
 
@@ -45,6 +51,8 @@ public class MunicipioResouce {
     @POST
     @Path("/insert")
     public Response insert(MunicipioDTO dto) {
+
+        LOG.infof("inserindo : %s ." , dto.nome());
         try {
             MunicipioResponseDTO municipio = municipioService.create(dto);
             return Response.status(Status.CREATED).entity(municipio).build();
