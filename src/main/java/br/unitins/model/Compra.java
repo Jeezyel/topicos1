@@ -1,6 +1,5 @@
 package br.unitins.model;
 
-import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -10,7 +9,6 @@ import jakarta.persistence.OneToOne;
 @Entity
 public class Compra extends DefaultEntity{
 
-    private Date data;
     private Double totalCompra;
     @OneToMany
     private List<ItemCompra> itemCompra;
@@ -18,14 +16,17 @@ public class Compra extends DefaultEntity{
     private Endereco endereco;
     @OneToMany
     private List<Cliente> cliente;
+    @OneToOne
+    private Comprovante comprovante;
 
 
     
-    public Date getData() {
-        return data;
+    
+    public Comprovante getComprovante() {
+        return comprovante;
     }
-    public void setData(Date data) {
-        this.data = data;
+    public void setComprovante(Comprovante comprovante) {
+        this.comprovante = comprovante;
     }
     public Double getTotalCompra() {
         return totalCompra;

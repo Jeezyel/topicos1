@@ -1,14 +1,15 @@
 package br.unitins.dto;
 
-import java.util.Date;
 import java.util.List;
+
+import br.unitins.model.Cliente;
 
 public record CompraDTO(
     long id,
-    Date data,
     Double totalCompra,
     List<ItemCompraDTO> itemCompra,
-    List<EnderecoDTO> endereco
+    List<EnderecoDTO> endereco,
+    List<Cliente> cliente
 ) {
 
     
