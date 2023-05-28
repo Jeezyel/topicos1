@@ -9,6 +9,7 @@ public class RoupasDTO extends ProdutoDTO{
     private String tipoDeTercido;
     private List<ClienteDTO> ListaDeDesejo;
     private Tamanho tamanho;
+    private Integer quantidade;
 
 
 
@@ -30,6 +31,12 @@ public class RoupasDTO extends ProdutoDTO{
     }
     public void setListaDeDesejo(List<ClienteDTO> listaDeDesejo) {
         ListaDeDesejo = listaDeDesejo;
+    }
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
 
