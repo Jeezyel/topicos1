@@ -9,11 +9,11 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "id")
 public class Roupas extends Produto {
 
+    private Integer quantidade;
     @Column(nullable = false , length = 40)
     private String tipoDeTercido;
     @Column(nullable = false)
     private Tamanho tamanho;
-    private Integer quantidade;
 /*
  */
 
