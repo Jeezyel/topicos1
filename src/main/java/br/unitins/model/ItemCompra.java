@@ -7,7 +7,7 @@ import jakarta.persistence.OneToMany;
 
 @Entity
 public class ItemCompra extends DefaultEntity {
-
+    
     private Integer quantidade;
     private Double preco;
     @OneToMany
