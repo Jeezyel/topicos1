@@ -6,13 +6,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 import org.junit.jupiter.api.Test;
-
-import br.unitins.dto.ClienteDTO;
-import br.unitins.dto.EnderecoDTO;
-import br.unitins.dto.TelefoneDTO;
 import br.unitins.service.ClienteService;
 import io.quarkus.test.junit.QuarkusTest;
-import io.restassured.http.ContentType;
 import jakarta.inject.Inject;
 
 @QuarkusTest
@@ -36,10 +31,7 @@ public class ClienteTestes {
 
   }
 
-  @Test
-  public void insertTest(){
-   
-  }
+  
 
     
 
