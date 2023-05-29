@@ -4,7 +4,7 @@ import java.util.Set;
 
 import br.unitins.model.Perfil;
 
-public record UsuaroDTO( 
+public record UsuarioDTO( 
 
 long id,
 String login,
