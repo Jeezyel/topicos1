@@ -1,10 +1,8 @@
 package br.unitins.dto;
 
-import java.util.List;
 
 import br.unitins.model.Compra;
 import br.unitins.model.Comprovante;
-import br.unitins.model.ItemCompra;
 
 public record ComprovanteReponseDTO(
     Compra compra,

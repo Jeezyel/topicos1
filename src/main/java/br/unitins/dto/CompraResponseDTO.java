@@ -1,6 +1,5 @@
 package br.unitins.dto;
 
-import java.util.Date;
 import java.util.List;
 
 import br.unitins.model.Cliente;
