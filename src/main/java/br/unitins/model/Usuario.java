@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Usuario extends DefaultEntity {
@@ -18,12 +19,20 @@ public class Usuario extends DefaultEntity {
     @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
     @Column(name = "perfil", length = 30)
     private Set<Perfil> perfis;
+    @OneToOne
+    private Cliente cliente;
 
 
 
 
 
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     public String getNomeImagem() {
         return nomeImagem;
     }
