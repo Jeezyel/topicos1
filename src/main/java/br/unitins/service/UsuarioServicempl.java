@@ -22,7 +22,7 @@ public class UsuarioServicempl implements UsuarioService {
     @Override
     public List<UsuarioResponseDTO> getAll() {
 
-        List<Usuario> listaUsuarios = usuarioRepository.listAll();
+        List<Usuario> listaUsuarios =  (List<Usuario>) usuarioRepository.findAll();
 
         return listaUsuarios.stream().map(UsuarioResponseDTO::new).collect(Collectors.toList());
     }

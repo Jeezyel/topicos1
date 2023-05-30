@@ -3,13 +3,18 @@ package br.unitins.resouce;
 //import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
+import br.unitins.aplication.Result;
+import br.unitins.dto.UsuarioDTO;
 import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.service.UsuarioService;
+import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.validation.ConstraintViolationException;
 
 //import com.oracle.svm.core.annotate.Inject;
 
@@ -17,8 +22,13 @@ import jakarta.inject.Inject;
 //import br.unitins.repository.ClienteRepository;
 //import br.unitins.service.ClienteService;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.core.Response.Status;
 //import jakarta.ws.rs.core.Response;
 //import net.bytebuddy.asm.Advice.Return;
 import jakarta.ws.rs.Produces;
@@ -30,13 +40,56 @@ import jakarta.ws.rs.Produces;
 public class UsuarioLogadoResouce {
 
     @Inject
-    UsuarioService usuarioService;
+    UsuarioServicempl usuarioService;
     
     @GET
+    @Path("/getall")
     @RolesAllowed({"Admin"})
     public List<UsuarioResponseDTO> getAll() {
 
         return usuarioService.getAll();
+    }
+
+    @POST
+    @Path("/insert")
+    @RolesAllowed({"Admin","User"})
+    public Response insert(UsuarioDTO usuarioDto) {
+
+        try {
+
+            return Response
+                    .status(Status.CREATED) // 201
+                    .entity(usuarioService.insert(usuarioDto))
+                    .build();
+        } catch (ConstraintViolationException e) {
+
+            Result result = new Result(e.getConstraintViolations());
+
+            return Response
+                    .status(Status.NOT_FOUND)
+                    .entity(result)
+                    .build();
+        }
+    }
+
+    @DELETE
+    @Path("/delete{id}")
+    @RolesAllowed({"Admin","User"})
+    public Response delete(@PathParam("id") Long id) throws IllegalArgumentException, NotFoundException {
+
+        usuarioService.delete(id);
+
+        return Response
+                .status(Status.NO_CONTENT)
+                .build();
+    }
+
+    @GET
+    @Path("/getbyid{id}")
+    @RolesAllowed({"Admin"})
+    public UsuarioResponseDTO getById(@PathParam("id") Long id) throws NotFoundException {
+
+        return usuarioService.getById(id);
     }
 
    /*  @Inject

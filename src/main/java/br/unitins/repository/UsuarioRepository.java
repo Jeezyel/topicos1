@@ -9,9 +9,6 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class UsuarioRepository implements PanacheRepository<Usuario>{
 
-
-
-
     public List<Usuario> findByNomeList(String Login){
         if(Login == null){
             return null;
