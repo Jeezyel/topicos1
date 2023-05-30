@@ -1,6 +1,7 @@
 package br.unitins.resouce;
 
 import jakarta.ws.rs.Produces;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
@@ -23,7 +24,7 @@ import br.unitins.service.RoupaService;
 
 import java.util.List;
 
-@Path("/Loja")
+@Path("/roupa")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class RoupasResouce  {
@@ -37,6 +38,7 @@ public class RoupasResouce  {
     // buscar tudo
     @GET
     @Path("/getAll")
+    @RolesAllowed({"Admin","User"})
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResponseDTO> getAll(){
 

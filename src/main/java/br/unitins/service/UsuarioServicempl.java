@@ -94,6 +94,14 @@ public class UsuarioServicempl implements UsuarioService {
 
     }
 
+    public Usuario getByLoginUsuario(String login) {
+        
+        Usuario usuario = (Usuario) usuarioRepository.findByNome(login);
+
+        return usuario;
+
+    }
+
     @Override
     public void update(Long id, UsuarioDTO dadosPessoaisDTO) {
         // TODO Auto-generated method stub

@@ -7,9 +7,12 @@ import jakarta.ws.rs.core.Response;
 
 import java.util.List;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
+
 import br.unitins.aplication.Result;
 import br.unitins.dto.UsuarioDTO;
 import br.unitins.dto.UsuarioResponseDTO;
+import br.unitins.model.Usuario;
 import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -41,6 +44,23 @@ public class UsuarioLogadoResouce {
 
     @Inject
     UsuarioServicempl usuarioService;
+
+    @Inject
+    JsonWebToken tokenJwt;
+
+    @GET
+    @Path("/dados-pessoais")
+    @RolesAllowed({ "User" })
+    public Response getDadosPessoais() {
+
+        String login = tokenJwt.getSubject();
+
+        Usuario usuario = usuarioService.getByLoginUsuario(login);
+
+        UsuarioResponseDTO dadosPessoaisUsuario = new UsuarioResponseDTO(usuario);
+
+        return Response.ok(dadosPessoaisUsuario).build();
+    }
     
     @GET
     @Path("/getall")

@@ -18,4 +18,5 @@ Cliente cliente
         this(usuario.getLogin(), usuario.getSenha(), usuario.getNomeImagem(), usuario.getPerfis(), usuario.getCliente());
         
     }
+    
 }
