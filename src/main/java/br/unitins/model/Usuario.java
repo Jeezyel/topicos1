@@ -1,6 +1,7 @@
 package br.unitins.model;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -56,6 +57,9 @@ public class Usuario extends DefaultEntity {
     }
     public void setPerfis(Set<Perfil> perfis) {
         this.perfis = perfis;
+    }
+    public Stream<Usuario> stream() {
+        return null;
     }
     
 }

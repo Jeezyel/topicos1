@@ -18,7 +18,7 @@ public interface UsuarioService {
     
         UsuarioResponseDTO insert(UsuarioDTO usuarioDto);
     
-        void delete(Long id);
+        void delete(String login);
     
         void deleteProdutoFromListaDesejo(Long id, Long idProduto);
     
@@ -32,7 +32,7 @@ public interface UsuarioService {
     
         Usuario getByLoginAndSenha(String login, String senha);
     
-        Usuario getByLogin(String login);
+        List<UsuarioResponseDTO> getByLogins(String login);
     
         void update(Long id, UsuarioDTO dadosPessoaisDTO);
     

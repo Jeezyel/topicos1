@@ -40,9 +40,9 @@ public class UsuarioServicempl implements UsuarioService {
     }
 
     @Override
-    public void delete(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    public void delete(String login) {
+
+        usuarioRepository.deleteForLogin(login);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class UsuarioServicempl implements UsuarioService {
 
     @Override
     public Long count() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'count'");
+        
+        return usuarioRepository.count();
     }
 
     @Override
@@ -76,9 +76,22 @@ public class UsuarioServicempl implements UsuarioService {
     }
 
     @Override
-    public Usuario getByLogin(String login) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getByLogin'");
+    public List<UsuarioResponseDTO> getByLogins(String login) {
+        
+
+        List<Usuario> usuario = usuarioRepository.findByNomeList(login);
+
+        return usuario.stream().map(UsuarioResponseDTO::new).collect(Collectors.toList());
+
+    }
+
+
+    public UsuarioResponseDTO getByLogin(String login) {
+        
+        Usuario usuario = (Usuario) usuarioRepository.findByNome(login);
+
+        return new UsuarioResponseDTO(usuario);
+
     }
 
     @Override
