@@ -7,9 +7,6 @@ import br.unitins.dto.ItemCompraDTO;
 
 
 public interface CompraService {
-    
-
-
 
     List<CompraResponseDTO> getAll (Long idUsuario);
 
