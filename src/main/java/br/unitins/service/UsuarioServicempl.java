@@ -115,9 +115,21 @@ public class UsuarioServicempl implements UsuarioService {
     }
 
     @Override
-    public void update(Long id, String nomeImagem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+    public void updateVoid (Long id, String nomeImagem) {
+        
+
+        Usuario entity = usuarioRepository.findById(id);
+
+        entity.setNomeImagem(nomeImagem);
+    }
+    public UsuarioResponseDTO update(Long id, String nomeImagem) {
+        
+
+        Usuario entity = usuarioRepository.findById(id);
+
+        entity.setNomeImagem(nomeImagem);
+
+        return new UsuarioResponseDTO(entity);
     }
 
     @Override

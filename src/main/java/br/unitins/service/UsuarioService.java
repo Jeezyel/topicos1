@@ -38,7 +38,7 @@ public interface UsuarioService {
     
         void update(Long id, EnderecoDTO enderecoDTO);
     
-        void update(Long id, String nomeImagem);
+        void updateVoid(Long id, String nomeImagem);
     
         void updateTelefonePrincipal(Long id, TelefoneDTO telefonePrincipalDTO);
     

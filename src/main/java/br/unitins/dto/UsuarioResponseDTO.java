@@ -7,6 +7,8 @@ import br.unitins.model.Perfil;
 import br.unitins.model.Usuario;
 
 public record UsuarioResponseDTO(
+    
+Long id,
 String login,
 String senha,
 String nomeImagem,
@@ -15,7 +17,7 @@ Cliente cliente
 ) {
     public UsuarioResponseDTO(Usuario usuario){
 
-        this(usuario.getLogin(), usuario.getSenha(), usuario.getNomeImagem(), usuario.getPerfis(), usuario.getCliente());
+        this(usuario.getId(), usuario.getLogin(), usuario.getSenha(), usuario.getNomeImagem(), usuario.getPerfis(), usuario.getCliente());
         
     }
     
