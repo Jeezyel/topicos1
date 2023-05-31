@@ -10,7 +10,7 @@ public interface CompraService {
 
     List<CompraResponseDTO> getAll (Long idUsuario);
 
-    CompraResponseDTO getCompraEmAndamento (Long idUsuario);
+    CompraResponseDTO getCompraEmAndamento (String loginn);
     
     void insertItemIntoCompra (Long idCompra, ItemCompraDTO itemCompraDTO);
 

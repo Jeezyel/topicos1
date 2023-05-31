@@ -88,7 +88,7 @@ public class UsuarioServicempl implements UsuarioService {
 
     public UsuarioResponseDTO getByLogin(String login) {
         
-        Usuario usuario = (Usuario) usuarioRepository.findByNome(login);
+        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
 
         return new UsuarioResponseDTO(usuario);
 
@@ -96,7 +96,7 @@ public class UsuarioServicempl implements UsuarioService {
 
     public Usuario getByLoginUsuario(String login) {
         
-        Usuario usuario = (Usuario) usuarioRepository.findByNome(login);
+        Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);
 
         return usuario;
 
