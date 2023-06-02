@@ -8,6 +8,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import br.unitins.aplication.Result;
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.dto.ItemCompraDTO;
+import br.unitins.model.Cliente;
 import br.unitins.model.Compra;
 import br.unitins.model.Usuario;
 import br.unitins.repository.CompraRepository;
@@ -37,12 +38,24 @@ public class CompraServicempl implements CompraService{
 
     @Override
     public CompraResponseDTO getCompraEmAndamento(String loginn) {
+        return null;
+        /* 
 
         String login = tokenJwt.getSubject();
 
+        //encontrando o cliente 
+
+        Compra compra ;
+        Usuario usuario;
+
+        if ( compra.getUsuario().getLogin() == loginn) {
+            usuario = compra.getUsuario();
+        }
 
 
-        Usuario usuario = usuarioService.getByLoginUsuario(loginn);
+
+
+
 
         try {
 
@@ -53,13 +66,13 @@ public class CompraServicempl implements CompraService{
             Result result = new Result(e.getMessage(), false);
 
             return Response.status(Status.NOT_FOUND).entity(result).build();
-        }
+        }*/
     }
 
     @Override
     public void insertItemIntoCompra(Long idCompra, ItemCompraDTO itemCompraDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertItemIntoCompra'");
+        
+        
     }
 
     @Override

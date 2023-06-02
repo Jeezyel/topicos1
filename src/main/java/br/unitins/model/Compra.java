@@ -18,6 +18,7 @@ public class Compra extends DefaultEntity{
     private List<Cliente> cliente;
     @OneToOne
     private Comprovante comprovante;
+    private Usuario usuario;
 
 
     
@@ -49,7 +50,17 @@ public class Compra extends DefaultEntity{
     public List<Cliente> getCliente() {
         return cliente;
     }
+    public Cliente getCliente(int i) {
+        
+        return cliente.get(i);
+    }
     public void setCliente(List<Cliente> cliente) {
         this.cliente = cliente;
+    }
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
