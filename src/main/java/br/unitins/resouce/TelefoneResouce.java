@@ -7,6 +7,9 @@ import java.util.List;
 import br.unitins.service.TelefoneService;
 
 
+import org.jboss.logging.Logger;
+
+
 import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
 import jakarta.inject.Inject;
@@ -26,6 +29,9 @@ import jakarta.ws.rs.Produces;
 @Produces(MediaType.APPLICATION_JSON)
 public class TelefoneResouce {
 
+    
+    private static final Logger LOG = Logger.getLogger(TelefoneResouce.class);
+
     @Inject
     TelefoneService service;
 
@@ -33,12 +39,17 @@ public class TelefoneResouce {
     @GET
     @Path("/gatAll")
     public List<TelefoneResponseDTO> getAll(){
+
+        LOG.info("buscnado todos os telefones");
         return service.getAll();
     }
 
     @GET
     @Path("/searchForId/{Id}")
     public TelefoneResponseDTO searchForId(@PathParam("Id") Long Id){
+
+        
+        LOG.info("buscnado telefone por id");
         return service.findById(Id);
     }
 
@@ -48,6 +59,7 @@ public class TelefoneResouce {
     @Transactional
     public TelefoneResponseDTO insert(TelefoneDTO telefoneDTO) {
         
+        LOG.info("criando telefone");
         return service.create(telefoneDTO);
     }
     // update
@@ -56,24 +68,31 @@ public class TelefoneResouce {
     @Transactional
     public TelefoneResponseDTO update(@PathParam("id") Long id, TelefoneDTO telefoneDTO) {
         
+        LOG.info("atualizando o telefone selecionado pelo id");
         return service.update(id , telefoneDTO);
     }
 
     @DELETE
     @Path("/DeleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
+
+        LOG.info("selecionado o telefone e apagando o cadastro");
         service.delete(id);
     }
 
     @GET
     @Path("/count")
     public long count(){
+        
+        LOG.info("count");
         return service.count();
     }
 
     @GET
     @Path("/searchForName/{name}")
     public List<TelefoneResponseDTO> searchForName(@PathParam("name") String name){
+
+        LOG.info("procurando por nome do telefone");
         return service.findByNome(name);
     }
 }

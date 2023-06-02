@@ -15,7 +15,6 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.UsuarioDTO;
 import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
-import br.unitins.model.Usuario;
 import br.unitins.service.FileService;
 import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;

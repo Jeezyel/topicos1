@@ -44,7 +44,7 @@ public class ClienteResouce {
     @Path("/searchForId/{Id}")
     public ClienteResponseDTO searchForId(@PathParam("Id") Long Id){
 
-        LOG.info("buscnado todos os clientes por id");
+        LOG.info("buscnado clientes por id");
         return service.findById(Id);
     }
 
@@ -80,7 +80,7 @@ public class ClienteResouce {
     @Path("/deleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
 
-        LOG.info("selecionado o cliente e apagndo o cadastro");
+        LOG.info("selecionado o cliente e apagando o cadastro");
         service.delete(id);
     }
 

@@ -3,6 +3,9 @@ package br.unitins.resouce;
 
 import java.util.List;
 
+
+import org.jboss.logging.Logger;
+
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -28,6 +31,9 @@ import br.unitins.service.EstadoService;
 @Produces(MediaType.APPLICATION_JSON)
 public class EstadoResouce {
 
+    
+    private static final Logger LOG = Logger.getLogger(EstadoResouce.class);
+
     @Inject
     private EstadoRepository repository;
 
@@ -39,6 +45,7 @@ public class EstadoResouce {
     public List<EstadosResponseDTO> getAll() {
         
         // seleciona todas as Estados do banco de dados
+        LOG.info("buscnado todos os estados");
          return service.getAll();
 
     }
@@ -48,6 +55,7 @@ public class EstadoResouce {
     @Transactional
     public EstadosResponseDTO insert(EstadosDTO estado) {
         
+        LOG.info("buscnado estado por id");
         return service.create(estado);
     }
 
@@ -56,31 +64,33 @@ public class EstadoResouce {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Transactional
-    public Estados update(@PathParam("id") Long id, Estados estado) {
+    public EstadosResponseDTO update(@PathParam("id") Long id, EstadosDTO estado) {
 
-        Estados entity = repository.findById(id);
-
-         entity.setNome(estado.getNome());
-         entity.setSigla(estado.getSigla());
-
-        return entity;
+        LOG.info("atualizando o estado selecionado pelo id");
+        return service.update(id, estado);
     }
 
     @DELETE
     @Path("/DeleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
+        
+        LOG.info("selecionado o estado e apagando o cadastro");
         service.delete(id);
     }
 
     @GET
     @Path("/count")
     public long count(){
+
+        LOG.info("count");
         return repository.count();
     }
 
     @GET
     @Path("/search/{nome}")
     public List<Estados> search(@PathParam("nome") String nome){
+
+        LOG.info("procurando por nome do estado");
         return repository.findByNome(nome);
     }
 }

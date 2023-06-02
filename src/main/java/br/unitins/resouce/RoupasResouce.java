@@ -9,12 +9,16 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
+
+
+import org.jboss.logging.Logger;
 
 import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
@@ -29,6 +33,9 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class RoupasResouce  {
 
+    
+    private static final Logger LOG = Logger.getLogger(RoupasResouce.class);
+
     @Inject
     RoupasRepository roupasRepository;
 
@@ -42,93 +49,104 @@ public class RoupasResouce  {
     @Produces(MediaType.APPLICATION_JSON)
     public List<RoupasResponseDTO> getAll(){
 
+        LOG.info("buscnado todas as roupas");
         return roupaServicempl.getAll();
 
     }
-/* 
-    @POST
-    @Transactional
-    public Roupas addList(Roupas roupas){
-        roupas.persist();
 
-        return roupas;
 
-    }
-*/
     //alterar 
     @PATCH
-    @Path("/{ID}")
+    @Path("/update/{ID}")
     @Transactional
-    public RoupasResponseDTO att (@PathParam("/ID") Long ID , RoupasDTO roupas ){
+    public RoupasResponseDTO update (@PathParam("/ID") Long ID , RoupasDTO roupas ){
+
+        
+        LOG.info("atualizando a roupa selecionado pelo id");
         RoupasResponseDTO roupasDTO ;
 
         if(ID == null){
             return null;
         }
 
-        roupasDTO = roupaServicempl.updata(ID, roupas);
+        roupasDTO = roupaServicempl.update(ID, roupas);
 
         return roupasDTO ;
     }
     //deletar por id
     @DELETE
-    @Path("/{ID}")
+    @Path("/deleteRoupas/{ID}")
     @Transactional
     public void deleteRoupas(@PathParam("ID") Long ID ){
 
+        LOG.info("selecionado a roupa e apagando o cadastro");
         roupaServicempl.delete(ID);
 
     }
 
     //deletar por fragmento da marca retornando um resultado 
     @GET
-    @Path("/{nameMarca}")
+    @Path("/searchForName/{nameMarca}")
     public RoupasResponseDTO searchForName(@PathParam("nameMarca") String nameMarca){
 
-        
+        LOG.info("selecionado a roupa e apagando o cadastro usando palavra fragmentada");
         return nameMarca == null ? null : roupaServicempl.findByName(nameMarca); 
 
     }
     //deletar por marca
     @DELETE
-    @Path("/{nameMarca}")
+    @Path("/DeletForName/{nameMarca}")
     @Transactional
     public void DeletForName(@PathParam("nameMarca") String nameMarca ){
+        LOG.info("apagando pelo nome inteiro");
         roupaServicempl.findByName(nameMarca);
         
     }
-    //alterar tudo
+    //alterar so que usando outro metodo de escrida 
     @PUT
-    @Path("/{id}")
+    @Path("/alter/{id}")
     public RoupasResponseDTO alterRoupas(@PathParam("id")Long id , RoupasDTO roupas){
 
-
-        return id == null || roupas == null ? null : roupaServicempl.updata(id, roupas);
+        LOG.info("alterar so que usando outro metodo de escrida");
+        return id == null || roupas == null ? null : roupaServicempl.update(id, roupas);
 
     }
     //procurar por fragmento da marca retornando um lista de resultado 
     @GET
-    @Path("/{fragmentoMarca}")
+    @Path("/searchForFragmento/{fragmentoMarca}")
     public List<RoupasResponseDTO> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
 
-
+        LOG.info("buscando pro fragmento");
         return roupaServicempl.findByNameList(fragmentoMarca);
     } 
 
     @GET
     @Path("/count")
     public long count(){
+        
+        LOG.info("count");
         return roupaServicempl.count();
     }
 
     //criar
+    @POST
+    @Path("/insert")
+    @Transactional
     public Response insert(RoupasDTO dto){
+        
+        LOG.info("criando roupas");
         try {
             RoupasResponseDTO roupas = roupaServicempl.create(dto); 
             return Response.status(Status.CREATED).entity(roupas).build();
         } catch (ConstraintViolationException e) {
             Result result = new Result(e.getConstraintViolations());
             return Response.status(Status.NOT_FOUND).entity(result).build();
+        } catch(Exception e){
+            
+        LOG.fatal("erro não listado, fatal");
+        
+        Result result = new Result(e.getMessage());
+        return Response.status(Status.NOT_FOUND).entity(result).build();
         }
         
     }

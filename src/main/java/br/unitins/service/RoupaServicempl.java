@@ -58,7 +58,7 @@ public class RoupaServicempl implements RoupaService {
 	}
 
 	@Override
-	public RoupasResponseDTO updata(long id, RoupasDTO dto) throws ConstraintViolationException {
+	public RoupasResponseDTO update(long id, RoupasDTO dto) throws ConstraintViolationException {
 		Roupas newRoupa = roupasRepository.findById(id);
         newRoupa.setValor(dto.getValor());
         newRoupa.setCor(dto.getCor());

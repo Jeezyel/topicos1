@@ -13,7 +13,7 @@ public interface RoupaService {
 
     RoupasResponseDTO create(RoupasDTO dto);
 
-    RoupasResponseDTO updata(long id , RoupasDTO dto);
+    RoupasResponseDTO update(long id , RoupasDTO dto);
 
     void delete(long id);
 

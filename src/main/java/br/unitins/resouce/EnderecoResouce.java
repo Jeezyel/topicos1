@@ -4,6 +4,9 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
+
+import org.jboss.logging.Logger;
+
 import br.unitins.service.EnderecoService;
 import jakarta.inject.Inject;
 
@@ -23,6 +26,10 @@ import jakarta.ws.rs.Produces;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class EnderecoResouce {
+
+    
+    private static final Logger LOG = Logger.getLogger(EnderecoResouce.class);
+
     @Inject
     private EnderecoService service;
 
@@ -30,12 +37,15 @@ public class EnderecoResouce {
     @GET
     @Path("/getAll")
     public List<EnderecoResponseDTO> getAll(){
+        LOG.info("buscnado todos os enderecos");
         return service.getAll();
     }
 
     @GET
     @Path("/searchForId/{Id}")
     public EnderecoResponseDTO searchForId(@PathParam("Id") Long Id){
+
+        LOG.info("buscnado endereco por id");
         return service.findById(Id);
     }
 
@@ -45,6 +55,7 @@ public class EnderecoResouce {
     @Transactional
     public EnderecoResponseDTO insert(EnderecoDTO enderecoDTO) {
         
+        LOG.info("criando endereco");
         return service.create(enderecoDTO);
     }
     // update
@@ -53,24 +64,32 @@ public class EnderecoResouce {
     @Transactional
     public EnderecoResponseDTO update(@PathParam("id") Long id, EnderecoDTO enderecoDTO) {
         
+        LOG.info("atualizando o endereco selecionado pelo id");
         return service.update(id , enderecoDTO);
     }
 
     @DELETE
     @Path("/DeleteForId/{Id}")
     public void DeleteForId(@PathParam("Id") long id){
+
+        
+        LOG.info("selecionado o endereco e apagando o cadastro");
         service.delete(id);
     }
 
     @GET
     @Path("/count")
     public long count(){
+
+
+        LOG.info("count");
         return service.count();
     }
 
     @GET
     @Path("/searchForName/{name}")
     public List<EnderecoResponseDTO> searchForName(@PathParam("name") String name){
+        LOG.info("procurando por nome do endereco");
         return service.findByNome(name);
     }
 }
