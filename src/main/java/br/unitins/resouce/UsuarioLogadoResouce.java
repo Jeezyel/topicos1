@@ -12,19 +12,19 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.aplication.Result;
+import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
-import br.unitins.dto.UsuarioDTO;
-import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
+import br.unitins.model.Cliente;
+import br.unitins.service.ClienteService;
 import br.unitins.service.FileService;
-import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolationException;
 
 //import com.oracle.svm.core.annotate.Inject;
 
-//import br.unitins.dto.ClienteResponseDTO;
+import br.unitins.dto.ClienteResponseDTO;
 //import br.unitins.repository.ClienteRepository;
 //import br.unitins.service.ClienteService;
 import jakarta.ws.rs.Consumes;
@@ -49,7 +49,7 @@ import jakarta.ws.rs.Produces;
 public class UsuarioLogadoResouce {
 
     @Inject
-    UsuarioServicempl usuarioService;
+    ClienteService ClienteService;
 
     @Inject
     JsonWebToken tokenJwt;
@@ -77,7 +77,7 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        ClienteResponseDTO usuario = usuarioService.getByLogin(login);
+        ClienteResponseDTO usuario = ClienteService.findByLogin(login);
 
         return usuario;
     }
@@ -98,11 +98,11 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        ClienteResponseDTO usuario =  usuarioService.getByLogin(login);
+        Cliente cliente =  ClienteService.findByLoginCli(login);
 
-        usuario = usuarioService.update(usuario.id(), nomeImagem);
+        cliente = ClienteService.update(cliente.getId(), nomeImagem);
 
-        return Response.ok(usuario).build();
+        return Response.ok(cliente).build();
 
     }
 
@@ -121,19 +121,19 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin"})
     public List<ClienteResponseDTO> getAll() {
 
-        return usuarioService.getAll();
+        return ClienteService.getAll();
     }
 
     @POST
     @Path("/insert")
     @RolesAllowed({"Admin","User"})
-    public Response insert(UsuarioDTO usuarioDto) {
+    public Response insert(ClienteDTO clienteDTO) {
 
         try {
 
             return Response
                     .status(Status.CREATED) // 201
-                    .entity(usuarioService.insert(usuarioDto))
+                    .entity(ClienteService.create(clienteDTO))
                     .build();
         } catch (ConstraintViolationException e) {
 
@@ -152,7 +152,7 @@ public class UsuarioLogadoResouce {
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
 
 
-        usuarioService.delete(login);
+        ClienteService.deleteByLogin(login);
 
         return Response
                 .status(Status.NO_CONTENT)
@@ -175,7 +175,7 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin"})
     public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
 
-        return usuarioService.getByLogin(login);
+        return ClienteService.findByLogin(login);
     }
 
    /*  @Inject

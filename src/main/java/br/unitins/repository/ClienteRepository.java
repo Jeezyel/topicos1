@@ -24,6 +24,7 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
         }
         return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").firstResult();
     }
+
     
 
     public List<Cliente> findByNomeList(String nome){

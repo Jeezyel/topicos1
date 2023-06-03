@@ -10,7 +10,6 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import jakarta.ws.rs.NotFoundException;
-import jakarta.ws.rs.client.Client;
 
 import org.jboss.logging.Logger;
 
@@ -180,6 +179,13 @@ public class ClienteServicempl  implements ClienteService{
         Cliente cliente = clienteRepository.findByLogin(login);
 
         return cliente;
+    }
+
+    @Override
+    public void deleteByLogin(String login) {
+        Cliente cliente = clienteRepository.findByLogin(login);
+
+        clienteRepository.delete(cliente);
     }
 
    

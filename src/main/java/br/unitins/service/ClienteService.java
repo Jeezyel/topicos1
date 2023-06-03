@@ -6,7 +6,6 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.model.Cliente;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.ws.rs.client.Client;
 
 @ApplicationScoped
 public interface ClienteService {
@@ -27,6 +26,8 @@ public interface ClienteService {
     ClienteResponseDTO update(Long id, ClienteDTO clienteDTO);
 
     void delete(Long id);
+
+    void deleteByLogin(String login);
 
     // recursos extras
 
