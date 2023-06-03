@@ -12,6 +12,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.aplication.Result;
+import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.UsuarioDTO;
 import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
@@ -72,11 +73,11 @@ public class UsuarioLogadoResouce {
 
     @GET
     @RolesAllowed({"Admin","User"})
-    public UsuarioResponseDTO getUsuario() {
+    public ClienteResponseDTO getUsuario() {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        UsuarioResponseDTO usuario = usuarioService.getByLogin(login);
+        ClienteResponseDTO usuario = usuarioService.getByLogin(login);
 
         return usuario;
     }
@@ -97,7 +98,7 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        UsuarioResponseDTO usuario =  usuarioService.getByLogin(login);
+        ClienteResponseDTO usuario =  usuarioService.getByLogin(login);
 
         usuario = usuarioService.update(usuario.id(), nomeImagem);
 
@@ -118,7 +119,7 @@ public class UsuarioLogadoResouce {
     @GET
     @Path("/getall")
     @RolesAllowed({"Admin"})
-    public List<UsuarioResponseDTO> getAll() {
+    public List<ClienteResponseDTO> getAll() {
 
         return usuarioService.getAll();
     }
@@ -172,7 +173,7 @@ public class UsuarioLogadoResouce {
     @GET
     @Path("/getbylogin{login}")
     @RolesAllowed({"Admin"})
-    public UsuarioResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
+    public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
 
         return usuarioService.getByLogin(login);
     }

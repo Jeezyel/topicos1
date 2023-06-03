@@ -3,11 +3,11 @@ package br.unitins.resouce;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import br.unitins.aplication.Result;
+import br.unitins.dto.ClienteResponseDTO;
+import br.unitins.model.Cliente;
 import br.unitins.model.Usuario;
+import br.unitins.service.ClienteService;
 import br.unitins.service.CompraService;
-import br.unitins.service.CompraServicempl;
-import br.unitins.service.UsuarioService;
-import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -30,7 +30,7 @@ public class CompraResouce {
     CompraService compraService;
 
     @Inject
-    UsuarioService usuarioService;
+    ClienteService clienteService;
 
     @Inject
     JsonWebToken tokenJwt;
@@ -45,8 +45,8 @@ public class CompraResouce {
         
 
         try {
-            Usuario usuario = usuarioService.getByLoginUsuario(login);
-            return Response.ok(compraService.getAll(usuario.getId())).build();
+            Cliente cliente = clienteService.findByLoginCli(login);
+            return Response.ok(compraService.getAll(cliente.getId())).build();
         } catch (NullPointerException e) {
 
             Result result = new Result(e.getMessage(), false);

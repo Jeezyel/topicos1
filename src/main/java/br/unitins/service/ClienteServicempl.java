@@ -10,6 +10,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
 import jakarta.ws.rs.NotFoundException;
+import jakarta.ws.rs.client.Client;
 
 import org.jboss.logging.Logger;
 
@@ -69,6 +70,10 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
+        cliente.setLogin(clienteDTO.login());
+        cliente.setSenha(clienteDTO.senha());
+        cliente.setNomeImagem(clienteDTO.nomeImagem());
+        cliente.setPerfis(clienteDTO.perfis());
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
         clienteRepository.persist(cliente);
@@ -86,8 +91,14 @@ public class ClienteServicempl  implements ClienteService{
         Cliente cliente = clienteRepository.findById(id);
 
         LOG.debug("modificando os dados do cliente ");
+
+        cliente.setCpf(clienteDTO.cpf());
+        cliente.setNome(clienteDTO.nome());
         cliente.setEndereco(clienteDTO.enderecos());
         cliente.setTelefone(clienteDTO.telefone());
+        cliente.setLogin(clienteDTO.login());
+        cliente.setNomeImagem(clienteDTO.nomeImagem());
+        cliente.setPerfis(clienteDTO.perfis());
         cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
 
@@ -154,6 +165,21 @@ public class ClienteServicempl  implements ClienteService{
         }
 
         
+    }
+
+    @Override
+    public ClienteResponseDTO findByLogin(String login) {
+
+        Cliente cliente = clienteRepository.findByLogin(login);
+
+        return new ClienteResponseDTO(cliente);
+    }
+
+    @Override
+    public Cliente findByLoginCli(String login) {
+        Cliente cliente = clienteRepository.findByLogin(login);
+
+        return cliente;
     }
 
    

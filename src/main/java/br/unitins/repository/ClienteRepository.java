@@ -18,6 +18,14 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
         return (Cliente) find("nome",  nome  ).firstResult();
     }
 
+    public Cliente findByLogin(String Login){
+        if(Login == null){
+            return null;
+        }
+        return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").firstResult();
+    }
+    
+
     public List<Cliente> findByNomeList(String nome){
         if(nome == null){
             return null;
