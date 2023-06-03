@@ -5,6 +5,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import br.unitins.aplication.Result;
 import br.unitins.model.Usuario;
 import br.unitins.service.CompraService;
+import br.unitins.service.CompraServicempl;
 import br.unitins.service.UsuarioService;
 import br.unitins.service.UsuarioServicempl;
 import jakarta.annotation.security.RolesAllowed;
@@ -29,7 +30,7 @@ public class CompraResouce {
     CompraService compraService;
 
     @Inject
-    UsuarioServicempl usuarioService;
+    UsuarioService usuarioService;
 
     @Inject
     JsonWebToken tokenJwt;
@@ -41,10 +42,10 @@ public class CompraResouce {
 
         String login = tokenJwt.getSubject();
 
-        Usuario usuario = usuarioService.getByLoginUsuario(login);
+        
 
         try {
-
+            Usuario usuario = usuarioService.getByLoginUsuario(login);
             return Response.ok(compraService.getAll(usuario.getId())).build();
         } catch (NullPointerException e) {
 

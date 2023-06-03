@@ -72,13 +72,13 @@ public class UsuarioLogadoResouce {
 
     @GET
     @RolesAllowed({"Admin","User"})
-    public Response getUsuario() {
+    public UsuarioResponseDTO getUsuario() {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
         UsuarioResponseDTO usuario = usuarioService.getByLogin(login);
 
-        return Response.ok(usuario).build();
+        return usuario;
     }
 
     @PATCH

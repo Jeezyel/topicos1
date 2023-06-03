@@ -8,13 +8,13 @@ import br.unitins.dto.ItemCompraDTO;
 
 public interface CompraService {
 
-    List<CompraResponseDTO> getAll (Long idUsuario);
+    public List<CompraResponseDTO> getAll (Long idUsuario);
 
-    CompraResponseDTO getCompraEmAndamento (String loginn);
+    public CompraResponseDTO getCompraEmAndamento (String loginn);
     
-    void insertItemIntoCompra (Long idCompra, ItemCompraDTO itemCompraDTO);
+    public void insertItemIntoCompra (Long idCompra, ItemCompraDTO itemCompraDTO);
 
-    void removeItemCompra (Long idUsuario, Long idItemCompra);
+    public void removeItemCompra (Long idUsuario, Long idItemCompra);
 
-    void finishCompra (Long idUsuario);
+    public void finishCompra (Long idUsuario);
 }

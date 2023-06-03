@@ -8,15 +8,6 @@ class Roupas{
 
 
 }
-class Usuario {
-    -id: long
-    - cpf: email
-    - nome: String
-    - login : String
-    - senha : String
-
-    + GetSet()
-}
 
 class Cliente{
     -id: long
@@ -116,11 +107,7 @@ class Boleto{
     -nomePagador:String
     -cpfPagador:String
 }
-class Comprovante{
-    -nomePagador:String
-    -nomeUsuario:String
-    -DateTime: LocalDateTime
-}
+
 
     pagamento <|-- Boleto
     pagamento <|-- Pix
@@ -128,13 +115,11 @@ class Comprovante{
     produto <|-- Roupas
 
     Endereco "*" <--*"1" Cliente
-    Cliente "1" --> "1" Usuario
     Cliente "*" --> "*" Roupas: listaDesejo
 
     Compra "1" *--> "*" ItemCompra
     Compra "*" --> "1" Cliente
     Compra "*"  --> "1" Endereco
-    Compra "1" --> "1" Comprovante
     
 
     ItemCompra "*" --> "1" Roupas

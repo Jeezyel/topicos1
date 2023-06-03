@@ -1,8 +1,12 @@
 package br.unitins.model;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
@@ -17,6 +21,14 @@ public class Cliente extends DefaultEntity {
     private Endereco Endereco;
     @OneToOne
     private Telefone telefone;
+    
+    private String login;
+    private String senha;
+    private String nomeImagem;
+    @ElementCollection
+    @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
+    @Column(name = "perfil", length = 30)
+    private Set<Perfil> perfis;
     @ManyToMany
     @JoinTable(name = "cliente_roupas",
     joinColumns = @JoinColumn(name = "cliente_id"),
@@ -64,6 +76,29 @@ public class Cliente extends DefaultEntity {
     }
     public void setListaDeDesejo(List<Roupas> listaDeDesejo) {
         this.listaDeDesejo = listaDeDesejo;
+    }public String getLogin() {
+        return login;
+    }
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    public String getSenha() {
+        return senha;
+    }
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    public String getNomeImagem() {
+        return nomeImagem;
+    }
+    public void setNomeImagem(String nomeImagem) {
+        this.nomeImagem = nomeImagem;
+    }
+    public Set<Perfil> getPerfis() {
+        return perfis;
+    }
+    public void setPerfis(Set<Perfil> perfis) {
+        this.perfis = perfis;
     }
     
     

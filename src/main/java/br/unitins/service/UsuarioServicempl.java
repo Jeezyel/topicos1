@@ -94,6 +94,7 @@ public class UsuarioServicempl implements UsuarioService {
 
     }
 
+    @Override
     public Usuario getByLoginUsuario(String login) {
         
         Usuario usuario = (Usuario) usuarioRepository.findByLogin(login);

@@ -33,6 +33,8 @@ public interface UsuarioService {
         Usuario getByLoginAndSenha(String login, String senha);
     
         List<UsuarioResponseDTO> getByLogins(String login);
+
+        Usuario getByLoginUsuario(String login);
     
         void update(Long id, UsuarioDTO dadosPessoaisDTO);
     
