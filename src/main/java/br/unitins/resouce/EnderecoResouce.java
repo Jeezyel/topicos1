@@ -8,6 +8,7 @@ import java.util.List;
 import org.jboss.logging.Logger;
 
 import br.unitins.service.EnderecoService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 
 import br.unitins.dto.EnderecoDTO;
@@ -36,6 +37,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/getAll")
+    @RolesAllowed({"Admin"})
     public List<EnderecoResponseDTO> getAll(){
         LOG.info("buscnado todos os enderecos");
         return service.getAll();
@@ -43,6 +45,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/searchForId/{Id}")
+    @RolesAllowed({"Admin","User"})
     public EnderecoResponseDTO searchForId(@PathParam("Id") Long Id){
 
         LOG.info("buscnado endereco por id");
@@ -52,6 +55,7 @@ public class EnderecoResouce {
     // create
     @POST
     @Path("/insert")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EnderecoResponseDTO insert(EnderecoDTO enderecoDTO) {
         
@@ -61,6 +65,7 @@ public class EnderecoResouce {
     // update
     @POST
     @Path("/update/{id}")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EnderecoResponseDTO update(@PathParam("id") Long id, EnderecoDTO enderecoDTO) {
         
@@ -70,6 +75,7 @@ public class EnderecoResouce {
 
     @DELETE
     @Path("/DeleteForId/{Id}")
+    @RolesAllowed({"Admin"})
     public void DeleteForId(@PathParam("Id") long id){
 
         
@@ -79,6 +85,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/count")
+    @RolesAllowed({"Admin"})
     public long count(){
 
 
@@ -88,6 +95,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/searchForName/{name}")
+    @RolesAllowed({"Admin","User"})
     public List<EnderecoResponseDTO> searchForName(@PathParam("name") String name){
         LOG.info("procurando por nome do endereco");
         return service.findByNome(name);

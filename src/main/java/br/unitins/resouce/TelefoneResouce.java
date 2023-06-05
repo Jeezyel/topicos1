@@ -12,6 +12,7 @@ import org.jboss.logging.Logger;
 
 import br.unitins.dto.TelefoneDTO;
 import br.unitins.dto.TelefoneResponseDTO;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -38,6 +39,7 @@ public class TelefoneResouce {
 
     @GET
     @Path("/gatAll")
+    @RolesAllowed({"Admin"})
     public List<TelefoneResponseDTO> getAll(){
 
         LOG.info("buscnado todos os telefones");
@@ -46,6 +48,7 @@ public class TelefoneResouce {
 
     @GET
     @Path("/searchForId/{Id}")
+    @RolesAllowed({"Admin","User"})
     public TelefoneResponseDTO searchForId(@PathParam("Id") Long Id){
 
         
@@ -56,6 +59,7 @@ public class TelefoneResouce {
     // create
     @POST
     @Path("/insert")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public TelefoneResponseDTO insert(TelefoneDTO telefoneDTO) {
         
@@ -65,6 +69,7 @@ public class TelefoneResouce {
     // update
     @POST
     @Path("/update/{id}")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public TelefoneResponseDTO update(@PathParam("id") Long id, TelefoneDTO telefoneDTO) {
         
@@ -74,6 +79,7 @@ public class TelefoneResouce {
 
     @DELETE
     @Path("/DeleteForId/{Id}")
+    @RolesAllowed({"Admin"})
     public void DeleteForId(@PathParam("Id") long id){
 
         LOG.info("selecionado o telefone e apagando o cadastro");
@@ -82,6 +88,7 @@ public class TelefoneResouce {
 
     @GET
     @Path("/count")
+    @RolesAllowed({"Admin"})
     public long count(){
         
         LOG.info("count");
@@ -90,6 +97,7 @@ public class TelefoneResouce {
 
     @GET
     @Path("/searchForName/{name}")
+    @RolesAllowed({"Admin","User"})
     public List<TelefoneResponseDTO> searchForName(@PathParam("name") String name){
 
         LOG.info("procurando por nome do telefone");

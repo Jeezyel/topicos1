@@ -58,6 +58,7 @@ public class RoupasResouce  {
     //alterar 
     @PATCH
     @Path("/update/{ID}")
+    @RolesAllowed({"Admin"})
     @Transactional
     public RoupasResponseDTO update (@PathParam("/ID") Long ID , RoupasDTO roupas ){
 
@@ -76,6 +77,7 @@ public class RoupasResouce  {
     //deletar por id
     @DELETE
     @Path("/deleteRoupas/{ID}")
+    @RolesAllowed({"Admin"})
     @Transactional
     public void deleteRoupas(@PathParam("ID") Long ID ){
 
@@ -87,6 +89,7 @@ public class RoupasResouce  {
     //deletar por fragmento da marca retornando um resultado 
     @GET
     @Path("/searchForName/{nameMarca}")
+    @RolesAllowed({"Admin"})
     public RoupasResponseDTO searchForName(@PathParam("nameMarca") String nameMarca){
 
         LOG.info("selecionado a roupa e apagando o cadastro usando palavra fragmentada");
@@ -96,6 +99,7 @@ public class RoupasResouce  {
     //deletar por marca
     @DELETE
     @Path("/DeletForName/{nameMarca}")
+    @RolesAllowed({"Admin"})
     @Transactional
     public void DeletForName(@PathParam("nameMarca") String nameMarca ){
         LOG.info("apagando pelo nome inteiro");
@@ -105,6 +109,7 @@ public class RoupasResouce  {
     //alterar so que usando outro metodo de escrida 
     @PUT
     @Path("/alter/{id}")
+    @RolesAllowed({"Admin"})
     public RoupasResponseDTO alterRoupas(@PathParam("id")Long id , RoupasDTO roupas){
 
         LOG.info("alterar so que usando outro metodo de escrida");
@@ -114,6 +119,7 @@ public class RoupasResouce  {
     //procurar por fragmento da marca retornando um lista de resultado 
     @GET
     @Path("/searchForFragmento/{fragmentoMarca}")
+    @RolesAllowed({"Admin"})
     public List<RoupasResponseDTO> searchForFragmento(@PathParam("fragmentoMarca") String fragmentoMarca){
 
         LOG.info("buscando pro fragmento");
@@ -122,6 +128,7 @@ public class RoupasResouce  {
 
     @GET
     @Path("/count")
+    @RolesAllowed({"Admin"})
     public long count(){
         
         LOG.info("count");
@@ -131,6 +138,7 @@ public class RoupasResouce  {
     //criar
     @POST
     @Path("/insert")
+    @RolesAllowed({"Admin"})
     @Transactional
     public Response insert(RoupasDTO dto){
         

@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -42,6 +43,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/getAll")
+    @RolesAllowed({"Admin"})
     public List<EstadosResponseDTO> getAll() {
         
         // seleciona todas as Estados do banco de dados
@@ -52,6 +54,7 @@ public class EstadoResouce {
 
     @POST
     @Path("/insert/{estado}")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EstadosResponseDTO insert(EstadosDTO estado) {
         
@@ -60,9 +63,8 @@ public class EstadoResouce {
     }
 
     @PUT
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/update/{id}")
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EstadosResponseDTO update(@PathParam("id") Long id, EstadosDTO estado) {
 
@@ -72,6 +74,7 @@ public class EstadoResouce {
 
     @DELETE
     @Path("/DeleteForId/{Id}")
+    @RolesAllowed({"Admin"})
     public void DeleteForId(@PathParam("Id") long id){
         
         LOG.info("selecionado o estado e apagando o cadastro");
@@ -80,6 +83,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/count")
+    @RolesAllowed({"Admin"})
     public long count(){
 
         LOG.info("count");
@@ -88,6 +92,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/search/{nome}")
+    @RolesAllowed({"Admin","User"})
     public List<Estados> search(@PathParam("nome") String nome){
 
         LOG.info("procurando por nome do estado");
