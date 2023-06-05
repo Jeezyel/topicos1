@@ -149,7 +149,7 @@ public class ClienteServicempl  implements ClienteService{
     @Override
     public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
         LOG.debug("buscando no banco ");
-        Cliente usuario = usuarioRepository.findById(id);
+        Cliente  usuario = usuarioRepository.findById(id);
 
         LOG.debug("verificando se a senha esta correta");
         if (usuario.getSenha() != senhaAtual ) {
