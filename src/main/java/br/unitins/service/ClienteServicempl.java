@@ -16,7 +16,6 @@ import org.jboss.logging.Logger;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.model.Cliente;
-import br.unitins.model.Usuario;
 import br.unitins.repository.ClienteRepository;
 import br.unitins.repository.UsuarioRepository;
 
@@ -150,7 +149,7 @@ public class ClienteServicempl  implements ClienteService{
     @Override
     public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
         LOG.debug("buscando no banco ");
-        Usuario usuario = usuarioRepository.findById(id);
+        Cliente usuario = usuarioRepository.findById(id);
 
         LOG.debug("verificando se a senha esta correta");
         if (usuario.getSenha() != senhaAtual ) {
@@ -186,6 +185,17 @@ public class ClienteServicempl  implements ClienteService{
         Cliente cliente = clienteRepository.findByLogin(login);
 
         clienteRepository.delete(cliente);
+    }
+
+    @Override
+    public Cliente updateNomeImagen(Long id, String nomeImagen) {
+
+        Cliente cliente = clienteRepository.findById(id);
+
+        cliente.setNomeImagem(nomeImagen);
+
+        return cliente;
+
     }
 
    

@@ -25,6 +25,9 @@ public interface ClienteService {
 
     ClienteResponseDTO update(Long id, ClienteDTO clienteDTO);
 
+    
+    Cliente updateNomeImagen(Long id, String nomeImagen);
+
     void delete(Long id);
 
     void deleteByLogin(String login);

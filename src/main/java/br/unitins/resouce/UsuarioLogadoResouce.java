@@ -100,7 +100,7 @@ public class UsuarioLogadoResouce {
         String login = tokenJwt.getSubject();
         Cliente cliente =  ClienteService.findByLoginCli(login);
 
-        cliente = ClienteService.update(cliente.getId(), nomeImagem);
+        cliente = ClienteService.updateNomeImagen(cliente.getId(), nomeImagem);
 
         return Response.ok(cliente).build();
 
