@@ -7,15 +7,13 @@ import br.unitins.model.Compra;
 import br.unitins.model.Comprovante;
 import br.unitins.model.Endereco;
 import br.unitins.model.ItemCompra;
-import br.unitins.model.Usuario;
 
 public record CompraResponseDTO(
     Double totalCompra,
     List<ItemCompra> itemCompra,
     Endereco endereco,
     List<Cliente> cliente,
-    Comprovante comprovante,
-    Usuario usuario
+    Comprovante comprovante
     ) {
 
     public CompraResponseDTO(Compra compra){
@@ -23,8 +21,7 @@ public record CompraResponseDTO(
         compra.getItemCompra(),
         compra.getEndereco(),
         compra.getCliente(),
-        compra.getComprovante(),
-        compra.getUsuario()
+        compra.getComprovante()
         );
 
     }
