@@ -198,6 +198,17 @@ public class ClienteServicempl  implements ClienteService{
 
     }
 
+    @Override
+    public Cliente findByLoginAndSenha(String login, String hash) throws NullPointerException {
+
+        //so pra não mudar o nome de hash pra senha 
+        String senha = hash;
+        
+        return clienteRepository.findByLoginAndSenha(login, senha);
+        
+        
+    }
+
    
     
 }

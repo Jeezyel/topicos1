@@ -19,6 +19,8 @@ public interface ClienteService {
 
     ClienteResponseDTO findByLogin(String login);
 
+    Cliente findByLoginAndSenha(String login , String hash);
+
     Cliente findByLoginCli(String login);
 
     ClienteResponseDTO create(ClienteDTO clienteDTO);

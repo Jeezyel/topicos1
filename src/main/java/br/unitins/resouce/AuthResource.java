@@ -2,16 +2,13 @@ package br.unitins.resouce;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
-import br.unitins.topicos1.dto.AuthUsuarioDTO;
-import br.unitins.topicos1.dto.UsuarioResponseDTO;
-import br.unitins.topicos1.model.Usuario;
-import br.unitins.topicos1.service.HashService;
-import br.unitins.topicos1.service.TokenJwtService;
-import br.unitins.topicos1.service.UsuarioService;
-import jakarta.annotation.security.RolesAllowed;
+import br.unitins.dto.AuthUsuarioDTO;
+import br.unitins.model.Cliente;
+import br.unitins.service.ClienteService;
+import br.unitins.service.HashService;
+import br.unitins.service.TokenJwtService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -30,7 +27,7 @@ public class AuthResource {
     HashService hashService;
 
     @Inject
-    UsuarioService usuarioService;
+    ClienteService clienteService;
 
     @Inject
     TokenJwtService tokenService;
@@ -43,14 +40,14 @@ public class AuthResource {
     public Response login(AuthUsuarioDTO authDTO) {
         String hash = hashService.getHashSenha(authDTO.senha());
 
-        Usuario usuario = usuarioService.findByLoginAndSenha(authDTO.login(), hash);
+        Cliente cliente = clienteService.findByLoginAndSenha(authDTO.login(), hash);
 
-        if (usuario == null) {
+        if (cliente == null) {
             return Response.status(Status.NO_CONTENT)
                 .entity("Usuario não encontrado").build();
         } 
         return Response.ok()
-            .header("Authorization", tokenService.generateJwt(usuario))
+            .header("Authorization", tokenService.generateJwt(cliente))
             .build();
         
     }

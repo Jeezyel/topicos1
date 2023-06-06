@@ -24,7 +24,6 @@ import jakarta.validation.ConstraintViolationException;
 
 //import com.oracle.svm.core.annotate.Inject;
 
-import br.unitins.dto.ClienteResponseDTO;
 //import br.unitins.repository.ClienteRepository;
 //import br.unitins.service.ClienteService;
 import jakarta.ws.rs.Consumes;
