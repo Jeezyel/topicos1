@@ -17,17 +17,12 @@ public class Compra extends DefaultEntity{
     @OneToMany
     private List<Cliente> cliente;
     @OneToOne
-    private Comprovante comprovante;
+    private Cliente clientee;
 
 
     
     
-    public Comprovante getComprovante() {
-        return comprovante;
-    }
-    public void setComprovante(Comprovante comprovante) {
-        this.comprovante = comprovante;
-    }
+    
     public Double getTotalCompra() {
         return totalCompra;
     }
