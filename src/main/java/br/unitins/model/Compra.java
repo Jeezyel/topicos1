@@ -11,13 +11,11 @@ public class Compra extends DefaultEntity{
 
     private Double totalCompra;
     @OneToMany
-    private List<ItemCompra> itemCompra;
+    private ItemCompra itemCompra;
     @OneToOne
     private Endereco endereco;
     @OneToMany
     private List<Cliente> cliente;
-    @OneToOne
-    private Cliente clientee;
 
 
     
@@ -28,12 +26,6 @@ public class Compra extends DefaultEntity{
     }
     public void setTotalCompra(Double totalCompra) {
         this.totalCompra = totalCompra;
-    }
-    public List<ItemCompra> getItemCompra() {
-        return itemCompra;
-    }
-    public void setItemCompra(List<ItemCompra> itemCompra) {
-        this.itemCompra = itemCompra;
     }
     public Endereco getEndereco() {
         return endereco;
@@ -50,6 +42,12 @@ public class Compra extends DefaultEntity{
     }
     public void setCliente(List<Cliente> cliente) {
         this.cliente = cliente;
+    }
+    public ItemCompra getItemCompra() {
+        return itemCompra;
+    }
+    public void setItemCompra(ItemCompra itemCompra) {
+        this.itemCompra = itemCompra;
     }
     
 }

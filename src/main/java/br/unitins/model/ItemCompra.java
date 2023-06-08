@@ -8,7 +8,7 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class ItemCompra extends DefaultEntity {
     
-    private Integer quantidade;
+    private Integer quantidadeProduto;
     private Double preco;
     @OneToMany
     private List<Roupas> roupas;
@@ -16,11 +16,11 @@ public class ItemCompra extends DefaultEntity {
     
     
     
-    public Integer getQuantidade() {
-        return quantidade;
+    public Integer getQuantidadeProduto() {
+        return quantidadeProduto;
     }
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidadeProduto(Integer quantidadeProduto) {
+        this.quantidadeProduto = quantidadeProduto;
     }
     public Double getPreco() {
         return preco;

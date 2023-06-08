@@ -14,7 +14,6 @@ public abstract class Produto extends DefaultEntity {
     @Column(nullable = true , length = 20)
     private String marca;
     private String cor;
-    private Integer quantidade;
     private Float valor;
 
 
@@ -32,12 +31,6 @@ public abstract class Produto extends DefaultEntity {
     }
     public void setCor(String cor) {
         this.cor = cor;
-    }
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
     public Float getValor() {
         return valor;

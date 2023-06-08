@@ -9,7 +9,6 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "id")
 public class Roupas extends Produto {
 
-    private Integer quantidade;
     @Column(nullable = false , length = 40)
     private String tipoDeTercido;
     @Column(nullable = false)
@@ -27,14 +26,6 @@ public class Roupas extends Produto {
 
     public void setTamanho(Tamanho tamanho) {
         this.tamanho = tamanho;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
     }
 
     public String getTipoDeTercido() {

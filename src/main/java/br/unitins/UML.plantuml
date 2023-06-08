@@ -82,36 +82,17 @@ class pagamento{
 
     
 }
-class Cartao{
-    -Integer: numero
-    -Integer: validade
-    
-}
-enum Bandeira{
-    + VISA: int
-    + MASTERCARD: int
-    + ELO: int
-    
-}
+
 enum Tipo{
     + BOLETO: int
     + PIX: int
     + CARTAO: int
     
 }
-class Pix{
-    -nomePagador:String
-    -cpfPagador:String
-}
-class Boleto{
-    -nomePagador:String
-    -cpfPagador:String
-}
 
 
-    pagamento <|-- Boleto
-    pagamento <|-- Pix
-    pagamento <|-- Cartao
+
+    
     produto <|-- Roupas
 
     Endereco "*" <--*"1" Cliente
@@ -125,7 +106,6 @@ class Boleto{
     ItemCompra "*" --> "1" Roupas
 
     Cliente "1" *--> "1" Telefone: celular
-    Cliente "1" *--> "1" Cartao: ListaDeCartao
     Cliente "1" *--> "1" Telefone: zap zap
 
     Compra "1"-->"*" pagamento
@@ -134,7 +114,6 @@ class Boleto{
 
 
     Roupas "*" *--> "1" Tamanho
-    Cartao "*" *--> "1" Bandeira
     pagamento "*" *--> "1" Tipo
 
     Endereco "*"--> "1" Estados
