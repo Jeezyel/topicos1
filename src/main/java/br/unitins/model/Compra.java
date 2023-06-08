@@ -15,7 +15,7 @@ public class Compra extends DefaultEntity{
     @OneToOne
     private Endereco endereco;
     @OneToMany
-    private List<Cliente> cliente;
+    private Cliente cliente;
 
 
     
@@ -33,21 +33,17 @@ public class Compra extends DefaultEntity{
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    public List<Cliente> getCliente() {
-        return cliente;
-    }
-    public Cliente getCliente(int i) {
-        
-        return cliente.get(i);
-    }
-    public void setCliente(List<Cliente> cliente) {
-        this.cliente = cliente;
-    }
     public ItemCompra getItemCompra() {
         return itemCompra;
     }
     public void setItemCompra(ItemCompra itemCompra) {
         this.itemCompra = itemCompra;
+    }
+    public Cliente getCliente() {
+        return cliente;
+    }
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
     
 }

@@ -1,6 +1,5 @@
 package br.unitins.dto;
 
-import java.util.List;
 
 import br.unitins.model.Cliente;
 import br.unitins.model.Compra;
@@ -9,13 +8,14 @@ import br.unitins.model.ItemCompra;
 
 public record CompraResponseDTO(
     Double totalCompra,
-    List<ItemCompra> itemCompra,
+    ItemCompra itemCompra,
     Endereco endereco,
-    List<Cliente> cliente
+    Cliente cliente
     ) {
 
     public CompraResponseDTO(Compra compra){
-        this( compra.getTotalCompra(),
+        this(
+        compra.getTotalCompra(),
         compra.getItemCompra(),
         compra.getEndereco(),
         compra.getCliente()
