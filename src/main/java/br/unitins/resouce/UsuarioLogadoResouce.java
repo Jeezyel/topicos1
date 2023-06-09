@@ -71,7 +71,8 @@ public class UsuarioLogadoResouce {
     }*/
 
     @GET
-    @RolesAllowed({"Admin","User"})
+    @Path("/getCliente-log")
+    @RolesAllowed({"Admin","User","Cliente"})
     public ClienteResponseDTO getUsuario() {
 
         // obtendo o login a partir do token
@@ -83,7 +84,7 @@ public class UsuarioLogadoResouce {
 
     @PATCH
     @Path("/novaimagem")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin","User","Cliente"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form){
         String nomeImagem = "";
@@ -107,7 +108,7 @@ public class UsuarioLogadoResouce {
 
     @GET
     @Path("/download/{nomeImagem}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin","User","Cliente"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
@@ -125,7 +126,7 @@ public class UsuarioLogadoResouce {
 
     @POST
     @Path("/insert")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin","User","Cliente"})
     public Response insert(ClienteDTO clienteDTO) {
 
         try {
@@ -147,7 +148,7 @@ public class UsuarioLogadoResouce {
 
     @DELETE
     @Path("/delete{login}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin","User","Cliente"})
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
 
 

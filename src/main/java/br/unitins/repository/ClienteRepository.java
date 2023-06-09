@@ -21,7 +21,7 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
         if(Login == null){
             return null;
         }
-        return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").firstResult();
+        return find("UPPER(Login) LIKE ?1 ", "%"+ Login +"%").firstResult();
     }
 
     public List<Cliente> findByLoginList(String Login){
@@ -30,16 +30,7 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
         }
         return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").list();
     }
-
     
-
-  /*   public List<Cliente> findByNomeList(String nome){
-        if(nome == null){
-            return null;
-        }
-        return find("UPPER(nome) LIKE ?1 ", "%"+ nome.toUpperCase() +"%").list();
-    }*/
-
     public Cliente findByLoginAndSenha(String login, String senha) {
 
         if (login == null || senha == null)
