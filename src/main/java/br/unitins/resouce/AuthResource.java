@@ -38,7 +38,9 @@ public class AuthResource {
 
     @POST
     @Produces(MediaType.TEXT_PLAIN)
-    public Response login(AuthUsuarioDTO authDTO) {
+    public Response login (AuthUsuarioDTO authDTO) {
+
+        
         String hash = hashService.getHashSenha(authDTO.senha());
 
         Cliente cliente = clienteService.findByLoginAndSenha(authDTO.login(), hash);
@@ -48,8 +50,10 @@ public class AuthResource {
                 .entity("Usuario não encontrado").build();
         } 
         return Response.ok()
-            .header("Authorization", tokenService.generateJwt(cliente))
-            .build();
+            .header("Authorization", tokenService.generateJwt(cliente)).build();
+         
+        
+           
         
     }
 
@@ -59,7 +63,7 @@ public class AuthResource {
         HashServicempl hashService = new HashServicempl();
 
 		
-		System.out.print("e so isso: " + hashService.getHashSenha("123"));
+		System.out.print("e so isso: " + hashService.getHashSenha("string"));
 	}
 
    

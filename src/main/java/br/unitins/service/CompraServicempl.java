@@ -1,10 +1,8 @@
 package br.unitins.service;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.dto.ItemCompraDTO;
 import br.unitins.model.Cliente;

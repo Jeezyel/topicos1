@@ -161,9 +161,9 @@ public class UsuarioLogadoResouce {
     @PUT
     @Path("/update{login}")
     @RolesAllowed({"Admin"})
-    public Boolean updateusuario(@PathParam("login") String login){
+    public Boolean updatUsuario(@PathParam("login") String login){
 
-
+        898
 
 
         return false;

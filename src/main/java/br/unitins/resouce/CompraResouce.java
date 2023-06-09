@@ -47,6 +47,11 @@ public class CompraResouce {
             Result result = new Result(e.getMessage(), false);
 
             return Response.status(Status.NOT_FOUND).entity(result).build();
+        } catch(Exception e){
+
+            Result result = new Result(e.getMessage(), false);
+
+            return Response.status(Status.NOT_FOUND).entity(result).build();
         }
     }
 }
