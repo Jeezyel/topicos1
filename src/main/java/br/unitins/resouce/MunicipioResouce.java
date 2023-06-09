@@ -38,7 +38,7 @@ public class MunicipioResouce {
 
     @GET
     @Path("/getAll")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin", "Cliente"})
     public List<MunicipioResponseDTO> getAll() {
         LOG.info("buscando todos os municipios." );
         return municipioService.getAll();

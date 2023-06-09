@@ -33,24 +33,19 @@ public class ClienteRepository implements PanacheRepository<Cliente> {
 
     
 
-    public List<Cliente> findByNomeList(String nome){
+  /*   public List<Cliente> findByNomeList(String nome){
         if(nome == null){
             return null;
         }
         return find("UPPER(nome) LIKE ?1 ", "%"+ nome.toUpperCase() +"%").list();
-    }
+    }*/
 
     public Cliente findByLoginAndSenha(String login, String senha) {
 
-        List<Cliente> listaCliente = findByLoginList(login);
+        if (login == null || senha == null)
+            return null;
 
-        for (int i = 0; i <= listaCliente.size(); i++) {
-            if (listaCliente.get(i).getSenha() == senha) {
-                return listaCliente.get(i);
-            }
-        }
-        
-        return null;
+        return find("login = ?1 AND senha = ?2 ", login, senha).firstResult();
     }
     
 }

@@ -163,7 +163,6 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin"})
     public Boolean updatUsuario(@PathParam("login") String login){
 
-        898
 
 
         return false;

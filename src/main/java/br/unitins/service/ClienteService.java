@@ -36,7 +36,7 @@ public interface ClienteService {
 
     // recursos extras
 
-    List<ClienteResponseDTO> findByNome(String nome);
+    ClienteResponseDTO findByNome(String nome);
 
     long count();
     

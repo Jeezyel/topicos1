@@ -3,7 +3,9 @@ package br.unitins.resouce;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import br.unitins.aplication.Result;
+import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;
+import br.unitins.repository.UsuarioRepository;
 import br.unitins.service.ClienteService;
 import br.unitins.service.CompraService;
 import jakarta.annotation.security.RolesAllowed;
@@ -28,6 +30,9 @@ public class CompraResouce {
     ClienteService clienteService;
 
     @Inject
+    UsuarioRepository usuarioRepository;
+
+    @Inject
     JsonWebToken tokenJwt;
 
     @GET
@@ -46,12 +51,23 @@ public class CompraResouce {
 
             Result result = new Result(e.getMessage(), false);
 
-            return Response.status(Status.NOT_FOUND).entity(result).build();
+            return Response.status(Status.NOT_ACCEPTABLE).entity(result).build();
         } catch(Exception e){
 
             Result result = new Result(e.getMessage(), false);
 
-            return Response.status(Status.NOT_FOUND).entity(result).build();
+            return Response.status(Status.NOT_ACCEPTABLE).entity(result).build();
         }
+    }
+
+    @GET
+    @Path("/compras-andamneto")
+    @RolesAllowed({"User"})
+    public CompraResponseDTO getCompraEmAndamento() {
+
+        String login = tokenJwt.getSubject();
+
+        return compraService.getCompraEmAndamento(login);
+        
     }
 }

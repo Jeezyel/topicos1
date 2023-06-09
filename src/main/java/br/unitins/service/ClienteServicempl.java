@@ -116,15 +116,15 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
-    public List<ClienteResponseDTO> findByNome(String nome) {
+    public ClienteResponseDTO findByNome(String nome) {
 
         
         LOG.debug("buscando o cliente no banco ");
-        List<Cliente> listaCliente = clienteRepository.findByNomeList(nome);
+        Cliente listaCliente = clienteRepository.findByNome(nome);
 
         
         LOG.debug("convertendo e retornando ");
-        return listaCliente.stream().map(ClienteResponseDTO::new).collect(Collectors.toList());
+        return new ClienteResponseDTO(listaCliente);
     }
 
     @Override

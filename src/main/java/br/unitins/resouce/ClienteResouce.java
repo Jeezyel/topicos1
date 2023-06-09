@@ -102,7 +102,7 @@ public class ClienteResouce {
     @GET
     @Path("/searchForName/{name}")
     @RolesAllowed({"Admin","User"})
-    public List<ClienteResponseDTO> searchForName(@PathParam("name") String name){
+    public ClienteResponseDTO searchForName(@PathParam("name") String name){
 
         LOG.info("procurando por nome do cliente");
         return service.findByNome(name);

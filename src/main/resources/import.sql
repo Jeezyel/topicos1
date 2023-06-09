@@ -86,6 +86,32 @@ INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefon
 INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
 	VALUES (5, '2023-04-12', '2023-04-12', 5, 5, 2451234234 , 'string', 'string', '?', 'H91PnULY1YEFa/uppEhvAiwTiJXmOMZJe9lmBp+GosLTEPiyR9ZaH2e0vX4C2OpxYa7Bqx0PZUYZFITckmSCHA==');
 	
+-- -------------------------------------------------------------------------------------------
+
+INSERT INTO public.perfis(
+	id_usuario, perfil)
+	VALUES (1, 'Admin');
+
+INSERT INTO public.perfis(
+	id_usuario, perfil)
+	VALUES (4, 'Admin');
+
+INSERT INTO public.perfis(
+	id_usuario, perfil)
+	VALUES (2, 'Vendedor');
+
+INSERT INTO public.perfis(
+	id_usuario, perfil)
+	VALUES (1, 'Cliente');
+
+INSERT INTO public.perfis(
+	id_usuario, perfil)
+	VALUES (5, 'User');
+
+
+
+-- -------------------------------------------------------------------------------------------
+
 /*
 
  */
