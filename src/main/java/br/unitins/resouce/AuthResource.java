@@ -6,6 +6,7 @@ import br.unitins.dto.AuthUsuarioDTO;
 import br.unitins.model.Cliente;
 import br.unitins.service.ClienteService;
 import br.unitins.service.HashService;
+import br.unitins.service.HashServicempl;
 import br.unitins.service.TokenJwtService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
@@ -51,6 +52,15 @@ public class AuthResource {
             .build();
         
     }
+
+    //so pra poder pegar o hash pra colocar no inportSQL
+    public static void main(String[] args) {
+        
+        HashServicempl hashService = new HashServicempl();
+
+		
+		System.out.print("e so isso: " + hashService.getHashSenha("123"));
+	}
 
    
 

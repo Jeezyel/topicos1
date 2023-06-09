@@ -10,11 +10,11 @@ import jakarta.persistence.OneToOne;
 public class Compra extends DefaultEntity{
 
     private Double totalCompra;
-    @OneToMany
+    @OneToOne
     private ItemCompra itemCompra;
     @OneToOne
     private Endereco endereco;
-    @OneToMany
+    @OneToOne
     private Cliente cliente;
 
 
