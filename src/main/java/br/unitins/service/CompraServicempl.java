@@ -15,6 +15,8 @@ import jakarta.inject.Inject;
 @ApplicationScoped
 public class CompraServicempl implements CompraService{
 
+    
+
     @Inject
     CompraRepository compraRepository;
 
@@ -83,6 +85,12 @@ public class CompraServicempl implements CompraService{
         }
 
         compraRepository.persist(compra);
+    }
+
+    @Override
+    public Compra findById(Long idUsuario) {
+
+        return compraRepository.findByID(idUsuario);
     }
     
     

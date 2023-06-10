@@ -1,10 +1,12 @@
 package br.unitins.resouce;
 
+import java.util.List;
+
 import org.eclipse.microprofile.jwt.JsonWebToken;
 
-import br.unitins.aplication.Result;
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;
+import br.unitins.model.Compra;
 import br.unitins.repository.UsuarioRepository;
 import br.unitins.service.ClienteService;
 import br.unitins.service.CompraService;
@@ -12,11 +14,11 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.Response;
-import jakarta.ws.rs.core.Response.Status;
 
 @Path("/compras")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -34,7 +36,7 @@ public class CompraResouce {
 
     @Inject
     JsonWebToken tokenJwt;
-
+/* 
     @GET
     @Path("/historico-compras")
     @RolesAllowed({"User"})
@@ -58,11 +60,11 @@ public class CompraResouce {
 
             return Response.status(Status.NOT_ACCEPTABLE).entity(result).build();
         }
-    }
+    }*/
 
     @GET
     @Path("/compras-andamneto")
-    @RolesAllowed({"User"})
+    @RolesAllowed({"Admin","User"})
     public CompraResponseDTO getCompraEmAndamento() {
 
         String login = tokenJwt.getSubject();
@@ -70,4 +72,44 @@ public class CompraResouce {
         return compraService.getCompraEmAndamento(login);
         
     }
+
+    @GET
+    @Path("/historico-compras")
+    @RolesAllowed({"Admin","User"})
+    public List<CompraResponseDTO> getAll() {
+
+        String login = tokenJwt.getSubject();
+
+        Cliente cliente = clienteService.findByLoginCli(login);
+
+        return compraService.getAll(cliente.getId());
+        
+    }
+
+    @POST
+    @Path("/insert-itemIntoCompra/{id-compra}{id-roupa}")
+    @RolesAllowed({"Admin","User"})
+    public void insertItemIntoCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
+        Compra compra = compraService.findById(idCompa);
+        String login = tokenJwt.getSubject();
+        
+        if (compra.getCliente().getLogin() ==  login) {
+            compraService.insertItemIntoCompra(idCompa, idroupa);
+        }
+    }
+
+    @POST
+    @Path("/remove-itemCompra/{id-compra}{id-roupa}")
+    @RolesAllowed({"Admin","User"})
+    public void removeItemCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
+        Compra compra = compraService.findById(idCompa);
+        String login = tokenJwt.getSubject();
+        
+        if (compra.getCliente().getLogin() ==  login) {
+            compraService.removeItemCompra(idCompa, idroupa);
+        }
+        
+    }
+
+
 }
