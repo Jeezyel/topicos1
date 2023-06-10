@@ -62,14 +62,14 @@ public class ClienteResouce {
     }
     // update
     @POST
-    @Path("/update/{id}")
+    @Path("/update/{login}")
     @RolesAllowed({"Admin","User"})
     @Transactional
-    public ClienteResponseDTO update(@PathParam("id") Long id, ClienteDTO clienteDTO) {
+    public ClienteResponseDTO update(@PathParam("login") String login, ClienteDTO clienteDTO) {
 
         LOG.info("atualizando o clientes selecionado pelo id");
         
-        return service.update(id , clienteDTO);
+        return service.update(login , clienteDTO);
     }
 
     @PATCH

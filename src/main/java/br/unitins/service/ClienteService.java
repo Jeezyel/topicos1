@@ -25,7 +25,7 @@ public interface ClienteService {
 
     ClienteResponseDTO create(ClienteDTO clienteDTO);
 
-    ClienteResponseDTO update(Long id, ClienteDTO clienteDTO);
+    ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
 
     
     Cliente updateNomeImagen(Long id, String nomeImagen);

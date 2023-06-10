@@ -1,6 +1,7 @@
 package br.unitins.resouce;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.jboss.logging.Logger;
 
 import br.unitins.dto.AuthUsuarioDTO;
 import br.unitins.model.Cliente;
@@ -23,6 +24,7 @@ import jakarta.ws.rs.core.Response.Status;
 public class AuthResource {
 
 
+    private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
 
     @Inject
     HashService hashService;
@@ -40,15 +42,18 @@ public class AuthResource {
     @Produces(MediaType.TEXT_PLAIN)
     public Response login (AuthUsuarioDTO authDTO) {
 
-        
+        LOG.info(" criando um hash");
         String hash = hashService.getHashSenha(authDTO.senha());
 
+        LOG.info(" pegando o cliente ");
         Cliente cliente = clienteService.findByLoginAndSenha(authDTO.login(), hash);
 
         if (cliente == null) {
+            LOG.info(" caso não encontra o cliente");
             return Response.status(Status.NO_CONTENT)
                 .entity("Usuario não encontrado").build();
         } 
+        LOG.info(" caso não de nada de errado");
         return Response.ok()
             .header("Authorization", tokenService.generateJwt(cliente)).build();
          
@@ -63,7 +68,7 @@ public class AuthResource {
         HashServicempl hashService = new HashServicempl();
 
 		
-		System.out.print("e so isso: " + hashService.getHashSenha("string"));
+		System.out.print("e so isso: " + hashService.getHashSenha("123"));
 	}
 
    

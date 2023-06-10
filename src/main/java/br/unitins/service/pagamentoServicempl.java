@@ -52,20 +52,15 @@ public class pagamentoServicempl implements pagamentoService {
     }
 
     @Override
-    public Response finalizarCompra(long id) {
-        try {
-            Pagamento pagamentoo = pagamentoRepository.findById(id);;
-
-            pagamentoo.setConfirmarPagamento(true);
-        } catch (NullPointerException e) {
-            
-            Result result = new Result(e.getMessage());
-
-            return Response.status(Status.NOT_FOUND).entity(result).build(); 
-        }
+    public PagamentoResponseDTO finalizarCompra(long id) {
         
+        Pagamento pagamentoo = pagamentoRepository.findById(id);;
+        
+        pagamentoo.setConfirmarPagamento(true);
 
-        return null;
+        pagamentoRepository.persist(pagamentoo);
+        
+        return new PagamentoResponseDTO(pagamentoo);
     }
 
     @Override

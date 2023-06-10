@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.List;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.aplication.Result;
@@ -47,6 +48,9 @@ import jakarta.ws.rs.Produces;
 
 public class UsuarioLogadoResouce {
 
+    
+    private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
+
     @Inject
     ClienteService ClienteService;
 
@@ -75,8 +79,9 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin","User","Cliente"})
     public ClienteResponseDTO getUsuario() {
 
-        // obtendo o login a partir do token
+         LOG.info("obtendo o login a partir do token");
         String login = tokenJwt.getSubject();
+        LOG.info(" procurando pro login");
         ClienteResponseDTO usuario = ClienteService.findByLogin(login);
 
         return usuario;
@@ -87,13 +92,20 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin","User","Cliente"})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form){
+        LOG.info(" savando imagem ");
         String nomeImagem = "";
 
         try {
+            LOG.info(" chamando o metodo salvar ");
             nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
         } catch (IOException e) {
+            
+            LOG.debug(" previnido o erro IO ");
             Result result = new Result(e.getMessage());
             return Response.status(Status.CONFLICT).entity(result).build();
+        } catch(Exception e){
+            
+            LOG.fatal(" erro não pensado " );
         }
 
         // obtendo o login a partir do token
@@ -111,6 +123,8 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin","User","Cliente"})
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
+
+        LOG.info(" fazendo download da imagem");
         ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
         response.header("Content-Disposition", "attachment;filename="+nomeImagem);
         return response.build();
@@ -120,7 +134,7 @@ public class UsuarioLogadoResouce {
     @Path("/getall")
     @RolesAllowed({"Admin"})
     public List<ClienteResponseDTO> getAll() {
-
+        LOG.info(" pagando todos os cliente");
         return ClienteService.getAll();
     }
 
@@ -130,14 +144,22 @@ public class UsuarioLogadoResouce {
     public Response insert(ClienteDTO clienteDTO) {
 
         try {
-
+            LOG.info(" criando um cliente ");
             return Response
                     .status(Status.CREATED) // 201
                     .entity(ClienteService.create(clienteDTO))
                     .build();
         } catch (ConstraintViolationException e) {
-
+            LOG.debug(" erro na ciração");
             Result result = new Result(e.getConstraintViolations());
+
+            return Response
+                    .status(Status.NOT_FOUND)
+                    .entity(result)
+                    .build();
+        }catch( Exception e){
+            LOG.fatal(" erro na planejado");
+            Result result = new Result(e.getMessage());
 
             return Response
                     .status(Status.NOT_FOUND)
@@ -148,12 +170,12 @@ public class UsuarioLogadoResouce {
 
     @DELETE
     @Path("/delete{login}")
-    @RolesAllowed({"Admin","User","Cliente"})
+    @RolesAllowed({"Admin","Cliente"})
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
 
 
         ClienteService.deleteByLogin(login);
-
+        LOG.info(" apagando pelo login");
         return Response
                 .status(Status.NO_CONTENT)
                 .build();
@@ -162,18 +184,25 @@ public class UsuarioLogadoResouce {
     @PUT
     @Path("/update{login}")
     @RolesAllowed({"Admin"})
-    public Boolean updatUsuario(@PathParam("login") String login){
+    public Boolean updatUsuario(@PathParam("login") String login,ClienteDTO clienteDTO){
 
+        try {
+            LOG.info("criando o cliente");
+            ClienteService.update(login, clienteDTO);
+            return true;
+        } catch (Exception e) {
+            LOG.fatal("erro não planejado");
+            return false;
+        }
 
-
-        return false;
+        
     }
 
     @GET
     @Path("/getbylogin{login}")
     @RolesAllowed({"Admin"})
     public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
-
+        LOG.info(" procurando por login");
         return ClienteService.findByLogin(login);
     }
 

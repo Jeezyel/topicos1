@@ -81,12 +81,12 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
-    public ClienteResponseDTO update(Long id, ClienteDTO clienteDTO) throws ConstraintViolationException{
+    public ClienteResponseDTO update(String login, ClienteDTO clienteDTO) throws ConstraintViolationException{
         LOG.debug("validando o dto ");
         validar(clienteDTO);
 
         LOG.debug("buscando o cliente ");
-        Cliente cliente = clienteRepository.findById(id);
+        Cliente cliente = clienteRepository.findByLogin(login);
 
         LOG.debug("modificando os dados do cliente ");
 

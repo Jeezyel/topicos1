@@ -3,6 +3,7 @@ package br.unitins.resouce;
 import java.util.List;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
+import org.jboss.logging.Logger;
 
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;
@@ -24,6 +25,8 @@ import jakarta.ws.rs.core.MediaType;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class CompraResouce {
+
+    private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
 
     @Inject
     CompraService compraService;
@@ -66,7 +69,7 @@ public class CompraResouce {
     @Path("/compras-andamneto")
     @RolesAllowed({"Admin","User"})
     public CompraResponseDTO getCompraEmAndamento() {
-
+        LOG.info(" pegando a compra em andamento do usuario logado");
         String login = tokenJwt.getSubject();
 
         return compraService.getCompraEmAndamento(login);
@@ -77,6 +80,8 @@ public class CompraResouce {
     @Path("/historico-compras")
     @RolesAllowed({"Admin","User"})
     public List<CompraResponseDTO> getAll() {
+
+        LOG.info(" pegando as compras feito pelo usuario logado");
 
         String login = tokenJwt.getSubject();
 
@@ -90,6 +95,7 @@ public class CompraResouce {
     @Path("/insert-itemIntoCompra/{id-compra}{id-roupa}")
     @RolesAllowed({"Admin","User"})
     public void insertItemIntoCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
+        LOG.info(" colocando um item na lisata de compra");
         Compra compra = compraService.findById(idCompa);
         String login = tokenJwt.getSubject();
         
@@ -102,6 +108,7 @@ public class CompraResouce {
     @Path("/remove-itemCompra/{id-compra}{id-roupa}")
     @RolesAllowed({"Admin","User"})
     public void removeItemCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
+        LOG.info(" removendo um item na lisata de compra");
         Compra compra = compraService.findById(idCompa);
         String login = tokenJwt.getSubject();
         
