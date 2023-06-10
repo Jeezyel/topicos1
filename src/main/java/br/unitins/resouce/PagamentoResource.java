@@ -6,21 +6,13 @@ import java.util.List;
 
 import org.jboss.logging.Logger;
 
-import com.fasterxml.jackson.databind.deser.std.NullifyingDeserializer;
 
-import br.unitins.service.ClienteService;
 import br.unitins.service.pagamentoService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
-import br.unitins.dto.ClienteDTO;
-import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.PagamentoResponseDTO;
-import br.unitins.model.Pagamento;
-import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;

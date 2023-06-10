@@ -6,11 +6,7 @@ import java.util.stream.Collectors;
 
 import org.jboss.logging.Logger;
 
-import jakarta.ws.rs.core.Response.Status;
-
 import jakarta.validation.Validator;
-import jakarta.ws.rs.core.Response;
-import br.unitins.aplication.Result;
 import br.unitins.dto.PagamentoDTO;
 import br.unitins.dto.PagamentoResponseDTO;
 import br.unitins.model.Pagamento;
