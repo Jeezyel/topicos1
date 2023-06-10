@@ -4,10 +4,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.unitins.dto.CompraResponseDTO;
-import br.unitins.dto.ItemCompraDTO;
 import br.unitins.model.Cliente;
 import br.unitins.model.Compra;
+import br.unitins.model.Roupas;
 import br.unitins.repository.CompraRepository;
+import br.unitins.repository.RoupasRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
@@ -20,6 +21,8 @@ public class CompraServicempl implements CompraService{
     @Inject
     ClienteService clienteService;
 
+    @Inject
+    RoupasRepository roupasRepository;
 
 
     @Override
@@ -51,21 +54,36 @@ public class CompraServicempl implements CompraService{
     // ai pra adicionar e so quando chegar na lista add e salvar na quela compra tupo update de compra 
 
     @Override
-    public void insertItemIntoCompra(Long idCompra, ItemCompraDTO itemCompraDTO) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'insertItemIntoCompra'");
+    public void insertItemIntoCompra(Long idCompra, long idRoupa) {
+        Compra compra = compraRepository.findById(idCompra);
+
+        Roupas roupas = roupasRepository.findByID(idCompra);
+
+
+        compra.getItemCompra().getRoupas().add(roupas);
+
+        compraRepository.persist(compra);
     }
 
     @Override
-    public void removeItemCompra(Long idUsuario, Long idItemCompra) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeItemCompra'");
+    public void removeItemCompra(Long idCompra, long idRoupa) {
+        
+        Compra compra = compraRepository.findById(idCompra);
+
+        Roupas roupas = roupasRepository.findByID(idCompra);
+
+        for (int i = 0; i <= compra.getItemCompra().getRoupas().size(); i++) {
+
+            if (compra.getItemCompra().getRoupas().get(i) == roupas) {
+
+                compra.getItemCompra().getRoupas().remove(i);
+
+            }
+            
+        }
+
+        compraRepository.persist(compra);
     }
-    // acho que esse metodo faz e chamar o metodo pagamento pra finalizar 
-    @Override
-    public void finishCompra(Long idUsuario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'finishCompra'");
-    }
+    
     
 }

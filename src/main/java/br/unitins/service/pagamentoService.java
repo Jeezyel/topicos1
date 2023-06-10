@@ -2,14 +2,19 @@ package br.unitins.service;
 
 import java.util.List;
 
-import br.unitins.aplication.Result;
-import br.unitins.model.Pagamento;
+import br.unitins.dto.PagamentoDTO;
+import br.unitins.dto.PagamentoResponseDTO;
+import jakarta.ws.rs.core.Response;
 
 public interface pagamentoService {
-    public Pagamento create(Pagamento pagamento);
 
-    public Result finalizarCompra();
+    PagamentoResponseDTO create(PagamentoDTO pagamento);
 
+    Response finalizarCompra(long id);
+
+    PagamentoResponseDTO findById(Long id);
     
-    List<pagamentoRespon> getAll();
+    List<PagamentoResponseDTO> getAll();
+
+    long count();
 }

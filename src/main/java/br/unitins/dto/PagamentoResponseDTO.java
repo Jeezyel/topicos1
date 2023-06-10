@@ -11,7 +11,7 @@ public record PagamentoResponseDTO(
     TipoPagamento tipoPagamento,
     Boolean confirmarPagamento
     ) {
-    PagamentoResponseDTO(Pagamento pagamento){
+    public PagamentoResponseDTO(Pagamento pagamento){
         this(pagamento.getCompra(),
         pagamento.getQuantidadeParcela(),
         pagamento.getValorParcela(),

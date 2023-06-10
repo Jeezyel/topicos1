@@ -3,7 +3,6 @@ package br.unitins.service;
 import java.util.List;
 
 import br.unitins.dto.CompraResponseDTO;
-import br.unitins.dto.ItemCompraDTO;
 import jakarta.enterprise.context.ApplicationScoped;
 
 
@@ -14,9 +13,8 @@ public interface CompraService {
 
     public CompraResponseDTO getCompraEmAndamento (String loginn);
     
-    public void insertItemIntoCompra (Long idCompra, ItemCompraDTO itemCompraDTO);
+    public void insertItemIntoCompra (Long idCompra, long idRoupa);
 
-    public void removeItemCompra (Long idUsuario, Long idItemCompra);
+    public void removeItemCompra (Long idUsuario, long idRoupa);
 
-    public void finishCompra (Long idUsuario);
 }
