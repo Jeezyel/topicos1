@@ -30,6 +30,9 @@ public class ClienteServicempl  implements ClienteService{
     @Inject
     UsuarioRepository usuarioRepository;
 
+    @Inject
+    HashService hashService;
+
 
     @Inject
     Validator validator;
@@ -150,9 +153,9 @@ public class ClienteServicempl  implements ClienteService{
     public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
         LOG.debug("buscando no banco ");
         Cliente  usuario = usuarioRepository.findById(id);
-
+        String senhaAt = hashService.getHashSenha(senhaAtual);
         LOG.debug("verificando se a senha esta correta");
-        if (usuario.getSenha() != senhaAtual ) {
+        if (usuario.getSenha() != senhaAt ) {
             return false;
         }
         else{

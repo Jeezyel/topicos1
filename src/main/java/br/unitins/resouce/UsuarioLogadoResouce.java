@@ -206,6 +206,26 @@ public class UsuarioLogadoResouce {
         return ClienteService.findByLogin(login);
     }
 
+     @PUT
+    @Path("/atualizar-senha{id}")
+    @RolesAllowed({"Admin"})
+    public Boolean atualizarSenha(@PathParam("id") Long id, String novaSenha ,String velhaSenha){
+
+        try {
+            LOG.info("atualizando a senha do cliente");
+            
+            return ClienteService.alterarSenha(id, novaSenha , velhaSenha);
+        } catch (NullPointerException e) {
+            LOG.debug("erro cliente n encontrado");
+            return false;
+        }catch (Exception e) {
+            LOG.fatal("erro não planejado");
+            return false;
+        }
+
+        
+    }
+
    /*  @Inject
     JsonWebToken token;
 
