@@ -16,12 +16,13 @@ public class UsuarioRepository implements PanacheRepository<Cliente>{
         return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").list();
     }
 
-    public List<Cliente> findByLogin(String Login){
+    public Cliente findByLogin(String Login){
         if(Login == null){
             return null;
         }
         return find("UPPER(Login) LIKE ?1 ", "%"+ Login.toUpperCase() +"%").firstResult();
     }
+    
     
     public List<Cliente> deleteForLogin(String Login){
         if(Login == null){

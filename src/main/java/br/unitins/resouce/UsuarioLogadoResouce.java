@@ -208,14 +208,18 @@ public class UsuarioLogadoResouce {
     }
 
     @PUT
-    @Path("/atualizar-senha{id}")
+    @Path("/atualizar-senha")
     @RolesAllowed({"Admin"})
-    public Boolean atualizarSenha(@PathParam("id") Long id, String novaSenha ,String velhaSenha){
+    public Boolean atualizarSenha( String novaSenha ,String velhaSenha){
+        LOG.info("pegando o login");
+           
+        String login = tokenJwt.getSubject();
+
 
         try {
             LOG.info("atualizando a senha do cliente");
             
-            return clienteService.alterarSenha(id, novaSenha , velhaSenha);
+            return clienteService.alterarSenha(login, novaSenha , velhaSenha);
         } catch (NullPointerException e) {
             LOG.debug("erro cliente n encontrado");
             return false;
@@ -226,6 +230,8 @@ public class UsuarioLogadoResouce {
 
         
     }
+
+    
 
     @POST
     @Path("/update")

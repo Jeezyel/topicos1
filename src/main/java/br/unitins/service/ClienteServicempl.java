@@ -153,9 +153,9 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
-    public Boolean alterarSenha(Long id, String senhaAtual, String novaSenha) {
+    public Boolean alterarSenha(String login, String senhaAtual, String novaSenha) {
         LOG.debug("buscando no banco ");
-        Cliente  usuario = usuarioRepository.findById(id);
+        Cliente  usuario = usuarioRepository.findByLogin(login);
         String senhaAt = hashService.getHashSenha(senhaAtual);
         LOG.debug("verificando se a senha esta correta");
         if (usuario.getSenha() != senhaAt ) {
@@ -169,6 +169,24 @@ public class ClienteServicempl  implements ClienteService{
         }
 
         
+    }
+
+    @Override
+    public Boolean alterarSenha(long id, String senhaAtual, String novaSenha) {
+        
+        LOG.debug("buscando no banco ");
+        Cliente  usuario = usuarioRepository.findById(id);
+        String senhaAt = hashService.getHashSenha(senhaAtual);
+        LOG.debug("verificando se a senha esta correta");
+        if (usuario.getSenha() != senhaAt ) {
+            return false;
+        }
+        else{
+            LOG.debug("atualizando a senha para a nova senha");
+            usuario.setSenha(novaSenha);
+
+            return true ;
+        }
     }
 
     @Override
@@ -228,6 +246,5 @@ public class ClienteServicempl  implements ClienteService{
         return new ClienteSimplesResponseDTO(cliente);
     }
 
-   
     
 }
