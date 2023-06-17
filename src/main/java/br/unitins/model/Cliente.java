@@ -14,20 +14,23 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cliente extends DefaultEntity {
-
+    @Column( nullable = false , length = 12)
     private String cpf;
+    @Column( nullable = false , length = 12)
     private String nome;
     @OneToOne
     private Endereco Endereco;
     @OneToOne
     private Telefone telefone;
     
+    @Column( nullable = false , length = 12)
     private String login;
+    @Column( nullable = false , length = 12)
     private String senha;
     private String nomeImagem;
     @ElementCollection
     @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
-    @Column(name = "perfil", length = 30)
+    @Column(name = "perfil", length = 8, nullable = false)
     private Set<Perfil> perfis;
     @ManyToMany
     @JoinTable(name = "cliente_roupas",

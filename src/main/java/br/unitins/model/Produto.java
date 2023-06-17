@@ -13,7 +13,9 @@ public abstract class Produto extends DefaultEntity {
     private String modelo;
     @Column(nullable = true , length = 20)
     private String marca;
+    @Column( nullable = false ) 
     private String cor;
+    @Column( nullable = false ) 
     private Float valor;
 
 

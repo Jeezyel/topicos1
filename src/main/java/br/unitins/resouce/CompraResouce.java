@@ -5,6 +5,8 @@ import java.util.List;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
+import com.oracle.svm.core.annotate.Delete;
+
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;
 import br.unitins.model.Compra;
@@ -14,6 +16,7 @@ import br.unitins.service.CompraService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -40,6 +43,12 @@ public class CompraResouce {
     @Inject
     JsonWebToken tokenJwt;
 /* 
+
+    CRIAR O METODO COMPRA 
+
+
+
+
     @GET
     @Path("/historico-compras")
     @RolesAllowed({"User"})
@@ -104,7 +113,7 @@ public class CompraResouce {
         }
     }
 
-    @POST
+    @DELETE
     @Path("/remove-itemCompra/{id-compra}{id-roupa}")
     @RolesAllowed({"Admin","User"})
     public void removeItemCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){

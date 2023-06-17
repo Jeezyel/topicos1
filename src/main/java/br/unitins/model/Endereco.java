@@ -1,5 +1,6 @@
 package br.unitins.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -8,9 +9,11 @@ import jakarta.persistence.ManyToOne;
 @Entity
 public class Endereco extends DefaultEntity{
 
-
+    @Column( nullable = false ) 
     private String cep;
+    @Column( nullable = false ) 
     private String enderecoCompleto;
+    @Column( nullable = false ) 
     private String complemento;
     private String referencia; 
     @ManyToOne

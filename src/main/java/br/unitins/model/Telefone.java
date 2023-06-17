@@ -6,11 +6,11 @@ import jakarta.persistence.Entity;
 @Entity
 public class Telefone extends DefaultEntity{
 
-    @Column
+    @Column( nullable = false ) 
     private String codigoDeArea;
-    @Column
+    @Column( nullable = false ) 
     private String numero;
-    @Column
+    @Column( nullable = false ) 
     private Boolean celular;
 
     

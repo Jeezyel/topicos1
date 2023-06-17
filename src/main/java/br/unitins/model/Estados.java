@@ -2,14 +2,18 @@ package br.unitins.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class Estados extends DefaultEntity {
 
+    @Column( nullable = false ) 
     private String nome;
+    @Column( nullable = false ,length = 3 ) 
     private String sigla;
+    @Column( nullable = false ) 
     @OneToMany
     private List<Municipio> municipio;
 

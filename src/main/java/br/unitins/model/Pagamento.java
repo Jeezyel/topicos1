@@ -1,6 +1,7 @@
 package br.unitins.model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
 
@@ -8,9 +9,12 @@ import jakarta.persistence.OneToOne;
 public class Pagamento extends DefaultEntity {
 
     @OneToOne
+    @Column( nullable = false ) 
     private Compra compra;
     private Integer quantidadeParcela = 1;
+    @Column( nullable = false ) 
     private Double valorParcela;
+    @Column( nullable = false ) 
     private TipoPagamento tipoPagamento;
     private Boolean confirmarPagamento = false;
 

@@ -2,14 +2,18 @@ package br.unitins.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 
 @Entity
 public class ItemCompra extends DefaultEntity {
-    
+
+    @Column( nullable = false ) 
     private Integer quantidadeProduto;
+    @Column( nullable = false ) 
     private Double preco;
+    @Column( nullable = false ) 
     @OneToMany
     private List<Roupas> roupas;
 

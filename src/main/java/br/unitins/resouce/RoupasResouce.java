@@ -144,17 +144,20 @@ public class RoupasResouce  {
         
         LOG.info("criando roupas");
         try {
+            LOG.info("criando roupas");
             RoupasResponseDTO roupas = roupaServicempl.create(dto); 
             return Response.status(Status.CREATED).entity(roupas).build();
+            
         } catch (ConstraintViolationException e) {
+            LOG.info("erro de ConstraintViolationException ");
             Result result = new Result(e.getConstraintViolations());
             return Response.status(Status.NOT_FOUND).entity(result).build();
         } catch(Exception e){
             
-        LOG.fatal("erro não listado, fatal");
-        
-        Result result = new Result(e.getMessage());
-        return Response.status(Status.NOT_FOUND).entity(result).build();
+            LOG.fatal("erro não listado, fatal");
+            
+            Result result = new Result(e.getMessage());
+            return Response.status(Status.NOT_FOUND).entity(result).build();
         }
         
     }
