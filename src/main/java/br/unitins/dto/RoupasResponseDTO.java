@@ -4,6 +4,7 @@ import br.unitins.model.Roupas;
 
 public record RoupasResponseDTO(
     
+    long id,
     Float valor,
     String cor,
     String marca,
@@ -13,7 +14,11 @@ public record RoupasResponseDTO(
     
     public RoupasResponseDTO(Roupas roupas) {
 
-        this(roupas.getValor(),roupas.getCor(),roupas.getMarca(),roupas.getModelo());
+        this(roupas.getId(),
+            roupas.getValor(),
+            roupas.getCor(),
+            roupas.getMarca(),
+            roupas.getModelo());
         
     }
 

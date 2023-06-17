@@ -7,6 +7,7 @@ import br.unitins.model.Endereco;
 import br.unitins.model.ItemCompra;
 
 public record CompraResponseDTO(
+    long id,
     Double totalCompra,
     ItemCompra itemCompra,
     Endereco endereco,
@@ -15,10 +16,11 @@ public record CompraResponseDTO(
 
     public CompraResponseDTO(Compra compra){
         this(
-        compra.getTotalCompra(),
-        compra.getItemCompra(),
-        compra.getEndereco(),
-        compra.getCliente()
+            compra.getId(),
+            compra.getTotalCompra(),
+            compra.getItemCompra(),
+            compra.getEndereco(),
+            compra.getCliente()
         );
 
     }

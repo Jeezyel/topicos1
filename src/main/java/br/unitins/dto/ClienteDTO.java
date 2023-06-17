@@ -9,7 +9,6 @@ import br.unitins.model.Roupas;
 import br.unitins.model.Telefone;
 
 public record ClienteDTO(
-    long id,
     String cpf,
     String nome,
     Endereco enderecos,

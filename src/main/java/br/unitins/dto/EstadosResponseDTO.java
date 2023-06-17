@@ -6,12 +6,16 @@ import br.unitins.model.Estados;
 import br.unitins.model.Municipio;
 
 public record EstadosResponseDTO(
+    long id,
     String nome,
     String sigla,
     List<Municipio> municipio
 ) {
     public EstadosResponseDTO (Estados estados){
-        this(estados.getSigla(), estados.getNome(), estados.getMunicipio());
+        this(estados.getId(),
+            estados.getSigla(),
+            estados.getNome(),
+            estados.getMunicipio());
     }
     
 }

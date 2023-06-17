@@ -7,6 +7,7 @@ import br.unitins.model.Perfil;
 
 public record ClienteSimplesResponseDTO (
 
+    long id,
     String cpf,
     String nome,
     String login,
@@ -15,11 +16,12 @@ public record ClienteSimplesResponseDTO (
 ) {
     public ClienteSimplesResponseDTO(Cliente cliente){
 
-        this(cliente.getCpf(),
-        cliente.getNome(),
-        cliente.getLogin(),
-        cliente.getSenha(),
-        cliente.getPerfis());
+        this(cliente.getId(),
+            cliente.getCpf(),
+            cliente.getNome(),
+            cliente.getLogin(),
+            cliente.getSenha(),
+            cliente.getPerfis());
         
     }
 

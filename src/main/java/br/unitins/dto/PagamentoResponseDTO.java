@@ -5,6 +5,7 @@ import br.unitins.model.Pagamento;
 import br.unitins.model.TipoPagamento;
 
 public record PagamentoResponseDTO(
+    long id,
     Compra compra,
     Integer quantidadeParcela ,
     Double valorParcela,
@@ -12,11 +13,12 @@ public record PagamentoResponseDTO(
     Boolean confirmarPagamento
     ) {
     public PagamentoResponseDTO(Pagamento pagamento){
-        this(pagamento.getCompra(),
-        pagamento.getQuantidadeParcela(),
-        pagamento.getValorParcela(),
-        pagamento.getTipoPagamento(),
-        pagamento.getConfirmarPagamento()
+        this(pagamento.getId(),
+            pagamento.getCompra(),
+            pagamento.getQuantidadeParcela(),
+            pagamento.getValorParcela(),
+            pagamento.getTipoPagamento(),
+            pagamento.getConfirmarPagamento()
         );
     }
         

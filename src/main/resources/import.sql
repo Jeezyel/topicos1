@@ -6,7 +6,7 @@
 
 
 
-
+/*
 
 INSERT INTO public.estados(dataalteracao, datainclusao, id, nome, sigla)
 	VALUES ('2023-04-12', '2023-04-12', 1, 'tribom', 'tb');
@@ -112,7 +112,7 @@ INSERT INTO public.perfis(
 
 -- -------------------------------------------------------------------------------------------
 
-/*
+
 
  */
        

@@ -5,7 +5,6 @@ import java.util.Set;
 import br.unitins.model.Perfil;
 
 public record UsuarioDTO(
-    Long id,
     String login,
     String senha,
     String nomeImagem,
