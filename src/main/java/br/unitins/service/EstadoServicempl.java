@@ -85,7 +85,7 @@ public class EstadoServicempl implements EstadoService{
     @Override
     public List<EstadosResponseDTO> findByNome(String nome) {
         
-        List<Estados> list = estadoRepository.findByNome(nome);
+        List<Estados> list = estadoRepository.findByListaNome(nome);
         return list.stream().map(EstadosResponseDTO::new).collect(Collectors.toList());
     }
 

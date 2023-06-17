@@ -4,7 +4,6 @@ package br.unitins.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Compra extends DefaultEntity{

@@ -93,7 +93,7 @@ public class EstadoResouce {
     @GET
     @Path("/search/{nome}")
     @RolesAllowed({"Admin","User"})
-    public List<Estados> search(@PathParam("nome") String nome){
+    public Estados search(@PathParam("nome") String nome){
 
         LOG.info("procurando por nome do estado");
         return repository.findByNome(nome);

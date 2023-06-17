@@ -51,7 +51,7 @@ public class MunicipioServicempl implements MunicipioService {
 
         Municipio entity = new Municipio();
         entity.setNome(municipioDTO.nome());
-        entity.setEstados(estadoRepository.findById(municipioDTO.id()));
+        entity.setEstados(estadoRepository.findByNome(municipioDTO.estados().getNome()));
         municipioRepository.persist(entity);
 
         return new MunicipioResponseDTO(entity);
@@ -66,7 +66,7 @@ public class MunicipioServicempl implements MunicipioService {
 
 
         entity.setNome(municipioDTO.nome());
-        entity.setEstados(estadoRepository.findById(municipioDTO.id()));
+        entity.setEstados(estadoRepository.findByNome(municipioDTO.estados().getNome()));
 
         return new MunicipioResponseDTO(entity);
     }
