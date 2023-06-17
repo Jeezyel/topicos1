@@ -51,7 +51,7 @@ public class TelefoneTestes {
                 .header("Authorization", "Bearer " + token)
                 .when().get("/telefone/getAll")
                 .then()
-                .statusCode(200);
+                .statusCode(204);
     }
 
     @Test

@@ -38,7 +38,7 @@ public class TelefoneResouce {
 
 
     @GET
-    @Path("/gatAll")
+    @Path("/getAll")
     @RolesAllowed({"Admin"})
     public List<TelefoneResponseDTO> getAll(){
         try {
