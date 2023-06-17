@@ -23,13 +23,13 @@ import org.junit.jupiter.api.BeforeEach;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class TelefoneTestes {/* 
+public class TelefoneTestes { 
 
     private String token;
 
     @BeforeEach
     public void setUp(){
-        var auth = new AuthUsuarioDTO("janio", "123");
+        var auth = new AuthUsuarioDTO("goku", "123");
 
         Response response = (Response) given()
                 .contentType("application/json")
@@ -119,5 +119,5 @@ public class TelefoneTestes {/*
         } finally {
             assertNull(telefoneResponseDTO);
         }
-    }*/
+    }
 }

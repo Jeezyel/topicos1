@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
+import br.unitins.dto.ClienteSimplesDTO;
+import br.unitins.dto.ClienteSimplesResponseDTO;
 import br.unitins.model.Cliente;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -24,6 +26,9 @@ public interface ClienteService {
     Cliente findByLoginCli(String login);
 
     ClienteResponseDTO create(ClienteDTO clienteDTO);
+
+    
+    ClienteSimplesResponseDTO createSimplis(ClienteSimplesDTO clienteSimplesDTO);
 
     ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
 

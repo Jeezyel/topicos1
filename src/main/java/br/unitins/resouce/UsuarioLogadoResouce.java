@@ -15,6 +15,7 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import br.unitins.aplication.Result;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
+import br.unitins.dto.ClienteSimplesDTO;
 import br.unitins.form.ImageForm;
 import br.unitins.model.Cliente;
 import br.unitins.service.ClienteService;
@@ -52,7 +53,7 @@ public class UsuarioLogadoResouce {
     private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
 
     @Inject
-    ClienteService ClienteService;
+    ClienteService clienteService;
 
     @Inject
     JsonWebToken tokenJwt;
@@ -82,7 +83,7 @@ public class UsuarioLogadoResouce {
          LOG.info("obtendo o login a partir do token");
         String login = tokenJwt.getSubject();
         LOG.info(" procurando pro login");
-        ClienteResponseDTO usuario = ClienteService.findByLogin(login);
+        ClienteResponseDTO usuario = clienteService.findByLogin(login);
 
         return usuario;
     }
@@ -110,9 +111,9 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        Cliente cliente =  ClienteService.findByLoginCli(login);
+        Cliente cliente =  clienteService.findByLoginCli(login);
 
-        cliente = ClienteService.updateNomeImagen(cliente.getId(), nomeImagem);
+        cliente = clienteService.updateNomeImagen(cliente.getId(), nomeImagem);
 
         return Response.ok(cliente).build();
 
@@ -135,7 +136,7 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin"})
     public List<ClienteResponseDTO> getAll() {
         LOG.info(" pagando todos os cliente");
-        return ClienteService.getAll();
+        return clienteService.getAll();
     }
 
     @POST
@@ -147,7 +148,7 @@ public class UsuarioLogadoResouce {
             LOG.info(" criando um cliente ");
             return Response
                     .status(Status.CREATED) // 201
-                    .entity(ClienteService.create(clienteDTO))
+                    .entity(clienteService.create(clienteDTO))
                     .build();
         } catch (ConstraintViolationException e) {
             LOG.debug(" erro na ciração");
@@ -174,7 +175,7 @@ public class UsuarioLogadoResouce {
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
 
 
-        ClienteService.deleteByLogin(login);
+        clienteService.deleteByLogin(login);
         LOG.info(" apagando pelo login");
         return Response
                 .status(Status.NO_CONTENT)
@@ -188,7 +189,7 @@ public class UsuarioLogadoResouce {
 
         try {
             LOG.info("criando o cliente");
-            ClienteService.update(login, clienteDTO);
+            clienteService.update(login, clienteDTO);
             return true;
         } catch (Exception e) {
             LOG.fatal("erro não planejado");
@@ -203,10 +204,10 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({"Admin"})
     public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
         LOG.info(" procurando por login");
-        return ClienteService.findByLogin(login);
+        return clienteService.findByLogin(login);
     }
 
-     @PUT
+    @PUT
     @Path("/atualizar-senha{id}")
     @RolesAllowed({"Admin"})
     public Boolean atualizarSenha(@PathParam("id") Long id, String novaSenha ,String velhaSenha){
@@ -214,11 +215,29 @@ public class UsuarioLogadoResouce {
         try {
             LOG.info("atualizando a senha do cliente");
             
-            return ClienteService.alterarSenha(id, novaSenha , velhaSenha);
+            return clienteService.alterarSenha(id, novaSenha , velhaSenha);
         } catch (NullPointerException e) {
             LOG.debug("erro cliente n encontrado");
             return false;
         }catch (Exception e) {
+            LOG.fatal("erro não planejado");
+            return false;
+        }
+
+        
+    }
+
+    @POST
+    @Path("/update")
+    @RolesAllowed({"Admin"})
+    public Boolean usuarioSimples(ClienteSimplesDTO clienteSimplesDTO){
+        LOG.info("criando o usuario simples");
+        try {
+            LOG.info("criando o usuario simples dentor do try");
+            clienteService.createSimplis(clienteSimplesDTO);
+            return true;
+            
+        } catch (Exception e) {
             LOG.fatal("erro não planejado");
             return false;
         }

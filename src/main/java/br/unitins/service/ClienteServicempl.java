@@ -16,6 +16,8 @@ import org.jboss.logging.Logger;
 
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
+import br.unitins.dto.ClienteSimplesDTO;
+import br.unitins.dto.ClienteSimplesResponseDTO;
 import br.unitins.model.Cliente;
 import br.unitins.repository.ClienteRepository;
 import br.unitins.repository.UsuarioRepository;
@@ -211,6 +213,19 @@ public class ClienteServicempl  implements ClienteService{
         return clienteRepository.findByLoginAndSenha(login, senha);
         
         
+    }
+
+    @Override
+    public ClienteSimplesResponseDTO createSimplis(ClienteSimplesDTO clienteSimplisDTO) {
+        Cliente cliente = new Cliente(); 
+
+        cliente.setCpf(clienteSimplisDTO.cpf());
+        cliente.setNome(clienteSimplisDTO.nome());
+        cliente.setLogin(clienteSimplisDTO.login());
+        cliente.setSenha(clienteSimplisDTO.senha());
+        cliente.setPerfis(clienteSimplisDTO.perfis());
+
+        return new ClienteSimplesResponseDTO(cliente);
     }
 
    
