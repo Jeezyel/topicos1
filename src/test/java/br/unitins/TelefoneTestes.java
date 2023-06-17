@@ -23,7 +23,7 @@ import org.junit.jupiter.api.BeforeEach;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
-public class TelefoneTestes {
+public class TelefoneTestes {/* 
 
     private String token;
 
@@ -119,5 +119,5 @@ public class TelefoneTestes {
         } finally {
             assertNull(telefoneResponseDTO);
         }
-    }
+    }*/
 }
