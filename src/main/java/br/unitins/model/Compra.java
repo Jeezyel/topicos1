@@ -4,19 +4,18 @@ package br.unitins.model;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 public class Compra extends DefaultEntity{
 
     @Column( nullable = false )    
-    private Double totalCompra;
-    @Column( nullable = false ) 
+    private Double totalCompra; 
     @OneToOne
-    private ItemCompra itemCompra;
-    @Column( nullable = false ) 
+    private ItemCompra itemCompra; 
     @OneToOne
     private Endereco endereco;
-    @Column( nullable = false ) 
+    
     @OneToOne
     private Cliente cliente;
 

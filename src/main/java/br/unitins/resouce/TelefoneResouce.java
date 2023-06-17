@@ -41,9 +41,13 @@ public class TelefoneResouce {
     @Path("/gatAll")
     @RolesAllowed({"Admin"})
     public List<TelefoneResponseDTO> getAll(){
-
-        LOG.info("buscnado todos os telefones");
-        return service.getAll();
+        try {
+            LOG.info("buscnado todos os telefones");
+            return service.getAll();
+        } catch (Exception e) {
+            return null;
+        }
+        
     }
 
     @GET

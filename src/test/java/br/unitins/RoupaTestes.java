@@ -6,12 +6,32 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import br.unitins.dto.AuthUsuarioDTO;
 import io.quarkus.test.junit.QuarkusTest;
+import io.restassured.response.Response;
 
 @QuarkusTest
 public class RoupaTestes {
+  private String token;
+
+    @BeforeEach
+    public void setUp(){
+        var auth = new AuthUsuarioDTO("goku", "123");
+
+        Response response = (Response) given()
+                .contentType("application/json")
+                .body(auth)
+                .when().post("/auth")
+                .then()
+                .statusCode(200)
+                .extract().response();
+        
+        token = response.header("Authorization");
+    }
+    
 
     @Test
     public void gatAllTeste(){

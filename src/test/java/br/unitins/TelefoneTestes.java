@@ -49,14 +49,14 @@ public class TelefoneTestes {
     public void testGetAll() {
         given()
                 .header("Authorization", "Bearer " + token)
-                .when().get("/telefones")
+                .when().get("/telefone/getAll")
                 .then()
                 .statusCode(200);
     }
 
     @Test
     public void testInsert() {
-        TelefoneDTO telefoneDTO = new TelefoneDTO(1,
+        TelefoneDTO telefoneDTO = new TelefoneDTO(
                 "(63)",
                 "(99) 99999-9999",
                 false);
@@ -75,13 +75,13 @@ public class TelefoneTestes {
     @Test
     public void testUpdate() {
         // Adicionando uma pessoa no banco de dados
-        TelefoneDTO telefoneDTO = new TelefoneDTO(1,
+        TelefoneDTO telefoneDTO = new TelefoneDTO(
                 "(63)",
                 "(99) 99999-9999",
                 false);
         Long idTLong = telefoneService.create(telefoneDTO).id();
         // Criando outra pessoa para atuailzacao
-        TelefoneDTO telefoneUpDto = new TelefoneDTO(1,
+        TelefoneDTO telefoneUpDto = new TelefoneDTO(
                 "(63)",
                 "(99) 99999-9999",
                 false);
@@ -101,7 +101,7 @@ public class TelefoneTestes {
     @Test
     public void testDelete() {
         // Adicionando uma pessoa no banco de dados
-        TelefoneDTO telefoneDTO = new TelefoneDTO(1,
+        TelefoneDTO telefoneDTO = new TelefoneDTO(
                 "(63)",
                 "(99) 99999-9999",
                 false);

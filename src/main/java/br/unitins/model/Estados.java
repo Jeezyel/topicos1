@@ -13,7 +13,6 @@ public class Estados extends DefaultEntity {
     private String nome;
     @Column( nullable = false ,length = 3 ) 
     private String sigla;
-    @Column( nullable = false ) 
     @OneToMany
     private List<Municipio> municipio;
 

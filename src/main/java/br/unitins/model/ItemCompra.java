@@ -13,7 +13,6 @@ public class ItemCompra extends DefaultEntity {
     private Integer quantidadeProduto;
     @Column( nullable = false ) 
     private Double preco;
-    @Column( nullable = false ) 
     @OneToMany
     private List<Roupas> roupas;
 

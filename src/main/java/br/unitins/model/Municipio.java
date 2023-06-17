@@ -9,7 +9,7 @@ public class Municipio extends DefaultEntity{
 
     @Column( nullable = false ) 
     private String nome;
-    @Column( nullable = false ) 
+     
     @ManyToOne
     private Estados estados;
 

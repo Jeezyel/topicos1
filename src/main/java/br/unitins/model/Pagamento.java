@@ -9,7 +9,6 @@ import jakarta.persistence.OneToOne;
 public class Pagamento extends DefaultEntity {
 
     @OneToOne
-    @Column( nullable = false ) 
     private Compra compra;
     private Integer quantidadeParcela = 1;
     @Column( nullable = false ) 

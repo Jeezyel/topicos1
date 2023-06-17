@@ -2,6 +2,7 @@ package br.unitins.service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -26,10 +27,7 @@ public class TelefoneServicempl implements TelefoneService{
 
     @Override
     public List<TelefoneResponseDTO> getAll() {
-        List<Telefone> listaTelefones = telefoneRepository.listAll();
-
-        return listaTelefones.stream().map(TelefoneResponseDTO::new).collect(Collectors.toList());
-    }
+        return telefoneRepository.findAll().stream().map(TelefoneResponseDTO::new).collect(Collectors.toList());    }
 
     @Override
     public TelefoneResponseDTO findById(Long id) {

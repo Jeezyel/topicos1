@@ -17,7 +17,7 @@ public class Endereco extends DefaultEntity{
     private String complemento;
     private String referencia; 
     @ManyToOne
-    @JoinColumn(name = "estados" , nullable = false)
+    @JoinColumn(name = "estados" )
     private Estados estados;
 
     
