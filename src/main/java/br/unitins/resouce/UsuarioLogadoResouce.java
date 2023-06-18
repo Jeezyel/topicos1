@@ -101,7 +101,7 @@ public class UsuarioLogadoResouce {
             nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
         } catch (IOException e) {
             
-            LOG.debug(" previnido o erro IO ");
+            LOG.debug(" erro IO ");
             Result result = new Result(e.getMessage());
             return Response.status(Status.CONFLICT).entity(result).build();
         } catch(Exception e){

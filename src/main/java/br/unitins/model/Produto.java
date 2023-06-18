@@ -17,7 +17,6 @@ public abstract class Produto extends DefaultEntity {
     private String cor;
     @Column( nullable = false ) 
     private Float valor;
-    @Column( nullable = false )
     private String nomeImagen;
 
 

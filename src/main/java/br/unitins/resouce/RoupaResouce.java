@@ -19,28 +19,36 @@ import jakarta.ws.rs.core.Response.Status;
 
 
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
+import br.unitins.form.ImageForm;
+import br.unitins.model.Roupa;
 import br.unitins.repository.RoupasRepository;
+import br.unitins.service.FileService;
 import br.unitins.service.RoupaService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Path("/roupa")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-public class RoupasResouce  {
+public class RoupaResouce  {
 
     
-    private static final Logger LOG = Logger.getLogger(RoupasResouce.class);
+    private static final Logger LOG = Logger.getLogger(RoupaResouce.class);
 
     @Inject
     RoupasRepository roupasRepository;
 
     @Inject
     RoupaService roupaServicempl;
+
+    @Inject
+    FileService fileService;
 
     // buscar tudo
     @GET
@@ -52,6 +60,33 @@ public class RoupasResouce  {
         LOG.info("buscnado todas as roupas");
         return roupaServicempl.getAll();
 
+    }
+    //salvar 
+
+    @PATCH
+    @Path("/novaimagem/{id-roupa}")
+    @RolesAllowed({"Admin"})
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response salvarImagem(@MultipartForm ImageForm form, @PathParam("id-roupa") Long idRoupa){
+        LOG.info("salvando a imagem do produto");
+        String nomeImagem = "";
+
+        try {
+            LOG.info(" chamando o metodo salvar ");
+            nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
+        } catch (IOException e) {
+            LOG.debug(" erro IO ");
+            Result result = new Result(e.getMessage());
+            return Response.status(Status.CONFLICT).entity(result).build();
+        } catch(Exception e){
+            LOG.fatal(" erro falta não indentificado ");
+        }
+
+        Roupa roupa = roupasRepository.findByID(idRoupa);
+
+        roupaServicempl.updateNomeImagerRoupa(roupa.getId(), nomeImagem);
+
+        return Response.ok(roupa).build();
     }
 
 
