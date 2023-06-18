@@ -5,7 +5,6 @@ import java.util.List;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
-import com.oracle.svm.core.annotate.Delete;
 
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;

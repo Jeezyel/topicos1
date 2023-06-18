@@ -2,7 +2,6 @@ package br.unitins.service;
 
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import jakarta.enterprise.context.ApplicationScoped;
