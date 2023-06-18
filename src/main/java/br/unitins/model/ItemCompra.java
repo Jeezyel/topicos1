@@ -14,7 +14,7 @@ public class ItemCompra extends DefaultEntity {
     @Column( nullable = false ) 
     private Double preco;
     @OneToMany
-    private List<Roupas> roupas;
+    private List<Roupa> roupa;
 
     
     
@@ -31,11 +31,11 @@ public class ItemCompra extends DefaultEntity {
     public void setPreco(Double preco) {
         this.preco = preco;
     }
-    public List<Roupas> getRoupas() {
-        return roupas;
+    public List<Roupa> getRoupa() {
+        return roupa;
     }
-    public void setRoupas(List<Roupas> roupas) {
-        this.roupas = roupas;
+    public void setRoupas(List<Roupa> roupa) {
+        this.roupa = roupa;
     }
 
 }

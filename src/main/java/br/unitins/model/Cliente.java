@@ -36,7 +36,7 @@ public class Cliente extends DefaultEntity {
     @JoinTable(name = "cliente_roupas",
     joinColumns = @JoinColumn(name = "cliente_id"),
     inverseJoinColumns = @JoinColumn(name = "roupa_id"))
-    private List<Roupas> listaDeDesejo;
+    private List<Roupa> listaDeDesejo;
 
 
 
@@ -67,10 +67,10 @@ public class Cliente extends DefaultEntity {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<Roupas> getListaDeDesejo() {
+    public List<Roupa> getListaDeDesejo() {
         return listaDeDesejo;
     }
-    public void setListaDeDesejo(List<Roupas> listaDeDesejo) {
+    public void setListaDeDesejo(List<Roupa> listaDeDesejo) {
         this.listaDeDesejo = listaDeDesejo;
     }public String getLogin() {
         return login;

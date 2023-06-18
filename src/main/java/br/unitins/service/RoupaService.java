@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
+import br.unitins.model.Roupa;
 
 public interface RoupaService {
 
@@ -16,6 +17,8 @@ public interface RoupaService {
     RoupasResponseDTO update(long id , RoupasDTO dto);
 
     void delete(long id);
+    
+    Roupa updateNomeImagerRoupa(Long id, String nomeImagen);
 
     // extras
     

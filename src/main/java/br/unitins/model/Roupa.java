@@ -7,7 +7,7 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Entity
 @PrimaryKeyJoinColumn(name = "id")
-public class Roupas extends Produto {
+public class Roupa extends Produto {
 
     @Column(nullable = false , length = 40)
     private String tipoDeTercido;

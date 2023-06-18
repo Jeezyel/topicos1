@@ -1,6 +1,6 @@
 package br.unitins.dto;
 
-import br.unitins.model.Roupas;
+import br.unitins.model.Roupa;
 
 public record RoupasResponseDTO(
     
@@ -12,13 +12,13 @@ public record RoupasResponseDTO(
 
     ) {
     
-    public RoupasResponseDTO(Roupas roupas) {
+    public RoupasResponseDTO(Roupa roupa) {
 
-        this(roupas.getId(),
-            roupas.getValor(),
-            roupas.getCor(),
-            roupas.getMarca(),
-            roupas.getModelo());
+        this(roupa.getId(),
+            roupa.getValor(),
+            roupa.getCor(),
+            roupa.getMarca(),
+            roupa.getModelo());
         
     }
 

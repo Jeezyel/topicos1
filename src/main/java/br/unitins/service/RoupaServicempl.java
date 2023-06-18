@@ -10,7 +10,7 @@ import jakarta.ws.rs.NotFoundException;
 
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
-import br.unitins.model.Roupas;
+import br.unitins.model.Roupa;
 import br.unitins.repository.RoupasRepository;
 
 @ApplicationScoped
@@ -22,7 +22,7 @@ public class RoupaServicempl implements RoupaService {
 
 	@Override
 	public List<RoupasResponseDTO> getAll() {
-        List<Roupas> listaRoupas = roupasRepository.listAll();
+        List<Roupa> listaRoupas = roupasRepository.listAll();
 
         return listaRoupas.stream().map(RoupasResponseDTO::new).collect(Collectors.toList());
 		
@@ -33,7 +33,7 @@ public class RoupaServicempl implements RoupaService {
 
 
 		//RoupasResouserDTO roupas = roupasRepository.findById(id);
-		Roupas roupas = roupasRepository.findById(id);
+		Roupa roupas = roupasRepository.findById(id);
 		
 		if(roupas == null)
 			throw new NotFoundException("Roupa nao encontrada");
@@ -47,7 +47,7 @@ public class RoupaServicempl implements RoupaService {
 			return null;
 		}
 
-		Roupas entity = new Roupas();
+		Roupa entity = new Roupa();
         entity.setValor(dto.getValor());
         entity.setCor(dto.getCor());
         entity.setMarca(dto.getMarca());
@@ -59,7 +59,7 @@ public class RoupaServicempl implements RoupaService {
 
 	@Override
 	public RoupasResponseDTO update(long id, RoupasDTO dto) throws ConstraintViolationException {
-		Roupas newRoupa = roupasRepository.findById(id);
+		Roupa newRoupa = roupasRepository.findById(id);
         newRoupa.setValor(dto.getValor());
         newRoupa.setCor(dto.getCor());
         newRoupa.setMarca(dto.getMarca());
@@ -70,7 +70,7 @@ public class RoupaServicempl implements RoupaService {
 
 	@Override
 	public void delete(long id) {
-		Roupas roupa = roupasRepository.findById(id);
+		Roupa roupa = roupasRepository.findById(id);
 
 		if( roupa == null )
 			throw new UnsupportedOperationException("Nao pode encontra por id");
@@ -80,14 +80,14 @@ public class RoupaServicempl implements RoupaService {
 
 	@Override
 	public RoupasResponseDTO findByName(String name) {
-		Roupas roupas = roupasRepository.findByMarca(name);
+		Roupa roupas = roupasRepository.findByMarca(name);
 
 		return new RoupasResponseDTO(roupas);
 	}
 
 	@Override
 	public List<RoupasResponseDTO> findByNameList(String name) {
-		List<Roupas> listaRoupa = roupasRepository.findByMarcaList(name);
+		List<Roupa> listaRoupa = roupasRepository.findByMarcaList(name);
 
 		return listaRoupa.stream().map(RoupasResponseDTO::new).collect(Collectors.toList());
 		
@@ -96,6 +96,17 @@ public class RoupaServicempl implements RoupaService {
 	@Override
 	public long count() {
 		return roupasRepository.count();
+	}
+
+	@Override
+	public Roupa updateNomeImagerRoupa(Long idRoupa, String nomeImagen) {
+		Roupa roupa = roupasRepository.findByID(idRoupa);
+		
+		roupa.setNomeImagen(nomeImagen);
+
+		roupasRepository.persist(roupa);
+
+		return roupa;
 	}
 
 	

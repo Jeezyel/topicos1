@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import br.unitins.dto.CompraResponseDTO;
 import br.unitins.model.Cliente;
 import br.unitins.model.Compra;
-import br.unitins.model.Roupas;
+import br.unitins.model.Roupa;
 import br.unitins.repository.CompraRepository;
 import br.unitins.repository.RoupasRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -59,10 +59,10 @@ public class CompraServicempl implements CompraService{
     public void insertItemIntoCompra(Long idCompra, long idRoupa) {
         Compra compra = compraRepository.findById(idCompra);
 
-        Roupas roupas = roupasRepository.findByID(idCompra);
+        Roupa roupa = roupasRepository.findByID(idCompra);
 
 
-        compra.getItemCompra().getRoupas().add(roupas);
+        compra.getItemCompra().getRoupa().add(roupa);
 
         compraRepository.persist(compra);
     }
@@ -72,13 +72,13 @@ public class CompraServicempl implements CompraService{
         
         Compra compra = compraRepository.findById(idCompra);
 
-        Roupas roupas = roupasRepository.findByID(idCompra);
+        Roupa roupas = roupasRepository.findByID(idCompra);
 
-        for (int i = 0; i <= compra.getItemCompra().getRoupas().size(); i++) {
+        for (int i = 0; i <= compra.getItemCompra().getRoupa().size(); i++) {
 
-            if (compra.getItemCompra().getRoupas().get(i) == roupas) {
+            if (compra.getItemCompra().getRoupa().get(i) == roupas) {
 
-                compra.getItemCompra().getRoupas().remove(i);
+                compra.getItemCompra().getRoupa().remove(i);
 
             }
             

@@ -6,7 +6,7 @@ import java.util.Set;
 import br.unitins.model.Cliente;
 import br.unitins.model.Endereco;
 import br.unitins.model.Perfil;
-import br.unitins.model.Roupas;
+import br.unitins.model.Roupa;
 import br.unitins.model.Telefone;
 
 public record ClienteResponseDTO (
@@ -20,7 +20,7 @@ public record ClienteResponseDTO (
     String senha,
     String nomeImagem,
     Set<Perfil> perfis,
-    List<Roupas> listaDeDesejo
+    List<Roupa> listaDeDesejo
 ) {
     public ClienteResponseDTO(Cliente cliente){
 

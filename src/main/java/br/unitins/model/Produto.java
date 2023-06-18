@@ -17,11 +17,19 @@ public abstract class Produto extends DefaultEntity {
     private String cor;
     @Column( nullable = false ) 
     private Float valor;
+    @Column( nullable = false )
+    private String nomeImagen;
 
 
 
 
 
+    public String getNomeImagen() {
+        return nomeImagen;
+    }
+    public void setNomeImagen(String nomeImagen) {
+        this.nomeImagen = nomeImagen;
+    }
     public String getModelo() {
         return modelo;
     }

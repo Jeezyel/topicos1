@@ -212,11 +212,13 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
-    public Cliente updateNomeImagen(Long id, String nomeImagen) {
+    public Cliente updateNomeImagen(Long idCliente, String nomeImagen) {
 
-        Cliente cliente = clienteRepository.findById(id);
+        Cliente cliente = clienteRepository.findById(idCliente);
 
         cliente.setNomeImagem(nomeImagen);
+
+        clienteRepository.persist(cliente);
 
         return cliente;
 
