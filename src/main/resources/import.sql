@@ -24,33 +24,22 @@ INSERT INTO public.estados(dataalteracao, datainclusao, id, nome, sigla)
 
 INSERT INTO public.municipio(
 	dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 5, 5, 'belen');
+	VALUES ('2023-04-12', '2023-04-12', 1, 1, 'belen');
 	
 INSERT INTO public.municipio(
 	dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 5, 6, 'belo orisont');
+	VALUES ('2023-04-12', '2023-04-12', 2, 2, 'belo orisont');
 	
 INSERT INTO public.municipio(
 	dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12',5, 7, 'porto');
+	VALUES ('2023-04-12', '2023-04-12',3, 3, 'porto');
 
 	
 -- -------------------------------------------------------------------------------------------
 
-INSERT INTO public.endereco(dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
-	VALUES ('2023-04-12', '2023-04-12', 1, 1, 253443262, 24, 'rua patuver patuven', 'pertor do pato');
-
-INSERT INTO public.endereco(dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
-	VALUES ('2023-04-12', '2023-04-12', 1, 2, 253443262, 24, 'rua que tem pedra', 'pertor da pedra');
-
-INSERT INTO public.endereco( dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
-	VALUES ('2023-04-12', '2023-04-12', 2, 3, 74567456767, 54, 'não tem rua', 'pertor do nada');
-
-INSERT INTO public.endereco(dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
-	VALUES ('2023-04-12', '2023-04-12', 3, 4, 2354242346632, 23, 'rua dos bobos', 'so tem bobo');
-
-INSERT INTO public.endereco(dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
-	VALUES ('2023-04-12', '2023-04-12', 4, 5, 234572452245, 64, 'rua do valorant', 'so tem games');
+INSERT INTO public.endereco(
+	dataalteracao, datainclusao, estados, id, cep, complemento, enderecocompleto, referencia)
+	VALUES ('2023-04-12', '2023-04-12', 1 , 1, '21513441313', 'acula', 'rua ali', 'perto do porte');
 	
 -- -------------------------------------------------------------------------------------------
 
@@ -69,8 +58,7 @@ INSERT INTO public.telefone(
 -- -------------------------------------------------------------------------------------------
 INSERT INTO public.cliente(
 	endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, senha, nomeimagem)
-	VALUES (5, '2023-04-12', '2023-04-12', 1, 3, '3245838576554', 'kk', 'kk', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', '?');
-
+	VALUES (1, '2023-04-12', '2023-04-12', 1, 3, '3245838576554', 'kk', 'kk', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', '?');
 
 -- -------------------------------------------------------------------------------------------
 

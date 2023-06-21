@@ -42,11 +42,9 @@ public class AuthResource {
     @Produces(MediaType.TEXT_PLAIN)
     public Response login (AuthUsuarioDTO authDTO) {
 
-        LOG.info(" criando um hash");
-        String hash = hashService.getHashSenha(authDTO.senha());
 
         LOG.info(" pegando o cliente ");
-        Cliente cliente = clienteService.findByLoginAndSenha(authDTO.login(), hash);
+        Cliente cliente = clienteService.findByLoginAndSenha(authDTO.login(), authDTO.senha());
 
         if (cliente == null) {
             LOG.info(" caso não encontra o cliente");
