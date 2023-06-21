@@ -15,6 +15,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
 
 
@@ -25,7 +26,6 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.RoupasDTO;
 import br.unitins.dto.RoupasResponseDTO;
 import br.unitins.form.ImageForm;
-import br.unitins.model.Roupa;
 import br.unitins.repository.RoupasRepository;
 import br.unitins.service.FileService;
 import br.unitins.service.RoupaService;
@@ -82,11 +82,11 @@ public class RoupaResouce  {
             LOG.fatal(" erro falta não indentificado ");
         }
 
-        Roupa roupa = roupasRepository.findByID(idRoupa);
+        
 
-        roupaServicempl.updateNomeImagerRoupa(roupa.getId(), nomeImagem);
+        roupaServicempl.updateNomeImagerRoupa(idRoupa, nomeImagem);
 
-        return Response.ok(roupa).build();
+        return Response.status(Status.NO_CONTENT).build();
     }
 
 
@@ -195,5 +195,27 @@ public class RoupaResouce  {
             return Response.status(Status.NOT_FOUND).entity(result).build();
         }
         
+    }
+
+    @GET
+    @Path("/download/{nomeImagem}")
+    @RolesAllowed({ "Admin", "User" })
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response download(@PathParam("nomeImagem") String nomeImagem) {
+
+        try {
+            ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+
+            response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
+            LOG.infof("Download do arquivo %s concluído com sucesso.", nomeImagem);
+
+            return response.build();
+
+        } catch (Exception e) {
+            LOG.errorf("Erro ao realizar o download do arquivo: %s", nomeImagem, e);
+            return Response
+                    .status(Status.INTERNAL_SERVER_ERROR)
+                    .build();
+        }
     }
 }

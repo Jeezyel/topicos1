@@ -17,7 +17,6 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
 import br.unitins.form.ImageForm;
-import br.unitins.model.Cliente;
 import br.unitins.service.ClienteService;
 import br.unitins.service.FileService;
 import jakarta.annotation.security.RolesAllowed;
@@ -112,11 +111,11 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        Cliente cliente =  clienteService.findByLoginCli(login);
+        ClienteResponseDTO clienteDTO =  clienteService.findByLogin(login);
 
-        cliente = clienteService.updateNomeImagen(cliente.getId(), nomeImagem);
+        clienteDTO = clienteService.updateNomeImagen(clienteDTO.id(), nomeImagem);
 
-        return Response.ok(cliente).build();
+        return Response.ok(clienteDTO).build();
 
     }
 
@@ -126,10 +125,24 @@ public class UsuarioLogadoResouce {
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
 
-        LOG.info(" fazendo download da imagem");
-        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
-        response.header("Content-Disposition", "attachment;filename="+nomeImagem);
-        return response.build();
+
+         try {
+            LOG.info(" fazendo download da imagem");
+            ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+            response.header("Content-Disposition", "attachment;filename="+nomeImagem);
+            return response.build();
+            
+        } catch (Exception e) {
+            LOG.fatal("erro não planejado");
+            Result result = new Result(e.getMessage());
+
+            return Response
+                    .status(Status.NOT_FOUND)
+                    .entity(result)
+                    .build();
+        }
+
+        
     }
     
     @GET
