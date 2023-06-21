@@ -6,7 +6,7 @@
 
 
 
-/*
+
 
 INSERT INTO public.estados(dataalteracao, datainclusao, id, nome, sigla)
 	VALUES ('2023-04-12', '2023-04-12', 1, 'tribom', 'tb');
@@ -22,17 +22,17 @@ INSERT INTO public.estados(dataalteracao, datainclusao, id, nome, sigla)
 
 -- -------------------------------------------------------------------------------------------
 
-INSERT INTO public.municipio(dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 1, 1, 'proto-proto');
-
-INSERT INTO public.municipio(dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 2, 2, 'proto-final');
-
-INSERT INTO public.municipio(dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 3, 3, 'proto-inicio');
-
-INSERT INTO public.municipio(dataalteracao, datainclusao, estados_id, id, nome)
-	VALUES ('2023-04-12', '2023-04-12', 4, 4, 'proto');
+INSERT INTO public.municipio(
+	dataalteracao, datainclusao, estados_id, id, nome)
+	VALUES ('2023-04-12', '2023-04-12', 5, 5, 'belen');
+	
+INSERT INTO public.municipio(
+	dataalteracao, datainclusao, estados_id, id, nome)
+	VALUES ('2023-04-12', '2023-04-12', 5, 6, 'belo orisont');
+	
+INSERT INTO public.municipio(
+	dataalteracao, datainclusao, estados_id, id, nome)
+	VALUES ('2023-04-12', '2023-04-12',5, 7, 'porto');
 
 	
 -- -------------------------------------------------------------------------------------------
@@ -54,44 +54,31 @@ INSERT INTO public.endereco(dataalteracao, datainclusao, estados, id, cep, compl
 	
 -- -------------------------------------------------------------------------------------------
 
-INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodearea, numero)
-	VALUES ('false', '2023-04-12', '2023-04-12', 1, 2534763345 , 63);
-	
-INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodearea, numero)
-	VALUES ('false', '2023-04-12', '2023-04-12', 2, 356435463 , 63);
 
-INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodearea, numero)
-	VALUES ('true', '2023-04-12', '2023-04-12', 3, 599857858 , 63);
+INSERT INTO public.telefone(
+	celular, dataalteracao, datainclusao, id, codigodearea, numero)
+	VALUES (false, '2023-04-12', '2023-04-12', 1,63, 0345802623);
 
-INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodearea, numero)
-	VALUES ('true', '2023-04-12', '2023-04-12', 4, 123412343 , 63);
-	
-INSERT INTO public.telefone(celular, dataalteracao, datainclusao, id, codigodearea, numero)
-	VALUES ('true', '2023-04-12', '2023-04-12', 5, 234523452345 , 63);
+INSERT INTO public.telefone(
+	celular, dataalteracao, datainclusao, id, codigodearea, numero)
+	VALUES (false, '2023-04-12', '2023-04-12', 2,63, 0345802623);
+
+INSERT INTO public.telefone(
+	celular, dataalteracao, datainclusao, id, codigodearea, numero)
+	VALUES (false, '2023-04-12', '2023-04-12', 3,63, 0345802623);
+-- -------------------------------------------------------------------------------------------
+INSERT INTO public.cliente(
+	endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, senha, nomeimagem)
+	VALUES (5, '2023-04-12', '2023-04-12', 1, 3, '3245838576554', 'kk', 'kk', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==', '?');
+
 
 -- -------------------------------------------------------------------------------------------
 
-INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
-	VALUES (1, '2023-04-12', '2023-04-12', 1, 1, 23452345234 , 'lucas', 'lucas', '?', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==');
-
-INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
-	VALUES (2, '2023-04-12', '2023-04-12', 2, 2, 23452345246 , 'roberto', 'roberto', '?', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==');
-	
-INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
-	VALUES (3, '2023-04-12', '2023-04-12', 3, 3, 124123513243 , 'clobesvaldo', 'clobesvaldo', '?', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==');
-	
-INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
-	VALUES (4, '2023-04-12', '2023-04-12', 4, 4, 2451234234 , 'goku', 'goku', '?', 'TRwn0XU29Gwl2sagG00bvjrNJvLuYo+dbOBJ7R3xFpU4m/FAUc5q8OoGbVNwPF7F5713RaYkN4qyufNCDHm/mA==');
-
-INSERT INTO public.cliente(endereco_id, dataalteracao, datainclusao, id, telefone_id, cpf, login, nome, nomeimagem, senha)
-	VALUES (5, '2023-04-12', '2023-04-12', 5, 5, 2451234234 , 'string', 'string', '?', 'H91PnULY1YEFa/uppEhvAiwTiJXmOMZJe9lmBp+GosLTEPiyR9ZaH2e0vX4C2OpxYa7Bqx0PZUYZFITckmSCHA==');
-	
--- -------------------------------------------------------------------------------------------
 
 INSERT INTO public.perfis(
 	id_usuario, perfil)
 	VALUES (1, 'Admin');
-
+/*
 INSERT INTO public.perfis(
 	id_usuario, perfil)
 	VALUES (4, 'Admin');

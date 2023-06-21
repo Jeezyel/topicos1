@@ -14,18 +14,18 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 public class Cliente extends DefaultEntity {
-    @Column( nullable = false , length = 12)
+    @Column( nullable = false )
     private String cpf;
-    @Column( nullable = false , length = 12)
+    @Column( nullable = false)
     private String nome;
     @OneToOne
     private Endereco Endereco;
     @OneToOne
     private Telefone telefone;
     
-    @Column( nullable = false , length = 12)
+    @Column( nullable = false )
     private String login;
-    @Column( nullable = false , length = 12)
+    @Column( nullable = false )
     private String senha;
     private String nomeImagem;
     @ElementCollection

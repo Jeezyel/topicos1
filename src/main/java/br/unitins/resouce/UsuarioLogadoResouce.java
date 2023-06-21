@@ -22,6 +22,7 @@ import br.unitins.service.ClienteService;
 import br.unitins.service.FileService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 
 //import com.oracle.svm.core.annotate.Inject;
@@ -234,9 +235,9 @@ public class UsuarioLogadoResouce {
     
 
     @POST
-    @Path("/update")
-    @RolesAllowed({"Admin"})
-    public Boolean usuarioSimples(ClienteSimplesDTO clienteSimplesDTO){
+    @Transactional
+    @Path("/usuario-simples")
+    public Boolean usuarioSimples(ClienteSimplesDTO clienteSimplesDTO) throws Exception{
         LOG.info("criando o usuario simples");
         try {
             LOG.info("criando o usuario simples dentor do try");

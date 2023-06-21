@@ -226,9 +226,8 @@ public class ClienteServicempl  implements ClienteService{
 
     @Override
     public Cliente findByLoginAndSenha(String login, String hash) throws NullPointerException {
-
-        //so pra não mudar o nome de hash pra senha 
-        String senha = hash;
+ 
+        String senha = hashService.getHashSenha(hash);
         
         return clienteRepository.findByLoginAndSenha(login, senha);
         
@@ -242,8 +241,10 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setCpf(clienteSimplisDTO.cpf());
         cliente.setNome(clienteSimplisDTO.nome());
         cliente.setLogin(clienteSimplisDTO.login());
-        cliente.setSenha(clienteSimplisDTO.senha());
+        cliente.setSenha(hashService.getHashSenha(clienteSimplisDTO.senha()));
         cliente.setPerfis(clienteSimplisDTO.perfis());
+
+        clienteRepository.persist(cliente);
 
         return new ClienteSimplesResponseDTO(cliente);
     }

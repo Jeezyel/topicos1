@@ -36,7 +36,7 @@ public class ClienteResouce {
 
     @GET
     @Path("/getAll")
-    @RolesAllowed({"Admin"})
+    //@RolesAllowed({"Admin"})
     public List<ClienteResponseDTO> getAll(){
         LOG.info("buscnado todos os clientes");
         return service.getAll();
