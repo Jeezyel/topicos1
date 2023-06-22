@@ -20,5 +20,17 @@ public record UsuarioResponseDTO(
             cliente.getPerfis());
     }
 
+/*    public static UsuarioResponseDTO valueOf(Cliente u) {
+        if (u == null) 
+            return new UsuarioResponseDTO(u.getId(), "null", "null", "null", u.getLogin(), "null", "null");
+        
+        return new UsuarioResponseDTO(
+            u.getId(), 
+            u.getLogin(), 
+            u.getSenha(),
+            u.getNomeImagem(),
+            u.getPerfis()); 
+    }*/
+
     
 }

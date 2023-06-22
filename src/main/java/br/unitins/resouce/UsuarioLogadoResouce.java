@@ -49,7 +49,6 @@ import jakarta.ws.rs.Produces;
 
 public class UsuarioLogadoResouce {
 
-    
     private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
 
     @Inject
@@ -60,29 +59,33 @@ public class UsuarioLogadoResouce {
 
     @Inject
     FileService fileService;
-/* 
-    @GET
-    @Path("/dados-pessoais")
-    @RolesAllowed({ "User" })
-    public Response getDadosPessoais() {
-
-        String login = tokenJwt.getSubject();
-
-        Usuario usuario = usuarioService.getByLoginUsuario(login);
-
-        UsuarioResponseDTO dadosPessoaisUsuario = new UsuarioResponseDTO(usuario);
-
-        return Response.ok(dadosPessoaisUsuario).build();
-    }*/
+    /*
+     * @GET
+     * 
+     * @Path("/dados-pessoais")
+     * 
+     * @RolesAllowed({ "User" })
+     * public Response getDadosPessoais() {
+     * 
+     * String login = tokenJwt.getSubject();
+     * 
+     * Usuario usuario = usuarioService.getByLoginUsuario(login);
+     * 
+     * UsuarioResponseDTO dadosPessoaisUsuario = new UsuarioResponseDTO(usuario);
+     * 
+     * return Response.ok(dadosPessoaisUsuario).build();
+     * }
+     */
 
     @GET
     @Path("/getCliente-log")
-    @RolesAllowed({"Admin","User","Cliente"})
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     public ClienteResponseDTO getUsuario() {
 
-         LOG.info("obtendo o login a partir do token");
+        LOG.info("obtendo o login a partir do token");
         String login = tokenJwt.getSubject();
         LOG.info(" procurando pro login");
+
         ClienteResponseDTO usuario = clienteService.findByLogin(login);
 
         return usuario;
@@ -90,72 +93,99 @@ public class UsuarioLogadoResouce {
 
     @PATCH
     @Path("/novaimagem")
-    @RolesAllowed({"Admin","User","Cliente"})
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm ImageForm form){
+    public Response salvarImagem(@MultipartForm ImageForm form) {
         LOG.info(" savando imagem ");
+        /*
+         * String nomeImagem = "";
+         * 
+         * try {
+         * LOG.info(" chamando o metodo salvar ");
+         * nomeImagem = fileService.salvarImagemUsuario(form.getImagem(),
+         * form.getNomeImagem());
+         * } catch (IOException e) {
+         * 
+         * LOG.debug(" erro IO ");
+         * Result result = new Result(e.getMessage());
+         * return Response.status(Status.CONFLICT).entity(result).build();
+         * } catch(Exception e){
+         * 
+         * LOG.fatal(" erro não pensado " );
+         * }
+         * 
+         * // obtendo o login a partir do token
+         * String login = tokenJwt.getSubject();
+         * ClienteResponseDTO clienteDTO = clienteService.findByLogin(login);
+         * 
+         * clienteDTO = clienteService.updateNomeImagen(clienteDTO.id(), nomeImagem);
+         * 
+         * return Response.ok(clienteDTO).build();
+         */
+
         String nomeImagem = "";
 
         try {
-            LOG.info(" chamando o metodo salvar ");
             nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
         } catch (IOException e) {
-            
-            LOG.debug(" erro IO ");
             Result result = new Result(e.getMessage());
             return Response.status(Status.CONFLICT).entity(result).build();
-        } catch(Exception e){
-            
-            LOG.fatal(" erro não pensado " );
         }
 
         // obtendo o login a partir do token
         String login = tokenJwt.getSubject();
-        ClienteResponseDTO clienteDTO =  clienteService.findByLogin(login);
+        ClienteResponseDTO usuario = clienteService.findByLogin(login);
 
-        clienteDTO = clienteService.updateNomeImagen(clienteDTO.id(), nomeImagem);
+        usuario = clienteService.updateNomeImagen(usuario.id(), nomeImagem);
 
-        return Response.ok(clienteDTO).build();
+        return Response.ok(usuario).build();
 
     }
 
     @GET
     @Path("/download/{nomeImagem}")
-    @RolesAllowed({"Admin","User","Cliente"})
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
 
-
-         try {
+        try {
             LOG.info(" fazendo download da imagem");
             ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
-            response.header("Content-Disposition", "attachment;filename="+nomeImagem);
+            response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
             return response.build();
-            
+
         } catch (Exception e) {
             LOG.fatal("erro não planejado");
             Result result = new Result(e.getMessage());
 
             return Response
-                    .status(Status.NOT_FOUND)
+                    .status(Status.CONFLICT)
                     .entity(result)
                     .build();
         }
 
-        
     }
-    
+
     @GET
     @Path("/getall")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({ "Admin" })
     public List<ClienteResponseDTO> getAll() {
         LOG.info(" pagando todos os cliente");
         return clienteService.getAll();
     }
 
+    @GET
+    @Path("/usuario-logado")
+    @RolesAllowed({ "Admin" })
+    public ClienteResponseDTO usuarioLogado() {
+        LOG.info(" pegando usuari logado ");
+        String login = tokenJwt.getSubject();
+        return clienteService.findByLogin(login);
+    }
+
     @POST
     @Path("/insert")
-    @RolesAllowed({"Admin","User","Cliente"})
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     public Response insert(ClienteDTO clienteDTO) {
 
         try {
@@ -172,7 +202,7 @@ public class UsuarioLogadoResouce {
                     .status(Status.NOT_FOUND)
                     .entity(result)
                     .build();
-        }catch( Exception e){
+        } catch (Exception e) {
             LOG.fatal(" erro na planejado");
             Result result = new Result(e.getMessage());
 
@@ -185,9 +215,8 @@ public class UsuarioLogadoResouce {
 
     @DELETE
     @Path("/delete{login}")
-    @RolesAllowed({"Admin","Cliente"})
+    @RolesAllowed({ "Admin", "Cliente" })
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
-
 
         clienteService.deleteByLogin(login);
         LOG.info(" apagando pelo login");
@@ -198,8 +227,8 @@ public class UsuarioLogadoResouce {
 
     @PUT
     @Path("/update{login}")
-    @RolesAllowed({"Admin"})
-    public Boolean updatUsuario(@PathParam("login") String login,ClienteDTO clienteDTO){
+    @RolesAllowed({ "Admin" })
+    public Boolean updatUsuario(@PathParam("login") String login, ClienteDTO clienteDTO) {
 
         try {
             LOG.info("criando o cliente");
@@ -210,12 +239,11 @@ public class UsuarioLogadoResouce {
             return false;
         }
 
-        
     }
 
     @GET
     @Path("/getbylogin{login}")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({ "Admin" })
     public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
         LOG.info(" procurando por login");
         return clienteService.findByLogin(login);
@@ -223,59 +251,60 @@ public class UsuarioLogadoResouce {
 
     @PUT
     @Path("/atualizar-senha")
-    @RolesAllowed({"Admin"})
-    public Boolean atualizarSenha( String novaSenha ,String velhaSenha){
+    @RolesAllowed({ "Admin" })
+    public Boolean atualizarSenha(String novaSenha, String velhaSenha) {
         LOG.info("pegando o login");
-           
-        String login = tokenJwt.getSubject();
 
+        String login = tokenJwt.getSubject();
 
         try {
             LOG.info("atualizando a senha do cliente");
-            
-            return clienteService.alterarSenha(login, novaSenha , velhaSenha);
+
+            return clienteService.alterarSenha(login, novaSenha, velhaSenha);
         } catch (NullPointerException e) {
             LOG.debug("erro cliente n encontrado");
             return false;
-        }catch (Exception e) {
+        } catch (Exception e) {
             LOG.fatal("erro não planejado");
             return false;
         }
 
-        
     }
-
-    
 
     @POST
     @Transactional
     @Path("/usuario-simples")
-    public Boolean usuarioSimples(ClienteSimplesDTO clienteSimplesDTO) throws Exception{
+    public Boolean usuarioSimples(ClienteSimplesDTO clienteSimplesDTO) throws Exception {
         LOG.info("criando o usuario simples");
         try {
             LOG.info("criando o usuario simples dentor do try");
             clienteService.createSimplis(clienteSimplesDTO);
             return true;
-            
+
         } catch (Exception e) {
             LOG.fatal("erro não planejado");
             return false;
         }
 
         
+
     }
-
-   /*  @Inject
-    JsonWebToken token;
-
-    @Inject
-    ClienteService service;
-
     
-    public Response getCliente(){
-        String logado = token.getSubject();
-        ClienteResponseDTO cliente = service.findByLogado(logado);
 
-        return Response.ok().build();
-    }*/
+
+    /*
+     * @Inject
+     * JsonWebToken token;
+     * 
+     * @Inject
+     * ClienteService service;
+     * 
+     * 
+     * public Response getCliente(){
+     * String logado = token.getSubject();
+     * ClienteResponseDTO cliente = service.findByLogado(logado);
+     * 
+     * return Response.ok().build();
+     * }
+     */
 }

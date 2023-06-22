@@ -1,7 +1,7 @@
 package br.unitins.service;
 
 import br.unitins.model.Cliente;
-
+import br.unitins.repository.ClienteRepository;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -10,9 +10,16 @@ import java.util.stream.Collectors;
 
 import io.smallrye.jwt.build.Jwt;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class TokenJwtServicempl implements TokenJwtService {
+    
+    @Inject
+    ClienteService clienteService;
+
+    @Inject
+    ClienteRepository clienteRepository;
 
     private static final Duration EXPIRATION_TIME = Duration.ofHours(24);
 
@@ -32,6 +39,13 @@ public class TokenJwtServicempl implements TokenJwtService {
             .expiresAt(expiryDate)
             .sign();
 
+    }
+
+    @Override
+    public String getLoginJtw(String loginCLiente) {
+        Cliente cliente = clienteRepository.findByLogin(loginCLiente);
+
+        return cliente.getLogin();
     }
     
     

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Validator;
@@ -212,6 +213,7 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
+    @Transactional
     public ClienteResponseDTO updateNomeImagen(Long idCliente, String nomeImagen) {
 
         Cliente cliente = clienteRepository.findById(idCliente);
