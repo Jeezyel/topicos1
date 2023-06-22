@@ -153,6 +153,8 @@ public class ClienteServicempl  implements ClienteService{
 
     @Override
     public Boolean alterarSenha(String login, String senhaAtual, String novaSenha) {
+
+
         LOG.debug("buscando no banco ");
         Cliente  usuario = usuarioRepository.findByLogin(login);
         String senhaAt = hashService.getHashSenha(senhaAtual);
@@ -162,7 +164,7 @@ public class ClienteServicempl  implements ClienteService{
         }
         else{
             LOG.debug("atualizando a senha para a nova senha");
-            usuario.setSenha(novaSenha);
+            usuario.setSenha(senhaAt);
 
             return true ;
         }

@@ -97,31 +97,6 @@ public class UsuarioLogadoResouce {
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form) {
         LOG.info(" savando imagem ");
-        /*
-         * String nomeImagem = "";
-         * 
-         * try {
-         * LOG.info(" chamando o metodo salvar ");
-         * nomeImagem = fileService.salvarImagemUsuario(form.getImagem(),
-         * form.getNomeImagem());
-         * } catch (IOException e) {
-         * 
-         * LOG.debug(" erro IO ");
-         * Result result = new Result(e.getMessage());
-         * return Response.status(Status.CONFLICT).entity(result).build();
-         * } catch(Exception e){
-         * 
-         * LOG.fatal(" erro não pensado " );
-         * }
-         * 
-         * // obtendo o login a partir do token
-         * String login = tokenJwt.getSubject();
-         * ClienteResponseDTO clienteDTO = clienteService.findByLogin(login);
-         * 
-         * clienteDTO = clienteService.updateNomeImagen(clienteDTO.id(), nomeImagem);
-         * 
-         * return Response.ok(clienteDTO).build();
-         */
 
         String nomeImagem = "";
 
@@ -251,7 +226,7 @@ public class UsuarioLogadoResouce {
 
     @PUT
     @Path("/atualizar-senha")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed({ "Admin","Cliente" ,"Usuario"})
     public Boolean atualizarSenha(String novaSenha, String velhaSenha) {
         LOG.info("pegando o login");
 

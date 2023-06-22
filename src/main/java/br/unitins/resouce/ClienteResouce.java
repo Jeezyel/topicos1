@@ -72,15 +72,6 @@ public class ClienteResouce {
         return service.update(login , clienteDTO);
     }
 
-    @PATCH
-    @Path("/alterarSenha/{id}{senhaAtual}{novaSenha}")
-    @RolesAllowed({"Admin","User"})
-    public boolean AlterarSenha (@PathParam("id") Long id,@PathParam("senhaAtual") String senhaAtual, @PathParam("novaSenha") String novaSenha){
-
-        LOG.info("buscando o cliente e alterando a senha ");
-
-        return service.alterarSenha(id, senhaAtual, novaSenha) ;
-    }
 
     @DELETE
     @Path("/deleteForId/{Id}")

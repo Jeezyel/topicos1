@@ -13,8 +13,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class FileServicempl implements FileService{
-    ///                                                                      isso e isso / ou \
-    private final String PATH_USER = System.getProperty("user.home") +
+    ///                                                                      isso e isso / ou \  : Users
+    private final String PATH_USER = System.getProperty("Users.jeezy") +
      File.separator + "quarkus" +
       File.separator + "images" +
        File.separator + "usuaria" +
