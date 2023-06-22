@@ -32,11 +32,11 @@ public class Cliente extends DefaultEntity {
     @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
     @Column(name = "perfil", length = 8, nullable = false)
     private Set<Perfil> perfis;
-    @ManyToMany
+   /* @ManyToMany
     @JoinTable(name = "cliente_roupas",
     joinColumns = @JoinColumn(name = "cliente_id"),
     inverseJoinColumns = @JoinColumn(name = "roupa_id"))
-    private List<Roupa> listaDeDesejo;
+    private List<Roupa> listaDeDesejo; */
 
 
 
@@ -67,12 +67,8 @@ public class Cliente extends DefaultEntity {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public List<Roupa> getListaDeDesejo() {
-        return listaDeDesejo;
-    }
-    public void setListaDeDesejo(List<Roupa> listaDeDesejo) {
-        this.listaDeDesejo = listaDeDesejo;
-    }public String getLogin() {
+    
+    public String getLogin() {
         return login;
     }
     public void setLogin(String login) {

@@ -16,8 +16,7 @@ public record ClienteDTO(
     String login,
     String senha,
     String nomeImagem,
-    Set<Perfil> perfis,
-    List<Roupa> listaDeDesejo
+    Set<Perfil> perfis
 ) {
     
 }

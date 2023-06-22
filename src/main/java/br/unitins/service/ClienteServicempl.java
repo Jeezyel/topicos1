@@ -79,7 +79,6 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setSenha(clienteDTO.senha());
         cliente.setNomeImagem(clienteDTO.nomeImagem());
         cliente.setPerfis(clienteDTO.perfis());
-        cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
         clienteRepository.persist(cliente);
 
@@ -104,7 +103,6 @@ public class ClienteServicempl  implements ClienteService{
         cliente.setLogin(clienteDTO.login());
         cliente.setNomeImagem(clienteDTO.nomeImagem());
         cliente.setPerfis(clienteDTO.perfis());
-        cliente.setListaDeDesejo(clienteDTO.listaDeDesejo());
 
 
         LOG.debug("mandando para o banco ");

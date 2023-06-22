@@ -7,7 +7,6 @@ import br.unitins.model.Tamanho;
 public class RoupasDTO extends ProdutoDTO{
     
     private String tipoDeTercido;
-    private List<ClienteDTO> ListaDeDesejo;
     private Tamanho tamanho;
     private Integer quantidade;
 
@@ -25,12 +24,6 @@ public class RoupasDTO extends ProdutoDTO{
     }
     public void setTamanho(Tamanho tamanho) {
         this.tamanho = tamanho;
-    }
-    public List<ClienteDTO> getListaDeDesejo() {
-        return ListaDeDesejo;
-    }
-    public void setListaDeDesejo(List<ClienteDTO> listaDeDesejo) {
-        ListaDeDesejo = listaDeDesejo;
     }
     public Integer getQuantidade() {
         return quantidade;

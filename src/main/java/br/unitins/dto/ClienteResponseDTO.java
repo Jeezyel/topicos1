@@ -19,8 +19,7 @@ public record ClienteResponseDTO (
     String login,
     String senha,
     String nomeImagem,
-    Set<Perfil> perfis,
-    List<Roupa> listaDeDesejo
+    Set<Perfil> perfis
 ) {
     public ClienteResponseDTO(Cliente cliente){
 
@@ -32,8 +31,7 @@ public record ClienteResponseDTO (
             cliente.getLogin(),
             cliente.getSenha(),
             cliente.getNomeImagem(),
-            cliente.getPerfis(),
-            cliente.getListaDeDesejo());
+            cliente.getPerfis());
         
     }
 

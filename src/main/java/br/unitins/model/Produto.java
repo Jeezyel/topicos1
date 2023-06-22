@@ -9,9 +9,9 @@ import jakarta.persistence.InheritanceType;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Produto extends DefaultEntity {
-    @Column(nullable = true , length = 20)
+    @Column(nullable = true )
     private String modelo;
-    @Column(nullable = true , length = 20)
+    @Column(nullable = true)
     private String marca;
     @Column( nullable = false ) 
     private String cor;
