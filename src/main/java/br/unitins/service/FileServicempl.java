@@ -14,7 +14,11 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class FileServicempl implements FileService{
     ///                                                                      isso e isso / ou \
-    private final String PATH_USER = System.getProperty("user.home") + File.separator + "quarkus" + File.separator + "images" + File.separator + "usuaria" + File.separator ;
+    private final String PATH_USER = System.getProperty("user.home") +
+     File.separator + "quarkus" +
+      File.separator + "images" +
+       File.separator + "usuaria" +
+        File.separator ;
 
     @Override
     public String salvarImagemUsuario(byte[] imagem, String nomeImagem) throws IOException {
