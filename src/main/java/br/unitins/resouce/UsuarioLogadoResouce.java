@@ -16,6 +16,7 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
+import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
 import br.unitins.service.ClienteService;
 import br.unitins.service.FileService;
@@ -93,10 +94,10 @@ public class UsuarioLogadoResouce {
     }
 
     @PATCH
-    @Path("/novaimagem/{id-usuario}")
+    @Path("/novaimagem")
     @RolesAllowed({ "Admin", "User", "Cliente" })
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm ImageForm form , @PathParam("id-usuario") long id) {
+    public Response salvarImagem(@MultipartForm ImageForm form ) {
         LOG.info(" savando imagem ");
 
         String nomeImagem = "";
@@ -113,16 +114,12 @@ public class UsuarioLogadoResouce {
 
         // obtendo o login a partir do token
         
-/*
-        String login = null;
-        try {
-            login = tokenJwt.getSubject();
-        } catch (Exception e) {
-            LOG.info("ERRO");
-        }
-        ClienteResponseDTO usuario = clienteService.findByLogin(login); */
 
-        ClienteResponseDTO usuario = clienteService.updateNomeImagen(id, nomeImagem);
+        String login = tokenJwt.getSubject();
+        
+        ClienteResponseDTO usuario = clienteService.findByLogin(login); 
+
+        usuario = clienteService.updateNomeImagen(usuario.id(), nomeImagem);
 
         return Response.ok(usuario).build();
 
@@ -286,10 +283,47 @@ public class UsuarioLogadoResouce {
         
 
     }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////
+    
+/*
+    @PATCH
+    @Path("/novaimagemmmmm")
+    @RolesAllowed({"Admin","User"})
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response salvarImagem(@MultipartForm ImageForm form){
+        String nomeImagem = "";
+
+        try {
+            nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
+        } catch (IOException e) {
+            Result result = new Result(e.getMessage());
+            return Response.status(Status.CONFLICT).entity(result).build();
+        }
+
+        // obtendo o login a partir do token
+        String login = tokenJwt.getSubject();
+        ClienteResponseDTO usuario = clienteService.findByLogin(login);
+
+        usuario = clienteService.updateNomeImagen(usuario.id(), nomeImagem);
+
+        return Response.ok(usuario).build();
+
+    }
+
+    @GET
+    @Path("/downloaddd/{nomeImagem}")
+    @RolesAllowed({"Admin","User"})
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response downloaddd(@PathParam("nomeImagem") String nomeImagem) {
+        ResponseBuilder response = Response.ok(fileService.download(nomeImagem));
+        response.header("Content-Disposition", "attachment;filename="+nomeImagem);
+        return response.build();
+    }
     
 
 
-    /*
+    
      * @Inject
      * JsonWebToken token;
      * 
