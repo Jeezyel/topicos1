@@ -8,11 +8,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
+import org.jboss.logging.Logger;
+
+import br.unitins.resouce.ClienteResouce;
 import jakarta.enterprise.context.ApplicationScoped;
 
 
 @ApplicationScoped
 public class FileServicempl implements FileService{
+
+    private static final Logger LOG = Logger.getLogger(FileServicempl.class);
     ///                                                                      isso e isso / ou \  : Users
     private final String PATH_USER = System.getProperty("Users.jeezy") +
      File.separator + "quarkus" +
@@ -23,39 +28,50 @@ public class FileServicempl implements FileService{
     @Override
     public String salvarImagemUsuario(byte[] imagem, String nomeImagem) throws IOException {
 
-        //verificar o tipo da imagem
+        //
+        LOG.info("Verificar o tipo da imagem");
         String mineType = Files.probeContentType(new File(nomeImagem).toPath());
 
         List<String> listMineType = Arrays.asList("image/jpg","image/png","image/gif");
 
-        //alerta de tipo de images
+        //
+        LOG.info("alerta de tipo de images");
         if (!listMineType.contains(mineType)) {
+            LOG.info("ERRO imagen não suportada");
             throw new IOException("imagem na suportada");
         }
 
-        //alerta de tamanho 
+        //
+        LOG.info("alerta de tamanho"); 
         if (imagem.length > (1024 * 1024 *10)) {
+            LOG.info("ERRO de tamanho");
             throw new IOException("tamanha não suportado ");
         }
 
-        //verifica se tem a pasta 
+        // 
+        LOG.info("verifica se tem a pasta");
         File diretorio = new File(PATH_USER);
         if (!diretorio.exists()) {
+            LOG.info("ERRO criando diretorio");
             diretorio.mkdirs();
         }
 
-        // gerando o nome do arquivo 
+        //  
+        LOG.info("gerando o nome do arquivo");
         String nomeArquivo = UUID.randomUUID() +"." +mineType.substring(mineType.lastIndexOf("/")+1);
 
         String path = PATH_USER + nomeArquivo;
 
-        //salvar
+        //
+        LOG.info("salvar");
         File file = new File(path);
         if (file.exists()) {
+            LOG.info("ERRO na hora de salvar");
             throw new IOException("o nome gerado da imagem esta sendo usado");
         }
 
         //criando um arquivo no S.O.
+        LOG.info("criando no sistema");
         file.createNewFile();
 
         FileOutputStream fos = new FileOutputStream(file);

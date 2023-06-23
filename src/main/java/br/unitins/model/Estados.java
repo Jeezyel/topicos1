@@ -11,7 +11,7 @@ public class Estados extends DefaultEntity {
 
     @Column( nullable = false ) 
     private String nome;
-    @Column( nullable = false ,length = 3 ) 
+    @Column( nullable = false ) 
     private String sigla;
     @OneToMany
     private List<Municipio> municipio;

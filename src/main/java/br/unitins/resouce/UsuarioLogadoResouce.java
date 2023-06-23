@@ -23,6 +23,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
+import jakarta.validation.constraints.Null;
 
 //import com.oracle.svm.core.annotate.Inject;
 
@@ -92,26 +93,36 @@ public class UsuarioLogadoResouce {
     }
 
     @PATCH
-    @Path("/novaimagem")
+    @Path("/novaimagem/{id-usuario}")
     @RolesAllowed({ "Admin", "User", "Cliente" })
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm ImageForm form) {
+    public Response salvarImagem(@MultipartForm ImageForm form , @PathParam("id-usuario") long id) {
         LOG.info(" savando imagem ");
 
         String nomeImagem = "";
 
         try {
+            LOG.info("dentro do try de savando imagem ");
             nomeImagem = fileService.salvarImagemUsuario(form.getImagem(), form.getNomeImagem());
         } catch (IOException e) {
+            LOG.info("erro em savando imagem ");
+            LOG.info(e.getMessage());
             Result result = new Result(e.getMessage());
             return Response.status(Status.CONFLICT).entity(result).build();
         }
 
         // obtendo o login a partir do token
-        String login = tokenJwt.getSubject();
-        ClienteResponseDTO usuario = clienteService.findByLogin(login);
+        
+/*
+        String login = null;
+        try {
+            login = tokenJwt.getSubject();
+        } catch (Exception e) {
+            LOG.info("ERRO");
+        }
+        ClienteResponseDTO usuario = clienteService.findByLogin(login); */
 
-        usuario = clienteService.updateNomeImagen(usuario.id(), nomeImagem);
+        ClienteResponseDTO usuario = clienteService.updateNomeImagen(id, nomeImagem);
 
         return Response.ok(usuario).build();
 
@@ -260,6 +271,17 @@ public class UsuarioLogadoResouce {
             LOG.fatal("erro não planejado");
             return false;
         }
+
+        
+
+    }
+
+    @GET
+    @Path("/teste-patuver")
+    public String teste()  {
+        String login = tokenJwt.getSubject();
+
+        return login;
 
         
 
