@@ -191,11 +191,11 @@ public class ClienteServicempl  implements ClienteService{
     }
 
     @Override
-    public ClienteResponseDTO findByLogin(String login) {
+    public Cliente findByLogin(String login) {
 
         Cliente cliente = clienteRepository.findByLogin(login);
 
-        return new ClienteResponseDTO(cliente);
+        return cliente;
     }
 
     @Override

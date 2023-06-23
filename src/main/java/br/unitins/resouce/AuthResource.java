@@ -22,7 +22,7 @@ import jakarta.ws.rs.core.Response.Status;
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 public class AuthResource {
-
+//hql
 
     private static final Logger LOG = Logger.getLogger(ClienteResouce.class);
 

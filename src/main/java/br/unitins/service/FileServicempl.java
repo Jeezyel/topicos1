@@ -19,7 +19,7 @@ public class FileServicempl implements FileService{
 
     private static final Logger LOG = Logger.getLogger(FileServicempl.class);
     ///                                                                      isso e isso / ou \  : Users
-    private final String PATH_USER = System.getProperty("Users.jeezy") +
+    private final String PATH_USER = System.getProperty("user.home") +
      File.separator + "quarkus" +
       File.separator + "images" +
        File.separator + "usuaria" +
@@ -86,7 +86,7 @@ public class FileServicempl implements FileService{
 
     @Override
     public File download(String nomeArquivo) {
-        File file = new File(nomeArquivo);
+        File file = new File(PATH_USER + nomeArquivo);
 
         return file;
     }

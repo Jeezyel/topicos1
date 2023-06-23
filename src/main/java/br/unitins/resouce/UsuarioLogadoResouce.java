@@ -18,6 +18,7 @@ import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
 import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
+import br.unitins.model.Cliente;
 import br.unitins.service.ClienteService;
 import br.unitins.service.FileService;
 import jakarta.annotation.security.RolesAllowed;
@@ -88,14 +89,14 @@ public class UsuarioLogadoResouce {
         String login = tokenJwt.getSubject();
         LOG.info(" procurando pro login");
 
-        ClienteResponseDTO usuario = clienteService.findByLogin(login);
+        Cliente usuario = clienteService.findByLogin(login);
 
-        return usuario;
+        return new ClienteResponseDTO(usuario);
     }
 
     @PATCH
-    @Path("/novaimagem")
     @RolesAllowed({ "Admin", "User", "Cliente" })
+    @Path("/novaimagem")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ImageForm form ) {
         LOG.info(" savando imagem ");
@@ -117,11 +118,11 @@ public class UsuarioLogadoResouce {
 
         String login = tokenJwt.getSubject();
         
-        ClienteResponseDTO usuario = clienteService.findByLogin(login); 
+        Cliente usuario = clienteService.findByLogin(login);
 
-        usuario = clienteService.updateNomeImagen(usuario.id(), nomeImagem);
+        clienteService.updateNomeImagen(usuario.getId(), nomeImagem);
 
-        return Response.ok(usuario).build();
+        return Response.status(Status.NO_CONTENT).build();
 
     }
 
@@ -138,7 +139,7 @@ public class UsuarioLogadoResouce {
             return response.build();
 
         } catch (Exception e) {
-            LOG.fatal("erro não planejado");
+            // LOG.fatal("erro não planejado");
             Result result = new Result(e.getMessage());
 
             return Response
@@ -163,7 +164,7 @@ public class UsuarioLogadoResouce {
     public ClienteResponseDTO usuarioLogado() {
         LOG.info(" pegando usuari logado ");
         String login = tokenJwt.getSubject();
-        return clienteService.findByLogin(login);
+        return new ClienteResponseDTO(clienteService.findByLogin(login));
     }
 
     @POST
@@ -229,7 +230,7 @@ public class UsuarioLogadoResouce {
     @RolesAllowed({ "Admin" })
     public ClienteResponseDTO getByLogin(@PathParam("login") String login) throws NotFoundException {
         LOG.info(" procurando por login");
-        return clienteService.findByLogin(login);
+        return new ClienteResponseDTO(clienteService.findByLogin(login));
     }
 
     @PUT
@@ -274,6 +275,7 @@ public class UsuarioLogadoResouce {
     }
 
     @GET
+    @RolesAllowed({ "Admin" })
     @Path("/teste-patuver")
     public String teste()  {
         String login = tokenJwt.getSubject();
