@@ -1,15 +1,12 @@
 package br.unitins.model;
 
-import java.util.List;
 import java.util.Set;
 
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity

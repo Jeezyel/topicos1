@@ -16,7 +16,6 @@ import br.unitins.aplication.Result;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
-import br.unitins.dto.UsuarioResponseDTO;
 import br.unitins.form.ImageForm;
 import br.unitins.model.Cliente;
 import br.unitins.service.ClienteService;
@@ -25,7 +24,6 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
-import jakarta.validation.constraints.Null;
 
 //import com.oracle.svm.core.annotate.Inject;
 

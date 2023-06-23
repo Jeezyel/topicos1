@@ -10,7 +10,6 @@ import java.util.UUID;
 
 import org.jboss.logging.Logger;
 
-import br.unitins.resouce.ClienteResouce;
 import jakarta.enterprise.context.ApplicationScoped;
 
 

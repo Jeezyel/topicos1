@@ -1,6 +1,5 @@
 package br.unitins.dto;
 
-import java.util.List;
 
 import br.unitins.model.Tamanho;
 

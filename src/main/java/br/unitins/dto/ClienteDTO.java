@@ -1,11 +1,9 @@
 package br.unitins.dto;
 
-import java.util.List;
 import java.util.Set;
 
 import br.unitins.model.Endereco;
 import br.unitins.model.Perfil;
-import br.unitins.model.Roupa;
 import br.unitins.model.Telefone;
 
 public record ClienteDTO(
