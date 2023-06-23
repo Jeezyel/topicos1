@@ -8,8 +8,15 @@ public abstract class ProdutoDTO {
     private String cor;
     private Integer quantidade;
     private Float valor;
+    private String nomeImagen;
 
     
+    public String getNomeImagen() {
+        return nomeImagen;
+    }
+    public void setNomeImagen(String nomeImagen) {
+        this.nomeImagen = nomeImagen;
+    }
     public String getModelo() {
         return modelo;
     }
