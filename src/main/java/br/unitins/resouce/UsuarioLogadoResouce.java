@@ -158,7 +158,7 @@ public class UsuarioLogadoResouce {
 
     @GET
     @Path("/usuario-logado")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     public ClienteResponseDTO usuarioLogado() {
         LOG.info(" pegando usuari logado ");
         String login = tokenJwt.getSubject();
@@ -197,7 +197,7 @@ public class UsuarioLogadoResouce {
 
     @DELETE
     @Path("/delete{login}")
-    @RolesAllowed({ "Admin", "Cliente" })
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     public Response delete(@PathParam("login") String login) throws IllegalArgumentException, NotFoundException {
 
         clienteService.deleteByLogin(login);
@@ -209,7 +209,7 @@ public class UsuarioLogadoResouce {
 
     @PUT
     @Path("/update{login}")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed({ "Admin", "User", "Cliente" })
     public Boolean updatUsuario(@PathParam("login") String login, ClienteDTO clienteDTO) {
 
         try {
@@ -223,6 +223,7 @@ public class UsuarioLogadoResouce {
 
     }
 
+    // pra caso queira procurar pro um usuario expecifico 
     @GET
     @Path("/getbylogin{login}")
     @RolesAllowed({ "Admin" })
@@ -271,18 +272,7 @@ public class UsuarioLogadoResouce {
         
 
     }
-
-    @GET
-    @RolesAllowed({ "Admin" })
-    @Path("/teste-patuver")
-    public String teste()  {
-        String login = tokenJwt.getSubject();
-
-        return login;
-
-        
-
-    }
+    
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
     
