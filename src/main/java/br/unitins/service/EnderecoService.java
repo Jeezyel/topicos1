@@ -18,6 +18,8 @@ public interface EnderecoService {
      EnderecoResponseDTO create(EnderecoDTO enderecoDTO);
  
      EnderecoResponseDTO update(Long id, EnderecoDTO enderecoDTO);
+
+     public EnderecoResponseDTO updateEnderecoUsuarioLogado(Long id, EnderecoDTO enderecoDTO);
  
      void delete(Long id);
  

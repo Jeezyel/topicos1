@@ -21,6 +21,8 @@ public interface ClienteService {
 
     ClienteResponseDTO findById(Long id);
 
+    Cliente findByIdCli(Long id);
+
     Cliente findByLogin(String login);
 
     Cliente findByLoginAndSenha(String login , String hash);
