@@ -103,6 +103,17 @@ public class EnderecoResouce {
         service.delete(id);
     }
 
+    @DELETE
+    @Path("/DeleteForUserLogin")
+    @RolesAllowed({"Admin" , "User", "Cliente"})
+    public void DeleteForUserLogin(){
+
+        String login = tokenJwt.getSubject();
+        
+        LOG.info("selecionado o endereco e apagando o cadastro");
+        service.delete(login);
+    }
+
     @GET
     @Path("/count")
     @RolesAllowed({"Admin"})
@@ -115,7 +126,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/searchForName/{name}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin" , "User", "Cliente"})
     public List<EnderecoResponseDTO> searchForName(@PathParam("name") String name){
         LOG.info("procurando por nome do endereco");
         return service.findByNome(name);

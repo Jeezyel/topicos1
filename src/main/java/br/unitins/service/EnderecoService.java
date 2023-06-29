@@ -22,6 +22,8 @@ public interface EnderecoService {
      public EnderecoResponseDTO updateEnderecoUsuarioLogado(Long id, EnderecoDTO enderecoDTO);
  
      void delete(Long id);
+
+     void delete(String login);
  
      // recursos extras
  

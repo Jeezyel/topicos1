@@ -88,6 +88,13 @@ public class EnderecoServicempl implements EnderecoService{
     }
 
     @Override
+    public void delete(String login) {
+
+        clienteService.deleteByLogin(login);
+
+    }
+
+    @Override
     public List<EnderecoResponseDTO> findByNome(String Cep) {
         List<Endereco> listaEnderecos = enderecoRepository.findByNumero(Cep);
 
@@ -125,5 +132,7 @@ public class EnderecoServicempl implements EnderecoService{
 
         return null;
     }
+
+    
     
 }
