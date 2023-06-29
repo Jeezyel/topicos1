@@ -251,5 +251,10 @@ public class ClienteServicempl  implements ClienteService{
         return new ClienteSimplesResponseDTO(cliente);
     }
 
+    @Override
+    public Cliente findByIdCli(Long id) {
+        return clienteRepository.findById(id);
+    }
+
     
 }

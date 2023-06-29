@@ -4,9 +4,10 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
-
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
+import br.unitins.service.ClienteService;
 import br.unitins.service.EnderecoService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -34,6 +35,12 @@ public class EnderecoResouce {
     @Inject
     private EnderecoService service;
 
+    @Inject
+    JsonWebToken tokenJwt;
+
+    @Inject
+    ClienteService clienteService;
+
 
     @GET
     @Path("/getAll")
@@ -45,7 +52,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/searchForId/{Id}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin"})
     public EnderecoResponseDTO searchForId(@PathParam("Id") Long Id){
 
         LOG.info("buscnado endereco por id");
@@ -55,7 +62,7 @@ public class EnderecoResouce {
     // create
     @POST
     @Path("/insert")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin","User", "Cliente"})
     @Transactional
     public EnderecoResponseDTO insert(EnderecoDTO enderecoDTO) {
         
@@ -65,12 +72,25 @@ public class EnderecoResouce {
     // update
     @POST
     @Path("/update/{id}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin"})
     @Transactional
-    public EnderecoResponseDTO update(@PathParam("id") Long id, EnderecoDTO enderecoDTO) {
+    public EnderecoResponseDTO updateEndereco(@PathParam("id") Long id, EnderecoDTO enderecoDTO) {
         
         LOG.info("atualizando o endereco selecionado pelo id");
         return service.update(id , enderecoDTO);
+    }
+
+    // update
+    @POST
+    @Path("/update do usuario")
+    @RolesAllowed({"Admin" , "User", "Cliente"})
+    @Transactional
+    public EnderecoResponseDTO updateEnderecoUsuarioLogado( EnderecoDTO enderecoDTO) {
+        
+        String login = tokenJwt.getSubject();
+
+        LOG.info("atualizando o endereco selecionado pelo id");
+        return service.update( clienteService.findByLogin(login).getId() , enderecoDTO);
     }
 
     @DELETE
@@ -81,6 +101,17 @@ public class EnderecoResouce {
         
         LOG.info("selecionado o endereco e apagando o cadastro");
         service.delete(id);
+    }
+
+    @DELETE
+    @Path("/DeleteForUserLogin")
+    @RolesAllowed({"Admin" , "User", "Cliente"})
+    public void DeleteForUserLogin(){
+
+        String login = tokenJwt.getSubject();
+        
+        LOG.info("selecionado o endereco e apagando o cadastro");
+        service.delete(login);
     }
 
     @GET
@@ -95,7 +126,7 @@ public class EnderecoResouce {
 
     @GET
     @Path("/searchForName/{name}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin" , "User", "Cliente"})
     public List<EnderecoResponseDTO> searchForName(@PathParam("name") String name){
         LOG.info("procurando por nome do endereco");
         return service.findByNome(name);

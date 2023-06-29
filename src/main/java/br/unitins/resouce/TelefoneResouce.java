@@ -4,9 +4,10 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
+import br.unitins.service.ClienteService;
 import br.unitins.service.TelefoneService;
 
-
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
 
@@ -34,16 +35,38 @@ public class TelefoneResouce {
     private static final Logger LOG = Logger.getLogger(TelefoneResouce.class);
 
     @Inject
-    TelefoneService service;
+    TelefoneService telefoneservice;
+
+    @Inject
+    ClienteService clienteService;
+
+    @Inject
+    JsonWebToken tokenJwt;
 
 
     @GET
     @Path("/getAll")
     @RolesAllowed({"Admin"})
-    public List<TelefoneResponseDTO> getAll(){
+    public TelefoneResponseDTO getAll(){
         try {
             LOG.info("buscnado todos os telefones");
-            return service.getAll();
+            return telefoneservice.getTelefone();
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
+
+     @GET
+    @Path("/get-all-usuario-logado")
+    @RolesAllowed({"Admin"})
+    public List<TelefoneResponseDTO> getAllUsuarioLogado(){
+
+        
+        try {
+            
+            LOG.info("buscnado o telefones");
+            return telefoneservice.getAll();
         } catch (Exception e) {
             return null;
         }
@@ -52,12 +75,12 @@ public class TelefoneResouce {
 
     @GET
     @Path("/searchForId/{Id}")
-    @RolesAllowed({"Admin","User"})
+    @RolesAllowed({"Admin"})
     public TelefoneResponseDTO searchForId(@PathParam("Id") Long Id){
 
         
         LOG.info("buscnado telefone por id");
-        return service.findById(Id);
+        return telefoneservice.findById(Id);
     }
 
     // create
@@ -68,7 +91,7 @@ public class TelefoneResouce {
     public TelefoneResponseDTO insert(TelefoneDTO telefoneDTO) {
         
         LOG.info("criando telefone");
-        return service.create(telefoneDTO);
+        return telefoneservice.create(telefoneDTO);
     }
     // update
     @POST
@@ -78,7 +101,7 @@ public class TelefoneResouce {
     public TelefoneResponseDTO update(@PathParam("id") Long id, TelefoneDTO telefoneDTO) {
         
         LOG.info("atualizando o telefone selecionado pelo id");
-        return service.update(id , telefoneDTO);
+        return telefoneservice.update(id , telefoneDTO);
     }
 
     @DELETE
@@ -87,7 +110,7 @@ public class TelefoneResouce {
     public void DeleteForId(@PathParam("Id") long id){
 
         LOG.info("selecionado o telefone e apagando o cadastro");
-        service.delete(id);
+        telefoneservice.delete(id);
     }
 
     @GET
@@ -96,7 +119,7 @@ public class TelefoneResouce {
     public long count(){
         
         LOG.info("count");
-        return service.count();
+        return telefoneservice.count();
     }
 
     @GET
@@ -105,6 +128,6 @@ public class TelefoneResouce {
     public List<TelefoneResponseDTO> searchForName(@PathParam("name") String name){
 
         LOG.info("procurando por nome do telefone");
-        return service.findByNome(name);
+        return telefoneservice.findByNome(name);
     }
 }
