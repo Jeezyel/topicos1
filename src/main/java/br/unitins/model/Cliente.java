@@ -1,6 +1,5 @@
 package br.unitins.model;
 
-import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.CollectionTable;
@@ -30,8 +29,6 @@ public class Cliente extends DefaultEntity {
     @CollectionTable(name = "perfis", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "id"))
     @Column(name = "perfil", length = 8, nullable = false)
     private Set<Perfil> perfis;
-    private List<Roupa> listaDeDesejo;
-
    /* @ManyToMany
     @JoinTable(name = "cliente_roupas",
     joinColumns = @JoinColumn(name = "cliente_id"),
@@ -43,12 +40,6 @@ public class Cliente extends DefaultEntity {
 
     
     
-    public List<Roupa> getListaDeDesejo() {
-        return listaDeDesejo;
-    }
-    public void setListaDeDesejo(List<Roupa> listaDeDesejo) {
-        this.listaDeDesejo = listaDeDesejo;
-    }
     public Endereco getEndereco() {
         return Endereco;
     }

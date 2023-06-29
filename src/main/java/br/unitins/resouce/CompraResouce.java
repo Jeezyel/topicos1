@@ -75,7 +75,7 @@ public class CompraResouce {
 
     @GET
     @Path("/compras-andamneto")
-    @RolesAllowed({"Admin","User" , "Cliente"})
+    @RolesAllowed({"Admin","User"})
     public CompraResponseDTO getCompraEmAndamento() {
         LOG.info(" pegando a compra em andamento do usuario logado");
         String login = tokenJwt.getSubject();
@@ -86,8 +86,8 @@ public class CompraResouce {
 
     @GET
     @Path("/historico-compras")
-    @RolesAllowed({"Admin","User" , "Cliente"})
-    public List<CompraResponseDTO> historicoCompras() {
+    @RolesAllowed({"Admin","User"})
+    public List<CompraResponseDTO> getAll() {
 
         LOG.info(" pegando as compras feito pelo usuario logado");
 
@@ -101,7 +101,7 @@ public class CompraResouce {
 
     @POST
     @Path("/insert-itemIntoCompra/{id-compra}{id-roupa}")
-    @RolesAllowed({"Admin","User" , "Cliente"})
+    @RolesAllowed({"Admin","User"})
     public void insertItemIntoCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
         LOG.info(" colocando um item na lisata de compra");
         Compra compra = compraService.findById(idCompa);
@@ -114,7 +114,7 @@ public class CompraResouce {
 
     @DELETE
     @Path("/remove-itemCompra/{id-compra}{id-roupa}")
-    @RolesAllowed({"Admin","User" , "Cliente"})
+    @RolesAllowed({"Admin","User"})
     public void removeItemCompra(@PathParam("id-compra")long idCompa, @PathParam("id-roupa")long idroupa){
         LOG.info(" removendo um item na lisata de compra");
         Compra compra = compraService.findById(idCompa);

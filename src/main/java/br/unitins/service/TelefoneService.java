@@ -10,8 +10,6 @@ public interface TelefoneService {
     
     List<TelefoneResponseDTO> getAll();
 
-    TelefoneResponseDTO getTelefone();
-
     TelefoneResponseDTO findById(Long id);
 
     TelefoneResponseDTO create(TelefoneDTO telefoneDTO);

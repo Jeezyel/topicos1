@@ -12,7 +12,6 @@ import jakarta.validation.Validator;
 
 import br.unitins.dto.EnderecoDTO;
 import br.unitins.dto.EnderecoResponseDTO;
-import br.unitins.model.Cliente;
 import br.unitins.model.Endereco;
 import br.unitins.model.Estados;
 import br.unitins.repository.EnderecoRepository;
@@ -27,12 +26,14 @@ public class EnderecoServicempl implements EnderecoService{
 
     @Inject
     MunicipioServicempl service;
+    
+    @Inject
+    EstadoRepository estadosRepository;
+    
+   
 
     @Inject
     Validator validator;
-
-    @Inject
-    ClienteService clienteService;
 
     @Override
     public List<EnderecoResponseDTO> getAll() {
@@ -53,7 +54,7 @@ public class EnderecoServicempl implements EnderecoService{
         validar(enderecoDTO);
 
         Endereco endereco = new Endereco();
-        Estados estados = estadoRepository.findById(enderecoDTO.idEstado());
+        Estados estados = estadosRepository.findById(enderecoDTO.idEstado());
 
         endereco.setCep(enderecoDTO.cep());
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
@@ -71,7 +72,7 @@ public class EnderecoServicempl implements EnderecoService{
         validar(enderecoDTO);
 
         Endereco endereco = enderecoRepository.findById(id);
-        Estados estados = estadoRepository.findById(enderecoDTO.idEstado());
+        Estados estados = estadosRepository.findById(enderecoDTO.idEstado());
 
         endereco.setCep(enderecoDTO.cep());
         endereco.setEnderecoCompleto(enderecoDTO.enderecoCompleto());
@@ -85,13 +86,6 @@ public class EnderecoServicempl implements EnderecoService{
     @Override
     public void delete(Long id) {
         enderecoRepository.deleteById(id);
-    }
-
-    @Override
-    public void delete(String login) {
-
-        clienteService.deleteByLogin(login);
-
     }
 
     @Override
@@ -113,26 +107,5 @@ public class EnderecoServicempl implements EnderecoService{
 
 
     }
-
-    @Override
-    public EnderecoResponseDTO updateEnderecoUsuarioLogado(Long id, EnderecoDTO enderecoDTO) {
-
-        Cliente cliente = clienteService.findByIdCli(id);
-
-        Endereco endereco = new Endereco();
-
-        endereco.setCep(endereco.getCep());
-        endereco.setEnderecoCompleto(endereco.getEnderecoCompleto());
-        endereco.setComplemento(endereco.getComplemento());
-        endereco.setReferencia(endereco.getReferencia());
-        endereco.setEstados(endereco.getEstados());
-
-
-        cliente.setEndereco(endereco);
-
-        return null;
-    }
-
-    
     
 }

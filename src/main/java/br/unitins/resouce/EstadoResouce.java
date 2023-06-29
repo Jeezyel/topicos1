@@ -54,7 +54,7 @@ public class EstadoResouce {
 
     @POST
     @Path("/insert/{estado}")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EstadosResponseDTO insert(EstadosDTO estado) {
         
@@ -64,7 +64,7 @@ public class EstadoResouce {
 
     @PUT
     @Path("/update/{id}")
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin","User"})
     @Transactional
     public EstadosResponseDTO update(@PathParam("id") Long id, EstadosDTO estado) {
 
