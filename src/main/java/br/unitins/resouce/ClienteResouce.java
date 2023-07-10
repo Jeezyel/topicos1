@@ -12,7 +12,7 @@ import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
-
+import br.unitins.dto.FinalizarCadastroDTO;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -76,16 +76,16 @@ public class ClienteResouce {
     }
 
     @POST
-    @Path("/update")
+    @Path("/finalizar-cadastro")
     @RolesAllowed({"Admin","User" , "Cliente"})
     @Transactional
-    public ClienteResponseDTO FinalizarCasdastro(ClienteDTO clienteDTO) {
+    public ClienteResponseDTO FinalizarCasdastro(FinalizarCadastroDTO clienteDTO) {
 
         LOG.info("atualizando o clientes selecionado pelo id");
 
         String login = tokenJwt.getSubject();
         
-        return service.update(login , clienteDTO);
+        return service.FinalizarCasdastro(login , clienteDTO);
     }
 
 
