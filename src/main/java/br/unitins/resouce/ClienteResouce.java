@@ -4,6 +4,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import java.util.List;
 
+import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
 import br.unitins.service.ClienteService;
@@ -32,10 +33,13 @@ public class ClienteResouce {
     @Inject
     ClienteService service;
 
+    @Inject
+    JsonWebToken tokenJwt;
+
 
     @GET
     @Path("/getAll")
-    //@RolesAllowed({"Admin"})
+    @RolesAllowed({"Admin"})
     public List<ClienteResponseDTO> getAll(){
         LOG.info("buscnado todos os clientes");
         return service.getAll();
@@ -67,6 +71,19 @@ public class ClienteResouce {
     public ClienteResponseDTO update(@PathParam("login") String login, ClienteDTO clienteDTO) {
 
         LOG.info("atualizando o clientes selecionado pelo id");
+        
+        return service.update(login , clienteDTO);
+    }
+
+    @POST
+    @Path("/update")
+    @RolesAllowed({"Admin","User" , "Cliente"})
+    @Transactional
+    public ClienteResponseDTO FinalizarCasdastro(ClienteDTO clienteDTO) {
+
+        LOG.info("atualizando o clientes selecionado pelo id");
+
+        String login = tokenJwt.getSubject()
         
         return service.update(login , clienteDTO);
     }

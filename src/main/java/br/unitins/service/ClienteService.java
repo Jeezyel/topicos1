@@ -36,6 +36,8 @@ public interface ClienteService {
 
     ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
 
+    ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
+
     
     ClienteResponseDTO updateNomeImagen(Long id, String nomeImagen);
 
