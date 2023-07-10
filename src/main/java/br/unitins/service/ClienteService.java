@@ -6,6 +6,7 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
 import br.unitins.dto.ClienteSimplesResponseDTO;
+import br.unitins.dto.FinalizarCadastroDTO;
 import br.unitins.model.Cliente;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -36,7 +37,7 @@ public interface ClienteService {
 
     ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
 
-    ClienteResponseDTO update(String login, ClienteDTO clienteDTO);
+    ClienteResponseDTO FinalizarCasdastro(String login, FinalizarCadastroDTO clienteDTO);
 
     
     ClienteResponseDTO updateNomeImagen(Long id, String nomeImagen);

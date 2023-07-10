@@ -19,6 +19,7 @@ import br.unitins.dto.ClienteDTO;
 import br.unitins.dto.ClienteResponseDTO;
 import br.unitins.dto.ClienteSimplesDTO;
 import br.unitins.dto.ClienteSimplesResponseDTO;
+import br.unitins.dto.FinalizarCadastroDTO;
 import br.unitins.model.Cliente;
 import br.unitins.repository.ClienteRepository;
 import br.unitins.repository.UsuarioRepository;
@@ -254,6 +255,19 @@ public class ClienteServicempl  implements ClienteService{
     @Override
     public Cliente findByIdCli(Long id) {
         return clienteRepository.findById(id);
+    }
+
+    @Override
+    public ClienteResponseDTO FinalizarCasdastro(String login, FinalizarCadastroDTO clienteDTO) {
+        Cliente cliente = clienteRepository.findByLogin(login);
+
+        cliente.setEndereco(clienteDTO.enderecos());
+        cliente.setTelefone(clienteDTO.telefone());
+
+        clienteRepository.persist(cliente);
+
+
+        return new ClienteResponseDTO(cliente);
     }
 
     

@@ -83,7 +83,7 @@ public class ClienteResouce {
 
         LOG.info("atualizando o clientes selecionado pelo id");
 
-        String login = tokenJwt.getSubject()
+        String login = tokenJwt.getSubject();
         
         return service.update(login , clienteDTO);
     }
