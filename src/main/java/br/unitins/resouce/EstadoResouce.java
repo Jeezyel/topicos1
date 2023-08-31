@@ -43,7 +43,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/getAll")
-    @RolesAllowed({"Admin"})
+   // @RolesAllowed({"Admin"})
     public List<EstadosResponseDTO> getAll() {
         
         // seleciona todas as Estados do banco de dados
@@ -54,7 +54,7 @@ public class EstadoResouce {
 
     @POST
     @Path("/insert/{estado}")
-    @RolesAllowed({"Admin"})
+    //@RolesAllowed({"Admin"})
     @Transactional
     public EstadosResponseDTO insert(EstadosDTO estado) {
         
@@ -64,7 +64,7 @@ public class EstadoResouce {
 
     @PUT
     @Path("/update/{id}")
-    @RolesAllowed({"Admin"})
+    //@RolesAllowed({"Admin"})
     @Transactional
     public EstadosResponseDTO update(@PathParam("id") Long id, EstadosDTO estado) {
 
@@ -74,7 +74,7 @@ public class EstadoResouce {
 
     @DELETE
     @Path("/DeleteForId/{Id}")
-    @RolesAllowed({"Admin"})
+   // @RolesAllowed({"Admin"})
     public void DeleteForId(@PathParam("Id") long id){
         
         LOG.info("selecionado o estado e apagando o cadastro");
@@ -83,7 +83,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/count")
-    @RolesAllowed({"Admin"})
+    //@RolesAllowed({"Admin"})
     public long count(){
 
         LOG.info("count");
@@ -92,7 +92,7 @@ public class EstadoResouce {
 
     @GET
     @Path("/search/{nome}")
-    @RolesAllowed({"Admin","User"})
+   // @RolesAllowed({"Admin","User"})
     public Estados search(@PathParam("nome") String nome){
 
         LOG.info("procurando por nome do estado");
